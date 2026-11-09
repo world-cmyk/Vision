@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTURE TV</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #090d16;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 28px 7%;
+            border-bottom: 1px solid #202938;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .logo span {
+            color: #28a5ff;
+        }
+
+        .live {
+            color: #35dc91;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 70px auto;
+            padding: 0 25px;
+        }
+
+        .hero {
+            margin-bottom: 55px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 65px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #28a5ff;
+        }
+
+        .hero p {
+            color: #9ba9bc;
+            font-size: 17px;
+        }
+
+        .section-title {
+            font-size: 21px;
+            margin-bottom: 25px;
+        }
+
+        .channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .channel {
+            background: #121b2b;
+            border: 1px solid #26364c;
+            border-radius: 14px;
+            padding: 25px;
+            transition: 0.2s;
+        }
+
+        .channel:hover {
+            transform: translateY(-5px);
+            border-color: #28a5ff;
+        }
+
+        .channel-logo {
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border-radius: 9px;
+            margin-bottom: 20px;
+            color: #111827;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .channel h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .channel p {
+            color: #9ba9bc;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .channel a {
+            display: inline-block;
+            background: #1689e8;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .channel a:hover {
+            background: #0874cb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 15px;
+            color: #68778d;
+            border-top: 1px solid #202938;
+            margin-top: 100px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FUTURE<span>TV</span></div>
+    <div class="live">● STREAMING PLATFORM</div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <h1>Welcome to <span>FUTURE TV</span></h1>
+        <p>Deine Streaming-Plattform. Alle Sender an einem Ort.</p>
+    </section>
+
+    <h2 class="section-title">Live TV Channels</h2>
+
+    <section class="channels">
+
+        <div class="channel">
+            <div class="channel-logo">SHOWTÜRK</div>
+            <h3>ShowTürk</h3>
+            <p>Türkisches Live-Fernsehen</p>
+            <a href="streams/showturk.m3u8" target="_blank">
+                M3U8 Playlist öffnen
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    FUTURE TV · Streaming Platform
+</footer>
+
+</body>
+</html>
