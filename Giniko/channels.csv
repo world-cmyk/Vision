@@ -1,0 +1,1001 @@
+﻿requested_channel,channel_id,name,hls_url,http_status,result
+1,trtbelgesel,,,200,NO_LIVE_ENTRY
+2,trtbelgesel,,,200,NO_LIVE_ENTRY
+3,trtbelgesel,,,200,NO_LIVE_ENTRY
+4,4,- Live,,200,NO_LIVE_HLS
+5,trtbelgesel,,,200,NO_LIVE_ENTRY
+6,trtbelgesel,,,200,NO_LIVE_ENTRY
+7,trtbelgesel,,,200,NO_LIVE_ENTRY
+8,trtbelgesel,,,200,NO_LIVE_ENTRY
+9,trtbelgesel,,,200,NO_LIVE_ENTRY
+10,trtbelgesel,,,200,NO_LIVE_ENTRY
+11,trtbelgesel,,,200,NO_LIVE_ENTRY
+12,trtbelgesel,,,200,NO_LIVE_ENTRY
+13,trtbelgesel,,,200,NO_LIVE_ENTRY
+14,trtbelgesel,,,200,NO_LIVE_ENTRY
+15,trtbelgesel,,,200,NO_LIVE_ENTRY
+16,trtbelgesel,,,200,NO_LIVE_ENTRY
+17,trtbelgesel,,,200,NO_LIVE_ENTRY
+18,trtbelgesel,,,200,NO_LIVE_ENTRY
+19,trtbelgesel,,,200,NO_LIVE_ENTRY
+20,20,- Live,,200,NO_LIVE_HLS
+21,trtbelgesel,,,200,NO_LIVE_ENTRY
+22,trtbelgesel,,,200,NO_LIVE_ENTRY
+23,trtbelgesel,,,200,NO_LIVE_ENTRY
+24,trtbelgesel,,,200,NO_LIVE_ENTRY
+25,trtbelgesel,,,200,NO_LIVE_ENTRY
+26,trtbelgesel,,,200,NO_LIVE_ENTRY
+27,27,- Live,,200,NO_LIVE_HLS
+28,trtbelgesel,,,200,NO_LIVE_ENTRY
+29,trtbelgesel,,,200,NO_LIVE_ENTRY
+30,trtbelgesel,,,200,NO_LIVE_ENTRY
+31,trtbelgesel,,,200,NO_LIVE_ENTRY
+32,trtbelgesel,,,200,NO_LIVE_ENTRY
+33,trtbelgesel,,,200,NO_LIVE_ENTRY
+34,trtbelgesel,,,200,NO_LIVE_ENTRY
+35,35,- Live,,200,NO_LIVE_HLS
+36,trtbelgesel,,,200,NO_LIVE_ENTRY
+37,trtbelgesel,,,200,NO_LIVE_ENTRY
+38,trtbelgesel,,,200,NO_LIVE_ENTRY
+39,trtbelgesel,,,200,NO_LIVE_ENTRY
+40,trtbelgesel,,,200,NO_LIVE_ENTRY
+41,trtbelgesel,,,200,NO_LIVE_ENTRY
+42,trtbelgesel,,,200,NO_LIVE_ENTRY
+43,trtbelgesel,,,200,NO_LIVE_ENTRY
+44,trtbelgesel,,,200,NO_LIVE_ENTRY
+45,trtbelgesel,,,200,NO_LIVE_ENTRY
+46,trtbelgesel,,,200,NO_LIVE_ENTRY
+47,trtbelgesel,,,200,NO_LIVE_ENTRY
+48,trtbelgesel,,,200,NO_LIVE_ENTRY
+49,trtbelgesel,,,200,NO_LIVE_ENTRY
+50,trtbelgesel,,,200,NO_LIVE_ENTRY
+51,trtbelgesel,,,200,NO_LIVE_ENTRY
+52,trtbelgesel,,,200,NO_LIVE_ENTRY
+53,trtbelgesel,,,200,NO_LIVE_ENTRY
+54,trtbelgesel,,,200,NO_LIVE_ENTRY
+55,trtbelgesel,,,200,NO_LIVE_ENTRY
+56,trtbelgesel,,,200,NO_LIVE_ENTRY
+57,trtbelgesel,,,200,NO_LIVE_ENTRY
+58,trtbelgesel,,,200,NO_LIVE_ENTRY
+59,trtbelgesel,,,200,NO_LIVE_ENTRY
+60,trtbelgesel,,,200,NO_LIVE_ENTRY
+61,61,- Live,,200,NO_LIVE_HLS
+62,trtbelgesel,,,200,NO_LIVE_ENTRY
+63,trtbelgesel,,,200,NO_LIVE_ENTRY
+64,trtbelgesel,,,200,NO_LIVE_ENTRY
+65,trtbelgesel,,,200,NO_LIVE_ENTRY
+66,trtbelgesel,,,200,NO_LIVE_ENTRY
+67,trtbelgesel,,,200,NO_LIVE_ENTRY
+68,trtbelgesel,,,200,NO_LIVE_ENTRY
+69,trtbelgesel,,,200,NO_LIVE_ENTRY
+70,trtbelgesel,,,200,NO_LIVE_ENTRY
+71,trtbelgesel,,,200,NO_LIVE_ENTRY
+72,trtbelgesel,,,200,NO_LIVE_ENTRY
+73,trtbelgesel,,,200,NO_LIVE_ENTRY
+74,trtbelgesel,,,200,NO_LIVE_ENTRY
+75,trtbelgesel,,,200,NO_LIVE_ENTRY
+76,trtbelgesel,,,200,NO_LIVE_ENTRY
+77,trtbelgesel,,,200,NO_LIVE_ENTRY
+78,78,Kanal Turk - Live,http://kanalturk-live.ercdn.com/kanalturk1.m3u8,200,STREAM_OK
+79,79,TRT Belgesel - Live,http://trtcanlitv-lh.akamaihd.net/i/TRTBELGESEL_1@182145/index_1500_av-b.m3u8,200,STREAM_OK
+80,80,TV2 HD - Live,http://212.224.80.88/S1/HLS_LIVE/tv2/playlist.m3u8?key=b2def9c18b20f476b5486e869c9d48e7,200,STREAM_OK
+81,81,Besiktas TV - Live,http://stream-ec.vty.dailymotion.com/07/dm/1/x31omum/live.isml/events(live-1463909830)/live-audio=128000-video=2000000.m3u8,200,STREAM_OK
+82,82,Haber Turk - Live,http://mn-i.mncdn.com/haberturk/smil:ihaberturk.smil/playlist.m3u8,200,STREAM_OK
+83,83,Euronews Turkce - Live,http://hd1.lsops.net/live/smil:euronews_tr.smil/playlist.m3u8,200,STREAM_OK
+84,84,Sinema XN HD - Live,,200,NO_LIVE_HLS
+85,85,Disney Turkiye - Live,http://tna6.giniko.com/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/gt-disneytr.m3u8,200,STREAM_OK
+86,trtbelgesel,,,200,NO_LIVE_ENTRY
+87,trtbelgesel,,,200,NO_LIVE_ENTRY
+88,88,ATV Euro - Live,http://rokutna.tulix.tv/hls/atveurope/atveu3.m3u8,200,STREAM_OK
+89,89,A Haber - Live,http://origin2.live.web.tv.streamprovider.net/streams/996642ce8e8f48d5438c6de972497d4a_live_0_0/tracks-v1a1/mono.m3u8,200,STREAM_OK
+90,90,Beyaz TV - Live,http://rokutna.tulix.tv/hls/beyaztv/beyaz1.m3u8,200,STREAM_OK
+91,91,Capulcu TV - Live,http://s9.tilda.com.tr:80/live/Stream1_360p/playlist.m3u8,200,STREAM_OK
+92,92,GS TV - Live,http://rokutna.tulix.tv/live/gstv.m3u8,200,STREAM_OK
+93,93,Istanbul TV - Live,http://rokutna.tulix.tv/hls/istanbultimes/istanbultimes.m3u8,200,STREAM_OK
+94,94,Kanal 24 - Live,http://mn-l.mncdn.com/kanal24/kanal243/playlist.m3u8,200,STREAM_OK
+95,95,Kanal A (Ankara) - Live,http://stream.n3.noc.com.tr/kanala/kanala/playlist.m3u8,200,STREAM_OK
+96,96,Minika Cocuk - Live,http://origin.live.web.tv.streamprovider.net/streams/f79e39a0979af7718cf4828779c7ef26_live_0_0/tracks-v1a1/mono.m3u8,200,STREAM_OK
+97,97,Minika GO - Live,http://origin.live.web.tv.streamprovider.net/streams/24b429ab889afc37becb9e59ff84820c_live_0_0/tracks-v1a1/mono.m3u8,200,STREAM_OK
+98,98,Muz TV (Azerbaycan) - Live,http://tna1.giniko.com/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/muztv.m3u8,200,STREAM_OK
+99,99,TGRT Haber - Live,http://rokutna.tulix.tv/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/tgrthaber.m3u8,200,STREAM_OK
+100,100,Flash TV  - Live,http://98.142.98.125:1935/flashtv/flashtvmob/playlist.m3u8,200,STREAM_OK
+101,101,Halk TV - Live,http://rokutna.tulix.tv/live/halktv2.m3u8,200,STREAM_OK
+102,102,Ulusal TV - Live,http://rokutna.tulix.tv/live/ulusaltv.m3u8,200,STREAM_OK
+103,103,Yumurcak TV - Live,http://rokutna.tulix.tv/live/yumurcak.m3u8,200,STREAM_OK
+104,trtbelgesel,,,200,NO_LIVE_ENTRY
+105,105,- Live,,200,NO_LIVE_HLS
+106,trtbelgesel,,,200,NO_LIVE_ENTRY
+107,107,Kibris BRT3 Yasam - Live,http://tna1.giniko.com/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/kibrisbrt3.m3u8,200,STREAM_OK
+108,108,Kibris BRT Spor - Live,http://rokutna.tulix.tv/hls/bayraktv2/383ff638b63df63ab8f0ad3752b086d3/6af355bf/brt2.m3u8,200,STREAM_OK
+109,109,Kibris Genc TV - Live,http://rokutna.tulix.tv/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/kibrisgenctv1.m3u8,200,STREAM_OK
+110,110,Kibris Ada News TV - Live,http://rokutna.tulix.tv/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/kibrisadatv.m3u8,200,STREAM_OK
+111,111,Kibris Kanal Sim - Live,http://tna1.giniko.com/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/kanalsim.m3u8,200,STREAM_OK
+112,112,A9 - Live,http://live2.harunyahya.tv/multistream/720p/out.m3u8,200,STREAM_OK
+113,trtbelgesel,,,200,NO_LIVE_ENTRY
+114,trtbelgesel,,,200,NO_LIVE_ENTRY
+115,115,- Live,,200,NO_LIVE_HLS
+116,116,Sky Turk 360 - Live,http://rokutna.tulix.tv/hls/360tv/383ff638b63df63ab8f0ad3752b086d3/6af355bf/360tvlive2.m3u8,200,STREAM_OK
+117,117,S SPORT+ - Live,https://trn03.tulix.tv/gt-ssport-plus/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+118,trtbelgesel,,,200,NO_LIVE_ENTRY
+119,119,Dream Turk - Live,http://live.netd.com.tr/S1/HLS_LIVE/dreamturktv/1000/prog_index.m3u8,200,STREAM_OK
+120,120,Kanal D HD - Live,http://rokutna.tulix.tv/hls/kanald/kanald.stream.m3u8,200,STREAM_OK
+121,121,Power Turk TV - Live,http://powerturktv.listenpowerapp.com/powerturktv/abr/powerturktv/720p/chunks.m3u8?nimblesessionid=390102,200,STREAM_OK
+122,122,YOL TV - Live,https://iptv.amgsmart2home.de/YOLTVMAIN/tracks-v1a1/mono.m3u8,200,STREAM_OK
+123,123,Oncu TV (Duzce) - Live,http://yayin3.canlitv.com:1935/live/oncutv/playlist.m3u8,200,STREAM_OK
+124,124,Gaziantep Olay TV - Live,http://rokutna.tulix.tv/hls/olaytv/383ff638b63df63ab8f0ad3752b086d3/6af355bf/bant1.m3u8,200,STREAM_OK
+125,trtbelgesel,,,200,NO_LIVE_ENTRY
+126,trtbelgesel,,,200,NO_LIVE_ENTRY
+127,trtbelgesel,,,200,NO_LIVE_ENTRY
+128,trtbelgesel,,,200,NO_LIVE_ENTRY
+129,trtbelgesel,,,200,NO_LIVE_ENTRY
+130,trtbelgesel,,,200,NO_LIVE_ENTRY
+131,131,Bengu Turk - Live,http://rokutna.tulix.tv/hls/benguturk/benguturk.m3u8,200,STREAM_OK
+132,132,Fil Sinema TV - Live,http://canli2.tvnet.tv.tr/live/smil:filtv.smil/chunklist_w483265347.m3u8,200,STREAM_OK
+133,,,,,PARSE_ERROR: ParseError
+134,134,Karadeniz TV - Live,http://krttv.canliyayin.org:1935/P807109311/krttv/playlist.m3u8,200,STREAM_OK
+135,trtbelgesel,,,200,NO_LIVE_ENTRY
+136,trtbelgesel,,,200,NO_LIVE_ENTRY
+137,trtbelgesel,,,200,NO_LIVE_ENTRY
+138,138,- Live,,200,NO_LIVE_HLS
+139,139,Sokak TV - Live,http://rokutna.tulix.tv/hls/sokaktv/sokak.m3u8,200,STREAM_OK
+140,140,Mavi Karadeniz - Live,http://rokutna.tulix.tv/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/mavikaradeniz.m3u8,200,STREAM_OK
+141,141,Medine TV - Live,http://rokutna.tulix.tv/live/383ff638b63df63ab8f0ad3752b086d3/6af355bf/asutv.m3u8,200,STREAM_OK
+142,142,KONTV (Konya) - Live,http://yayin3.canlitv.com:1935/live/kontv/playlist.m3u8,200,STREAM_OK
+143,143,Kanal 26 Eskisehir - Live,http://rokutna.tulix.tv/hls/kanal26/383ff638b63df63ab8f0ad3752b086d3/6af355bf/eskisehir_kanal26.m3u8,200,STREAM_OK
+144,trtbelgesel,,,200,NO_LIVE_ENTRY
+145,trtbelgesel,,,200,NO_LIVE_ENTRY
+146,146,- Live,,200,NO_LIVE_HLS
+147,147,TV8 - Live,http://rokutna.tulix.tv/live/tv8turk.m3u8,200,STREAM_OK
+148,trtbelgesel,,,200,NO_LIVE_ENTRY
+149,trtbelgesel,,,200,NO_LIVE_ENTRY
+150,trtbelgesel,,,200,NO_LIVE_ENTRY
+151,trtbelgesel,,,200,NO_LIVE_ENTRY
+152,trtbelgesel,,,200,NO_LIVE_ENTRY
+153,153,TVNET - Live,https://mn-nl.mncdn.com/tvnet/tvnet/playlist.m3u8,200,STREAM_OK
+154,154,- Live,,200,NO_LIVE_HLS
+155,trtbelgesel,,,200,NO_LIVE_ENTRY
+156,156,Bloomberg HT - Live,http://mn-i.mncdn.com/bloomberght_ios/bloomberght3/playlist.m3u8,200,STREAM_OK
+157,157,Idman TV (Azeri) - Live,http://rokutna.tulix.tv/live/idmantv2.m3u8,200,STREAM_OK
+158,trtbelgesel,,,200,NO_LIVE_ENTRY
+159,trtbelgesel,,,200,NO_LIVE_ENTRY
+160,160,Cartoon Network TR - Live,http://tna6.giniko.com/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/gt-cartoontr.m3u8,200,STREAM_OK
+161,trtbelgesel,,,200,NO_LIVE_ENTRY
+162,162,Turk Muzik Birligi TV - Live,https://str.yodacdn.net/tmb_tr_app/tracks-v1a1/mono.m3u8?token=tmb_app_token_13579,200,STREAM_OK
+163,163,BUGUN TV - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/buguntv.m3u8,200,STREAM_OK
+164,164,A Spor1 - Live,http://playout2multi3.tulix.tv/live3/Stream1/playlist.m3u8,200,STREAM_OK
+165,165,Kibris T - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/kibrist.m3u8,200,STREAM_OK
+166,166,Kibris TV - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/kibristv.m3u8,200,STREAM_OK
+167,167,Kral TV - Live,http://rokutna.tulix.tv/live/kraltv2.m3u8,200,STREAM_OK
+168,168,Fanatik TV - Live,https://mn-nl.mncdn.com/fanatik_livestream/smil:fanatik.smil/playlist.m3u8,200,STREAM_OK
+169,169,Number 1 Turk - Live,http://rokutna.tulix.tv/hls/number1turk/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/nr1_turk.sdp.m3u8,200,STREAM_OK
+170,170,Radyo Spor TV - Live,https://wowza1.radyotvonline.com/saran/radyospor.stream/playlist.m3u8,200,STREAM_OK
+171,171,Lig Radyo - Live,http://rokutna.tulix.tv/live/ligradyo.m3u8,200,STREAM_OK
+172,172,Show TV - Live - Live,http://strm-i.glb.pr.medianova.tv:1935/showtv/showtv3/playlist.m3u8,200,STREAM_OK
+173,trtbelgesel,,,200,NO_LIVE_ENTRY
+174,trtbelgesel,,,200,NO_LIVE_ENTRY
+175,175,Sakarya TV - Live,http://rokutna.tulix.tv/hls/sakaryatv/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/sakaryatelevizyonu.m3u8,200,STREAM_OK
+176,176,Cay TV (Rize) - Live,https://edge1.socialsmart.tv/caytv/bant1/chunks.m3u8,200,STREAM_OK
+177,177,Kanal 3 (Afyon) - Live,https://live.artidijitalmedya.com/artidijital_kanal3/kanal3/playlist.m3u8,200,STREAM_OK
+178,trtbelgesel,,,200,NO_LIVE_ENTRY
+179,179,TRT HD - Live,http://trtcanlitv-lh.akamaihd.net/i/TRTHD_1@182045/master.m3u8,200,STREAM_OK
+180,trtbelgesel,,,200,NO_LIVE_ENTRY
+181,181,Semerkand TV - Live,http://b01c02nl.mediatriple.net/videoonlylive/mtisvwurbfcyslive/broadcast_58d915bd40efc.smil/playlist.m3u8,200,STREAM_OK
+182,trtbelgesel,,,200,NO_LIVE_ENTRY
+183,trtbelgesel,,,200,NO_LIVE_ENTRY
+184,trtbelgesel,,,200,NO_LIVE_ENTRY
+185,trtbelgesel,,,200,NO_LIVE_ENTRY
+186,trtbelgesel,,,200,NO_LIVE_ENTRY
+187,trtbelgesel,,,200,NO_LIVE_ENTRY
+188,trtbelgesel,,,200,NO_LIVE_ENTRY
+189,trtbelgesel,,,200,NO_LIVE_ENTRY
+190,190,test - Live,http://216.54.241.26:8081/FestivaShop/FestivaShopHLS/playlist.m3u8,200,STREAM_OK
+191,trtbelgesel,,,200,NO_LIVE_ENTRY
+192,trtbelgesel,,,200,NO_LIVE_ENTRY
+193,trtbelgesel,,,200,NO_LIVE_ENTRY
+194,trtbelgesel,,,200,NO_LIVE_ENTRY
+195,195,CINERAMA - Live,http://origin2.live.web.tv.streamprovider.net/streams/63b6f16ae8d3cbb98af11a442e118605/tracks-v1a1/mono.m3u8,200,STREAM_OK
+196,196,YesilSinema TV - Live,http://rokutna.tulix.tv/live/yesilcamtv.m3u8,200,STREAM_OK
+197,trtbelgesel,,,200,NO_LIVE_ENTRY
+198,trtbelgesel,,,200,NO_LIVE_ENTRY
+199,trtbelgesel,,,200,NO_LIVE_ENTRY
+200,trtbelgesel,,,200,NO_LIVE_ENTRY
+201,trtbelgesel,,,200,NO_LIVE_ENTRY
+202,trtbelgesel,,,200,NO_LIVE_ENTRY
+203,trtbelgesel,,,200,NO_LIVE_ENTRY
+204,trtbelgesel,,,200,NO_LIVE_ENTRY
+205,205,- Live,,200,NO_LIVE_HLS
+206,trtbelgesel,,,200,NO_LIVE_ENTRY
+207,trtbelgesel,,,200,NO_LIVE_ENTRY
+208,208,Ucan Kus TV - Live,http://ucankus-live.cdnnew.com/ucankus/ucankus.m3u8,200,STREAM_OK
+209,trtbelgesel,,,200,NO_LIVE_ENTRY
+210,210,Test Channel - Live,http://nimplus3.giniko.com/kuwaittv1/kuwaittv1.smil/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9NS8yNC8yMDE2IDE6NTc6NTUgUE0maGFzaF92YWx1ZT1HZ1hTb0s4aWRYVXQ3aFVEMjhyb2xBPT0mdmFsaWRtaW51dGVzPTE0NDA=,200,STREAM_OK
+211,trtbelgesel,,,200,NO_LIVE_ENTRY
+212,trtbelgesel,,,200,NO_LIVE_ENTRY
+213,trtbelgesel,,,200,NO_LIVE_ENTRY
+214,trtbelgesel,,,200,NO_LIVE_ENTRY
+215,trtbelgesel,,,200,NO_LIVE_ENTRY
+216,trtbelgesel,,,200,NO_LIVE_ENTRY
+217,trtbelgesel,,,200,NO_LIVE_ENTRY
+218,trtbelgesel,,,200,NO_LIVE_ENTRY
+219,trtbelgesel,,,200,NO_LIVE_ENTRY
+220,trtbelgesel,,,200,NO_LIVE_ENTRY
+221,trtbelgesel,,,200,NO_LIVE_ENTRY
+222,trtbelgesel,,,200,NO_LIVE_ENTRY
+223,trtbelgesel,,,200,NO_LIVE_ENTRY
+224,trtbelgesel,,,200,NO_LIVE_ENTRY
+225,225,Akilli TV - Live,http://tnaeu1.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/gt-akillitv.m3u8,200,STREAM_OK
+226,226,TRT AVAZ - Live,http://trtcanlitv-lh.akamaihd.net/i/TRTAVAZ_1@182244/index_1200_av-p.m3u8,200,STREAM_OK
+227,227,ON 4 TV  - Live,https://live.artidijitalmedya.com/artidijital_on4tv/on4tv/playlist.m3u8,200,STREAM_OK
+228,228,Kerkuk Turkmeneli TV - Live,http://116.203.71.169/hls/stream1https://137840.global.ssl.fastly.net/edge/live_6b7c6e205afb11ebb010f5a331abaf98/playlist.m3u8m3u8,200,STREAM_OK
+229,229,Vizyon TV - Live,https://cdn-vizyontv.yayin.com.tr/vizyontv/vizyontv/playlist.m3u8,200,STREAM_OK
+230,230,Dost TV - Live,https://dost.stream.emsal.im/tv/live.m3u8,200,STREAM_OK
+231,231,TRT Diyanet - Live,http://trtcanlitv-lh.akamaihd.net/i/TRTDIYANET_1@182344/master.m3u8,200,STREAM_OK
+232,232,Hilal TV - Live,http://rokutna.tulix.tv/hls/hilaltv/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/hilaltv.m3u8,200,STREAM_OK
+233,233,ANOSES TV - Live,http://rokutna.tulix.tv/hls/tv2000/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/bant1.m3u8,200,STREAM_OK
+234,234,Zaman TV - Live,http://mn-i.mncdn.com/zaman_live3/live/playlist.m3u8,200,STREAM_OK
+235,235,Kanal 2000 Mersin - Live,http://rokutna.tulix.tv/hls/kanal2000/bant1.m3u8,200,STREAM_OK
+236,236,Kapadokya TV - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/kapadokyatv.m3u8,200,STREAM_OK
+237,237,TGRT Belgesel - Live,http://rokutna.tulix.tv/hls/tgrtbelgesel/tgrt2.m3u8,200,STREAM_OK
+238,238,BEN TV - Live,http://tna1.giniko.com/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/kanalben.m3u8,200,STREAM_OK
+239,239,Lalegul TV - Live,https://lbl.netmedya.net/hls/lalegultv.m3u8,200,STREAM_OK
+240,240,Kanal Urfa - Live,http://rokutna.tulix.tv/hls/kanalurfa/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/bant1.m3u8,200,STREAM_OK
+241,trtbelgesel,,,200,NO_LIVE_ENTRY
+242,trtbelgesel,,,200,NO_LIVE_ENTRY
+243,trtbelgesel,,,200,NO_LIVE_ENTRY
+244,trtbelgesel,,,200,NO_LIVE_ENTRY
+245,trtbelgesel,,,200,NO_LIVE_ENTRY
+246,trtbelgesel,,,200,NO_LIVE_ENTRY
+247,247,Mello - Ori - Live,http://162.212.176.113:1935/mellotvudp/mellotvudp/playlist.m3u8,200,STREAM_OK
+248,trtbelgesel,,,200,NO_LIVE_ENTRY
+249,trtbelgesel,,,200,NO_LIVE_ENTRY
+250,trtbelgesel,,,200,NO_LIVE_ENTRY
+251,251,- Live,,200,NO_LIVE_HLS
+252,trtbelgesel,,,200,NO_LIVE_ENTRY
+253,253,- Live,,200,NO_LIVE_HLS
+254,trtbelgesel,,,200,NO_LIVE_ENTRY
+255,255,- Live,,200,NO_LIVE_HLS
+256,trtbelgesel,,,200,NO_LIVE_ENTRY
+257,257,- Live,,200,NO_LIVE_HLS
+258,trtbelgesel,,,200,NO_LIVE_ENTRY
+259,trtbelgesel,,,200,NO_LIVE_ENTRY
+260,trtbelgesel,,,200,NO_LIVE_ENTRY
+261,261,- Live,,200,NO_LIVE_HLS
+262,262,- Live,,200,NO_LIVE_HLS
+263,263,Yaban TV - Live,https://gintna100-2.tulix.tv/gin_live/yabantv/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/tracks-v1a1/mono.m3u8,200,STREAM_OK
+264,264,Bahar Turk - Live,http://rokutna.tulix.tv/hls/baharturk/bant1.m3u8,200,STREAM_OK
+265,265,Dogu Sinema - Live,http://rokutna.tulix.tv/live/dogucinema.m3u8,200,STREAM_OK
+266,trtbelgesel,,,200,NO_LIVE_ENTRY
+267,trtbelgesel,,,200,NO_LIVE_ENTRY
+268,268,Koroglu TV (Bolu) - Live,http://rokutna.tulix.tv/hls/koroglutv/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/bant1.m3u8,200,STREAM_OK
+269,269,Anadolu TV - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/anadolutv.m3u8,200,STREAM_OK
+270,270,TBMM Meclis TV - Live,http://mecliscanlitv-lh.akamaihd.net/i/MECLISTV_1@127503/master.m3u8,200,STREAM_OK
+271,trtbelgesel,,,200,NO_LIVE_ENTRY
+272,trtbelgesel,,,200,NO_LIVE_ENTRY
+273,273,TV Kayseri - Live,http://rokutna.tulix.tv/live/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/tvkayseri.m3u8,200,STREAM_OK
+274,trtbelgesel,,,200,NO_LIVE_ENTRY
+275,275,Haber 61 (Trabzon) - Live,https://cdn1-haber61tv.yayin.com.tr/haber61tv/haber61tv/playlist.m3u8,200,STREAM_OK
+276,276,Kanal 28 (Giresun) - Live,http://origin2.live.web.tv.streamprovider.net/streams/88a7afb6b7d3d5729f96217c161009bf/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/tracks-v1a1/mono.m3u8,200,STREAM_OK
+277,277,HT 7/24  - Live,http://mn-i.mncdn.com/kanal724_live/smil:kanal724.smil/chunklist_w1187066023_b896000.m3u8,200,STREAM_OK
+278,trtbelgesel,,,200,NO_LIVE_ENTRY
+279,trtbelgesel,,,200,NO_LIVE_ENTRY
+280,trtbelgesel,,,200,NO_LIVE_ENTRY
+281,trtbelgesel,,,200,NO_LIVE_ENTRY
+282,trtbelgesel,,,200,NO_LIVE_ENTRY
+283,trtbelgesel,,,200,NO_LIVE_ENTRY
+284,trtbelgesel,,,200,NO_LIVE_ENTRY
+285,trtbelgesel,,,200,NO_LIVE_ENTRY
+286,trtbelgesel,,,200,NO_LIVE_ENTRY
+287,trtbelgesel,,,200,NO_LIVE_ENTRY
+288,288,Akit TV - Live,http://akittv-live.ercdn.net/akittv/akittv.m3u8,200,STREAM_OK
+289,289,Irmak TV - Live,http://cds.z2q7i5m7.hwcdn.net/asset/7uDFqi51/playlist.m3u8,200,STREAM_OK
+290,trtbelgesel,,,200,NO_LIVE_ENTRY
+291,trtbelgesel,,,200,NO_LIVE_ENTRY
+292,trtbelgesel,,,200,NO_LIVE_ENTRY
+293,trtbelgesel,,,200,NO_LIVE_ENTRY
+294,294,- Live,,200,NO_LIVE_HLS
+295,295,- Live,,200,NO_LIVE_HLS
+296,trtbelgesel,,,200,NO_LIVE_ENTRY
+297,trtbelgesel,,,200,NO_LIVE_ENTRY
+298,298,- Live,,200,NO_LIVE_HLS
+299,trtbelgesel,,,200,NO_LIVE_ENTRY
+300,300,- Live,,200,NO_LIVE_HLS
+301,trtbelgesel,,,200,NO_LIVE_ENTRY
+302,trtbelgesel,,,200,NO_LIVE_ENTRY
+303,303,test - Live,https://ssh101.com/m3u8/dyn/gospeltv1/tracks-v1a1/mono.m3u8,200,STREAM_OK
+304,304,Tempo TV  - Live,http://rokutna.tulix.tv/hls/tempotv/89c1f890775d48c7b8f3bd2b3349f1fd/6af355c0/tempotv.m3u8,200,STREAM_OK
+305,305,Kanal G (Giresun) - Live,http://www.kanalg.tv/canlitv/g.m3u8,200,STREAM_OK
+306,trtbelgesel,,,200,NO_LIVE_ENTRY
+307,trtbelgesel,,,200,NO_LIVE_ENTRY
+308,trtbelgesel,,,200,NO_LIVE_ENTRY
+309,trtbelgesel,,,200,NO_LIVE_ENTRY
+310,trtbelgesel,,,200,NO_LIVE_ENTRY
+311,311,- Live,,200,NO_LIVE_HLS
+312,trtbelgesel,,,200,NO_LIVE_ENTRY
+313,313,Announcement/Duyuru - Live,http://uni6rtmp.tulix.tv:1935/vod/roku-ginturk.mp4/playlist.m3u8,200,STREAM_OK
+314,trtbelgesel,,,200,NO_LIVE_ENTRY
+315,315,Galatasaray TV - Live,http://mn-i.mncdn.com/gstv_live/smil:gstv.smil/playlist.m3u8?token=9d577d281598553ce68e10b31f474c0e7d41ccf0e7e71675,200,STREAM_OK
+316,316,Bursa Spor TV - Live,http://stream.yayindayiz.biz/Bursaspor/bursaspor/playlist.m3u8,200,STREAM_OK
+317,317,Seymen TV - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/seymentv.m3u8,200,STREAM_OK
+318,318,EKIN TV - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/ekintv.m3u8,200,STREAM_OK
+319,319,Turizm TV - Live,http://rokutna.tulix.tv/hls/turizmtv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/yayin.stream.m3u8,200,STREAM_OK
+320,320,Kibris Dialog TV - Live,http://tna1.giniko.com/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kibrisdialogtv.m3u8,200,STREAM_OK
+321,321,Balikesir Kent TV - Live,http://rokutna.tulix.tv/hls/balikesirtv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/bant1.m3u8,200,STREAM_OK
+322,322,Kibris AS TV - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kibrisastv.m3u8,200,STREAM_OK
+323,323,Istanbul1 Sehir TV - Live,http://rokutna.tulix.tv/hls/istanbul1/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/webtv_wowza1.m3u8,200,STREAM_OK
+324,trtbelgesel,,,200,NO_LIVE_ENTRY
+325,trtbelgesel,,,200,NO_LIVE_ENTRY
+326,trtbelgesel,,,200,NO_LIVE_ENTRY
+327,327,- Live,,200,NO_LIVE_HLS
+328,328,- Live,,200,NO_LIVE_HLS
+329,trtbelgesel,,,200,NO_LIVE_ENTRY
+330,trtbelgesel,,,200,NO_LIVE_ENTRY
+331,trtbelgesel,,,200,NO_LIVE_ENTRY
+332,trtbelgesel,,,200,NO_LIVE_ENTRY
+333,trtbelgesel,,,200,NO_LIVE_ENTRY
+334,trtbelgesel,,,200,NO_LIVE_ENTRY
+335,trtbelgesel,,,200,NO_LIVE_ENTRY
+336,trtbelgesel,,,200,NO_LIVE_ENTRY
+337,337,- Live,,200,NO_LIVE_HLS
+338,338,- Live,,200,NO_LIVE_HLS
+339,339,- Live,,200,NO_LIVE_HLS
+340,trtbelgesel,,,200,NO_LIVE_ENTRY
+341,trtbelgesel,,,200,NO_LIVE_ENTRY
+342,342,- Live,,200,NO_LIVE_HLS
+343,trtbelgesel,,,200,NO_LIVE_ENTRY
+344,344,- Live,,200,NO_LIVE_HLS
+345,trtbelgesel,,,200,NO_LIVE_ENTRY
+346,trtbelgesel,,,200,NO_LIVE_ENTRY
+347,trtbelgesel,,,200,NO_LIVE_ENTRY
+348,348,Mello -Multi - Live,http://mellotvnew.tulix.tv/live/smil:mellotv.smil/playlist.m3u8,200,STREAM_OK
+349,trtbelgesel,,,200,NO_LIVE_ENTRY
+350,trtbelgesel,,,200,NO_LIVE_ENTRY
+351,trtbelgesel,,,200,NO_LIVE_ENTRY
+352,trtbelgesel,,,200,NO_LIVE_ENTRY
+353,trtbelgesel,,,200,NO_LIVE_ENTRY
+354,trtbelgesel,,,200,NO_LIVE_ENTRY
+355,trtbelgesel,,,200,NO_LIVE_ENTRY
+356,356,- Live,,200,NO_LIVE_HLS
+357,trtbelgesel,,,200,NO_LIVE_ENTRY
+358,358,TELE 1 TV - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/tele1.m3u8,200,STREAM_OK
+359,359,Vatan TV - Live,http://vatantv-live.cdnnew.com/vatantv/vatantv_576p.m3u8,200,STREAM_OK
+360,360,CEM TV - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/cemtv.m3u8,200,STREAM_OK
+361,trtbelgesel,,,200,NO_LIVE_ENTRY
+362,trtbelgesel,,,200,NO_LIVE_ENTRY
+363,363,TVT TV - Live,http://new.10gbps.tv:443/live/tvtLiveStream/tracks-v1a1/mono.m3u8,200,STREAM_OK
+364,364,Slow Karadeniz - Live,http://164.132.23.92:1935/slowkaradeniztv/slowkaradeniztv/playlist.m3u8,200,STREAM_OK
+365,365,Ilke TV - Live,https://trn03.tulix.tv/gt-ilketv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+366,366,Balikesir Kent TV - Live,http://rokutna.tulix.tv/hls/balikesirtv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/bant1.m3u8,200,STREAM_OK
+367,367,Kanal Urfa - Live,https://edge1.socialsmart.tv/kanalurfa/bant1/playlist.m3u8,200,STREAM_OK
+368,368,Roman TV - Live,http://ms.n1.tvkur.noccdn.com/cdn/564b2951d6f5c/playlist.m3u8,200,STREAM_OK
+369,369,Kayseri TV1 - Live,https://edge1.socialsmart.tv/tv1/bant1/playlist.m3u8,200,STREAM_OK
+370,370,Aras TV Erzurum - Live,http://1.rtmp.org/tv217/yayin.stream/iptvradyotvdelisi.m3u8,200,STREAM_OK
+371,371,ATV Alanya TV - Live,https://stream2.taksimbilisim.com:1935/alanyatv/smil:alanyatv.smil/iptvdelisi.m3u8,200,STREAM_OK
+372,372,Milyon TV - Live,https://sosyoapp-live.cdnnew.com/sosyo/buraya-bir-isim-verin.m3u8,200,STREAM_OK
+373,373,Ankara TV - Live,http://ms.n1.tvkur.noccdn.com/cdn/55c4522e6c990/playlist.m3u8,200,STREAM_OK
+374,374,- Live,,200,NO_LIVE_HLS
+375,375,- Live,,200,NO_LIVE_HLS
+376,trtbelgesel,,,200,NO_LIVE_ENTRY
+377,trtbelgesel,,,200,NO_LIVE_ENTRY
+378,trtbelgesel,,,200,NO_LIVE_ENTRY
+379,379,Aile TV1 - Live,http://rokutna.tulix.tv/hls/ailetv1/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/558d0f34918a2.m3u8,200,STREAM_OK
+380,380,Aile TV2 - Live,http://rokutna.tulix.tv/hls/ailetv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/559148303a53d.m3u8,200,STREAM_OK
+381,trtbelgesel,,,200,NO_LIVE_ENTRY
+382,382,Aksu TV Kahramanmaras - Live,https://waw2.artiyerelmedya.net/aksutv/bant1/playlist.m3u8,200,STREAM_OK
+383,383,Doktor Haber TV - Live,http://rokutna.tulix.tv/hls/doktorhaber_tv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/doktorhaber_tv.m3u8,200,STREAM_OK
+384,384,Fortuna TV - Live,https://fortunacdn.socialsmart.tv/ftvturk/bant1/playlist.m3u8,200,STREAM_OK
+385,385,Kars TV - Live,http://rokutna.tulix.tv/hls/karstv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/karstv.m3u8,200,STREAM_OK
+386,386,Otomotiv Dunyasi TV - Live,http://rokutna.tulix.tv/hls/otodunyasitv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/otodunyasitv.m3u8,200,STREAM_OK
+387,387,Yerel Turk Tv - Live,http://rokutna.tulix.tv/hls/yerel_turk_tv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/yerel_turk_tv.m3u8,200,STREAM_OK
+388,388,Kanal B - Baskent - Live,http://gintna100.tulix.tv/gin_live/kanalb/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/tracks-v1a1/mono.m3u8,200,STREAM_OK
+389,389,Kanal Avrupa - Live,https://trn03.tulix.tv/gt-kanalavrupa/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+390,390,Icel TV - Live,http://stream.taksimbilisim.com:1935/iceltv/bant1/iptvdelisi.m3u8,200,STREAM_OK
+391,391,Guneydogu TV - Urfa - Live,http://stream2.taksimbilisim.com:1935/gtv/bant1/chunklist.m3u8,200,STREAM_OK
+392,392,Mersin Sun TV - Live,http://stream2.taksimbilisim.com:1935/mersinsuntv/smil:mersinsuntv.smil/playlist.m3u8,200,STREAM_OK
+393,393,Kanal VIP Antalya - Live,http://stream2.taksimbilisim.com:1935/kanalvip/smil:kanalvip.smil/playlist.m3u8,200,STREAM_OK
+394,394,A News - Live,http://213.115.236.35:25461/live/dsndc-esh/C4uXaqA147As72A2/2.m3u8,200,STREAM_OK
+395,395,Kayseri Kanal 38 Haber - Live,http://rokutna.tulix.tv/hls/kayserikanal38/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kanal38.m3u8,200,STREAM_OK
+396,396,Tarsus GTV - Live,http://stream.taksimbilisim.com:1935/tarsusguneytv/bant1/playlist.m3u8,200,STREAM_OK
+397,397,Makina TV - Live,http://46.20.13.51:1935/makinetv/_definst_/makinetv/playlist.m3u8,200,STREAM_OK
+398,398,Haberaks TV - Samsun - Live,http://178.211.51.4/hls/haberaks.m3u8,200,STREAM_OK
+399,399,TV5 - Live,http://nbvd2zzn.rocketcdn.com/tv5.smil/playlist.m3u8,200,STREAM_OK
+400,400,Deha TV  - Denizli - Live,https://live.artidijitalmedya.com/artidijital_dehatv/dehatv/playlist.m3u8,200,STREAM_OK
+401,401,Viyana TV - Live,http://tnaeu1.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/gt-viyanatv.m3u8,200,STREAM_OK
+402,402,FINEST TV - Live,http://media.finest.tv/hls/live.m3u8,200,STREAM_OK
+403,403,Dream TV - Live,http://live.netd.com.tr/S1/HLS_LIVE/dreamtv/1000/prog_index.m3u8,200,STREAM_OK
+404,404,Mavi Gece TV - Live,http://185.95.87.14:1935/mavigecetv/mavigecetv/playlist.m3u8,200,STREAM_OK
+405,trtbelgesel,,,200,NO_LIVE_ENTRY
+406,trtbelgesel,,,200,NO_LIVE_ENTRY
+407,trtbelgesel,,,200,NO_LIVE_ENTRY
+408,trtbelgesel,,,200,NO_LIVE_ENTRY
+409,trtbelgesel,,,200,NO_LIVE_ENTRY
+410,trtbelgesel,,,200,NO_LIVE_ENTRY
+411,trtbelgesel,,,200,NO_LIVE_ENTRY
+412,412,- Live,,200,NO_LIVE_HLS
+413,trtbelgesel,,,200,NO_LIVE_ENTRY
+414,trtbelgesel,,,200,NO_LIVE_ENTRY
+415,415,- Live,,200,NO_LIVE_HLS
+416,trtbelgesel,,,200,NO_LIVE_ENTRY
+417,trtbelgesel,,,200,NO_LIVE_ENTRY
+418,418,- Live,,200,NO_LIVE_HLS
+419,419,WM TV WOMAN KADIN - Live,http://tna1.giniko.com/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/womantv.m3u8,200,STREAM_OK
+420,420,Haber Global - Live,https://mn-nl.mncdn.com/blutv_haberglobal/smil:haberglobal_hd.smil/playlist.m3u8,200,STREAM_OK
+421,421,Business Channel Turkey - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/busineschanneltr.m3u8,200,STREAM_OK
+422,422,Afyon Turk - Live,http://tna1.giniko.com/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/afyonturktv.m3u8,200,STREAM_OK
+423,trtbelgesel,,,200,NO_LIVE_ENTRY
+424,trtbelgesel,,,200,NO_LIVE_ENTRY
+425,425,- Live,,200,NO_LIVE_HLS
+426,426,Survivor Panaroma Final 2019 - Live,http://playvod.tulix.tv:1935/vod/_definst_/mp4:survivor-panaroma-2019.mp4/playlist.m3u8,200,STREAM_OK
+427,427,KRAL ARABESK - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kralarabesk.m3u8,200,STREAM_OK
+428,428,KRAL POP AKUSTIK - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kralakustik.m3u8,200,STREAM_OK
+429,429,KRAL POP KONSER - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kralkonser.m3u8,200,STREAM_OK
+430,430,KRAL POP PERFORMANS - Live,http://rokutna.tulix.tv/live/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/kralperformance.m3u8,200,STREAM_OK
+431,431,KRAL WORLD - Live,https://bozztv.com/36bay2/gin/giniko_kralworld_1500kb_36bay2/tracks-v1a1/mono.m3u8,200,STREAM_OK
+432,trtbelgesel,,,200,NO_LIVE_ENTRY
+433,433,Vuslat TV - Malatya - Live,http://59cba4d34b678.streamlock.net/live/vuslattv/playlist.m3u8,200,STREAM_OK
+434,trtbelgesel,,,200,NO_LIVE_ENTRY
+435,435,Merkez TV - Bolu - Live,http://broadcasttr.com:1935/merkeztv/smil:merkeztv.smil/playlist.m3u8,200,STREAM_OK
+436,436,Line TV - Bursa - Live,https://broadcasttr.com:446/linetv/bant1/chunklist.m3u8,200,STREAM_OK
+437,437,Vizyon 58 - Sivas - Live,https://waw2.artiyerelmedya.net/vizyon58/bant1/playlist.m3u8,200,STREAM_OK
+438,trtbelgesel,,,200,NO_LIVE_ENTRY
+439,439,- Live,,200,NO_LIVE_HLS
+440,trtbelgesel,,,200,NO_LIVE_ENTRY
+441,trtbelgesel,,,200,NO_LIVE_ENTRY
+442,442,- Live,,200,NO_LIVE_HLS
+443,trtbelgesel,,,200,NO_LIVE_ENTRY
+444,444,Finans Turk - Live,https://yayin3.haber100.com/live/finansturk/playlist.m3u8,200,STREAM_OK
+445,trtbelgesel,,,200,NO_LIVE_ENTRY
+446,446,Yeni Malatya Spor - Live,https://592f1881b3d5f.streamlock.net:1443/santraltv_925/santraltv_925/playlist.m3u8,200,STREAM_OK
+447,trtbelgesel,,,200,NO_LIVE_ENTRY
+448,448,DERSIM 62 TV - Live,http://live.arkumedia.com:1935/dersim62tv/dersim62tv/chunklist_w2085603047.m3u8,200,STREAM_OK
+449,449,Trakya Turk TV - Live,http://live.arkumedia.com:1935/trakyaturktv/trakyaturktv/chunklist.m3u8,200,STREAM_OK
+450,450,Kudus TV - Live,https://yayin3.haber100.com/kudustvapp/kudustv/playlist.m3u8,200,STREAM_OK
+451,trtbelgesel,,,200,NO_LIVE_ENTRY
+452,452,Tarim TV - Live,https://content.tvkur.com/l/c7e1da7mm25p552d9u9g/master.m3u8,200,STREAM_OK
+453,453,CRI Turk Belgesel - Live,http://cri.aa.net.tr:1935/belgesel/belgesel/chunklist_w120871004.m3u8,200,STREAM_OK
+454,454,Istanbul Belediye - ibbtv - Live,http://gintna100.tulix.tv/gin_live/ibbtv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/tracks-v1a1/mono.m3u8,200,STREAM_OK
+455,455,Turkiyem TV - Live,https://waw2.artiyerelmedya.net/turkiyemtv/bant1/playlist.m3u8,200,STREAM_OK
+456,456,Cekmekoy TV - Live,https://cdn-cekmekoybeltv.yayin.com.tr/cekmekoybeltv/amlst:cekmekoybeltv/tracks-v1a1/mono.m3u8,200,STREAM_OK
+457,457,Almanyada Turk TV - Live,http://rokutna.tulix.tv/hls/almanyadaturktv/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/almanyadaturktv.m3u8,200,STREAM_OK
+458,458,Metro Turk - Live,https://gintna100.tulix.tv/gin_live/metroturk/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/tracks-v1a1/mono.m3u8,200,STREAM_OK
+459,459,- Live,,200,NO_LIVE_HLS
+460,460,- Live,,200,NO_LIVE_HLS
+461,trtbelgesel,,,200,NO_LIVE_ENTRY
+462,462,tivi TURK - Live,https://stream.tiviturk.de/live/tiviturk.m3u8,200,STREAM_OK
+463,463,Can TV - Live,https://livetv.canbroadcast.com:7443/canlican/tv.m3u8,200,STREAM_OK
+464,464,Ahi TV - Kirsehir - Live,http://yayin3.canlitv.com:1935/canlitv/ahitv/chunklist.m3u8,200,STREAM_OK
+465,465,Kanal 34 - Istanbul - Live,http://live.arkumedia.com:1935/kanal34tv/kanal34tv/chunklist.m3u8,200,STREAM_OK
+466,466,Ege Üniversitesi TV - Live,https://stream.ege.edu.tr/live/live/chunklist_w1699182902.m3u8,200,STREAM_OK
+467,467,Tek Rumeli TV - Live,http://waw1.artiyerelmedya.net:1935/tekrumelitv/bant1/playlist.m3u8,200,STREAM_OK
+468,468,Kayseri Deniz Postasi TV - Live,http://waw1.artiyerelmedya.net:1935/denizpostasitv/bant1/playlist.m3u8,200,STREAM_OK
+469,469,Kayseri Olay Turk - Live,https://waw1.artiyerelmedya.net/olayturk/bant1/playlist.m3u8,200,STREAM_OK
+470,470,Malatya Er Tv - Live,https://waw1.artiyerelmedya.net/ertv/bant1/playlist.m3u8,200,STREAM_OK
+471,471,Natural TV - Live,http://broadcasttr.com:1935/naturaltv/bant1/playlist.m3u8,200,STREAM_OK
+472,472,Kanal 15 - Corum - Live,https://waw1.artiyerelmedya.net/kanal15/bant1/playlist.m3u8,200,STREAM_OK
+473,473,BLT Turk - Isparta - Live,http://waw2.artiyerelmedya.net/bltturk/bant1/playlist.m3u8,200,STREAM_OK
+474,474,MESAJ TV - Live,https://waw2.artiyerelmedya.net/mesajtv/bant1/playlist.m3u8,200,STREAM_OK
+475,trtbelgesel,,,200,NO_LIVE_ENTRY
+476,476,Samsun Haber TV - Live,https://cdn-samsuncanlihabertv.yayin.com.tr/samsuncanlihabertv/samsuncanlihabertv/playlist.m3u8,200,STREAM_OK
+477,477,Slow Karadeniz TV - Live,https://yayin.slowkaradeniztv.com:3390/hybrid/play.m3u8,200,STREAM_OK
+478,478,Finest TV - Live,http://media.finest.tv/hls/c76a846b0ad1e4ae6283c68c4cbb5d76/6af355c1/live.m3u8,200,STREAM_OK
+479,479,Damar TV - Live,https://yayin.santraltr.com/hls/damar.m3u8,200,STREAM_OK
+480,480,Arabesk TV - Live,https://yayin.santraltr.com/hls/arabeskyeni.m3u8,200,STREAM_OK
+481,481,Zeyno TV - Live,https://yayin.santraltr.com/hls/zeynotv.m3u8,200,STREAM_OK
+482,482,Sila TV - Live,https://yayin.santraltr.com/hls/silatv.m3u8,200,STREAM_OK
+483,483,Ezo TV - Live,https://yayin.santraltr.com/hls/ezo.m3u8,200,STREAM_OK
+484,484,Dost TV - Live,https://yayin.santraltr.com/hls/dost.m3u8,200,STREAM_OK
+485,485,Genc TV - Live,https://yayin.santraltr.com/hls/genctv.m3u8,200,STREAM_OK
+486,486,Viva TV - Live,https://yayin.santraltr.com/hls/vivatv.m3u8,200,STREAM_OK
+487,487,Life TV HD   - Live,https://live.artidijitalmedya.com/artidijital_lifetv/lifetv/playlist.m3u8,200,STREAM_OK
+488,488,Yan Sinema TV  - Live,http://performance.switchboard.live/rf4hb-3hnvf-j4nmk-00000-19685/--origin-01_db8e3309401fafcd3ef1add8dadedf2d/playlist.m3u8,200,STREAM_OK
+489,489,A Para - Live,https://mn-nl.mncdn.com/blutv_apara/smil:apara_hd.smil/playlist.m3u8,200,STREAM_OK
+490,trtbelgesel,,,200,NO_LIVE_ENTRY
+491,trtbelgesel,,,200,NO_LIVE_ENTRY
+492,492,- Live,,200,NO_LIVE_HLS
+493,trtbelgesel,,,200,NO_LIVE_ENTRY
+494,trtbelgesel,,,200,NO_LIVE_ENTRY
+495,trtbelgesel,,,200,NO_LIVE_ENTRY
+496,496,- Live,,200,NO_LIVE_HLS
+497,497,- Live,,200,NO_LIVE_HLS
+498,trtbelgesel,,,200,NO_LIVE_ENTRY
+499,trtbelgesel,,,200,NO_LIVE_ENTRY
+500,500,- Live,,200,NO_LIVE_HLS
+501,trtbelgesel,,,200,NO_LIVE_ENTRY
+502,trtbelgesel,,,200,NO_LIVE_ENTRY
+503,503,Royal TV - Sinema - Live,http://source2.primetime.ch:2981/play/royaltv/tracks-v1a1/mono.m3u8,200,STREAM_OK
+504,504,- Live,,200,NO_LIVE_HLS
+505,trtbelgesel,,,200,NO_LIVE_ENTRY
+506,trtbelgesel,,,200,NO_LIVE_ENTRY
+507,trtbelgesel,,,200,NO_LIVE_ENTRY
+508,trtbelgesel,,,200,NO_LIVE_ENTRY
+509,trtbelgesel,,,200,NO_LIVE_ENTRY
+510,trtbelgesel,,,200,NO_LIVE_ENTRY
+511,trtbelgesel,,,200,NO_LIVE_ENTRY
+512,trtbelgesel,,,200,NO_LIVE_ENTRY
+513,trtbelgesel,,,200,NO_LIVE_ENTRY
+514,trtbelgesel,,,200,NO_LIVE_ENTRY
+515,trtbelgesel,,,200,NO_LIVE_ENTRY
+516,trtbelgesel,,,200,NO_LIVE_ENTRY
+517,517,- Live,,200,NO_LIVE_HLS
+518,518,- Live,,200,NO_LIVE_HLS
+519,trtbelgesel,,,200,NO_LIVE_ENTRY
+520,520,- Live,,200,NO_LIVE_HLS
+521,521,- Live,,200,NO_LIVE_HLS
+522,522,- Live,,200,NO_LIVE_HLS
+523,trtbelgesel,,,200,NO_LIVE_ENTRY
+524,trtbelgesel,,,200,NO_LIVE_ENTRY
+525,trtbelgesel,,,200,NO_LIVE_ENTRY
+526,526,- Live,,200,NO_LIVE_HLS
+527,527,- Live,,200,NO_LIVE_HLS
+528,528,- Live,,200,NO_LIVE_HLS
+529,trtbelgesel,,,200,NO_LIVE_ENTRY
+530,530,- Live,,200,NO_LIVE_HLS
+531,531,- Live,,200,NO_LIVE_HLS
+532,trtbelgesel,,,200,NO_LIVE_ENTRY
+533,533,- Live,,200,NO_LIVE_HLS
+534,trtbelgesel,,,200,NO_LIVE_ENTRY
+535,trtbelgesel,,,200,NO_LIVE_ENTRY
+536,trtbelgesel,,,200,NO_LIVE_ENTRY
+537,trtbelgesel,,,200,NO_LIVE_ENTRY
+538,trtbelgesel,,,200,NO_LIVE_ENTRY
+539,539,- Live,,200,NO_LIVE_HLS
+540,trtbelgesel,,,200,NO_LIVE_ENTRY
+541,trtbelgesel,,,200,NO_LIVE_ENTRY
+542,trtbelgesel,,,200,NO_LIVE_ENTRY
+543,trtbelgesel,,,200,NO_LIVE_ENTRY
+544,trtbelgesel,,,200,NO_LIVE_ENTRY
+545,545,- Live,,200,NO_LIVE_HLS
+546,546,IZ TV - Live,http://tna1.giniko.com/live/b448e0069e0dc358b4cc909183950e6b/6af355c2/tviz.m3u8,200,STREAM_OK
+547,trtbelgesel,,,200,NO_LIVE_ENTRY
+548,trtbelgesel,,,200,NO_LIVE_ENTRY
+549,trtbelgesel,,,200,NO_LIVE_ENTRY
+550,trtbelgesel,,,200,NO_LIVE_ENTRY
+551,trtbelgesel,,,200,NO_LIVE_ENTRY
+552,trtbelgesel,,,200,NO_LIVE_ENTRY
+553,trtbelgesel,,,200,NO_LIVE_ENTRY
+554,trtbelgesel,,,200,NO_LIVE_ENTRY
+555,555,- Live,,200,NO_LIVE_HLS
+556,trtbelgesel,,,200,NO_LIVE_ENTRY
+557,trtbelgesel,,,200,NO_LIVE_ENTRY
+558,trtbelgesel,,,200,NO_LIVE_ENTRY
+559,trtbelgesel,,,200,NO_LIVE_ENTRY
+560,trtbelgesel,,,200,NO_LIVE_ENTRY
+561,trtbelgesel,,,200,NO_LIVE_ENTRY
+562,562,TV4 - Live,https://turkmedya-live.ercdn.net/tv4/tv4.m3u8,200,STREAM_OK
+563,trtbelgesel,,,200,NO_LIVE_ENTRY
+564,564,- Live,,200,NO_LIVE_HLS
+565,trtbelgesel,,,200,NO_LIVE_ENTRY
+566,566,- Live,,200,NO_LIVE_HLS
+567,trtbelgesel,,,200,NO_LIVE_ENTRY
+568,trtbelgesel,,,200,NO_LIVE_ENTRY
+569,trtbelgesel,,,200,NO_LIVE_ENTRY
+570,trtbelgesel,,,200,NO_LIVE_ENTRY
+571,trtbelgesel,,,200,NO_LIVE_ENTRY
+572,trtbelgesel,,,200,NO_LIVE_ENTRY
+573,trtbelgesel,,,200,NO_LIVE_ENTRY
+574,trtbelgesel,,,200,NO_LIVE_ENTRY
+575,trtbelgesel,,,200,NO_LIVE_ENTRY
+576,trtbelgesel,,,200,NO_LIVE_ENTRY
+577,577,- Live,,200,NO_LIVE_HLS
+578,trtbelgesel,,,200,NO_LIVE_ENTRY
+579,trtbelgesel,,,200,NO_LIVE_ENTRY
+580,trtbelgesel,,,200,NO_LIVE_ENTRY
+581,trtbelgesel,,,200,NO_LIVE_ENTRY
+582,trtbelgesel,,,200,NO_LIVE_ENTRY
+583,trtbelgesel,,,200,NO_LIVE_ENTRY
+584,trtbelgesel,,,200,NO_LIVE_ENTRY
+585,trtbelgesel,,,200,NO_LIVE_ENTRY
+586,586,TLC Turkiye - Live,http://tnaeu1.tulix.tv/live/b448e0069e0dc358b4cc909183950e6b/6af355c2/gt-tlc.m3u8,200,STREAM_OK
+587,587,DMAX Turkiye - Live,http://tnaeu1.tulix.tv/live/b448e0069e0dc358b4cc909183950e6b/6af355c2/gt-dmaxtr.m3u8,200,STREAM_OK
+588,trtbelgesel,,,200,NO_LIVE_ENTRY
+589,trtbelgesel,,,200,NO_LIVE_ENTRY
+590,trtbelgesel,,,200,NO_LIVE_ENTRY
+591,trtbelgesel,,,200,NO_LIVE_ENTRY
+592,trtbelgesel,,,200,NO_LIVE_ENTRY
+593,trtbelgesel,,,200,NO_LIVE_ENTRY
+594,trtbelgesel,,,200,NO_LIVE_ENTRY
+595,trtbelgesel,,,200,NO_LIVE_ENTRY
+596,trtbelgesel,,,200,NO_LIVE_ENTRY
+597,trtbelgesel,,,200,NO_LIVE_ENTRY
+598,trtbelgesel,,,200,NO_LIVE_ENTRY
+599,599,- Live,,200,NO_LIVE_HLS
+600,trtbelgesel,,,200,NO_LIVE_ENTRY
+601,trtbelgesel,,,200,NO_LIVE_ENTRY
+602,trtbelgesel,,,200,NO_LIVE_ENTRY
+603,trtbelgesel,,,200,NO_LIVE_ENTRY
+604,trtbelgesel,,,200,NO_LIVE_ENTRY
+605,trtbelgesel,,,200,NO_LIVE_ENTRY
+606,trtbelgesel,,,200,NO_LIVE_ENTRY
+607,trtbelgesel,,,200,NO_LIVE_ENTRY
+608,trtbelgesel,,,200,NO_LIVE_ENTRY
+609,trtbelgesel,,,200,NO_LIVE_ENTRY
+610,trtbelgesel,,,200,NO_LIVE_ENTRY
+611,trtbelgesel,,,200,NO_LIVE_ENTRY
+612,trtbelgesel,,,200,NO_LIVE_ENTRY
+613,trtbelgesel,,,200,NO_LIVE_ENTRY
+614,trtbelgesel,,,200,NO_LIVE_ENTRY
+615,trtbelgesel,,,200,NO_LIVE_ENTRY
+616,trtbelgesel,,,200,NO_LIVE_ENTRY
+617,trtbelgesel,,,200,NO_LIVE_ENTRY
+618,trtbelgesel,,,200,NO_LIVE_ENTRY
+619,trtbelgesel,,,200,NO_LIVE_ENTRY
+620,trtbelgesel,,,200,NO_LIVE_ENTRY
+621,621,- Live,,200,NO_LIVE_HLS
+622,622,- Live,,200,NO_LIVE_HLS
+623,623,Meltem TV - Live,https://trn03.tulix.tv/gt-meltemtv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+624,624,Sivas SRT - Live,http://tna6.giniko.com/live/b448e0069e0dc358b4cc909183950e6b/6af355c2/gt-sivassrt.m3u8,200,STREAM_OK
+625,trtbelgesel,,,200,NO_LIVE_ENTRY
+626,trtbelgesel,,,200,NO_LIVE_ENTRY
+627,trtbelgesel,,,200,NO_LIVE_ENTRY
+628,trtbelgesel,,,200,NO_LIVE_ENTRY
+629,trtbelgesel,,,200,NO_LIVE_ENTRY
+630,trtbelgesel,,,200,NO_LIVE_ENTRY
+631,trtbelgesel,,,200,NO_LIVE_ENTRY
+632,trtbelgesel,,,200,NO_LIVE_ENTRY
+633,trtbelgesel,,,200,NO_LIVE_ENTRY
+634,trtbelgesel,,,200,NO_LIVE_ENTRY
+635,trtbelgesel,,,200,NO_LIVE_ENTRY
+636,trtbelgesel,,,200,NO_LIVE_ENTRY
+637,trtbelgesel,,,200,NO_LIVE_ENTRY
+638,trtbelgesel,,,200,NO_LIVE_ENTRY
+639,trtbelgesel,,,200,NO_LIVE_ENTRY
+640,trtbelgesel,,,200,NO_LIVE_ENTRY
+641,trtbelgesel,,,200,NO_LIVE_ENTRY
+642,trtbelgesel,,,200,NO_LIVE_ENTRY
+643,trtbelgesel,,,200,NO_LIVE_ENTRY
+644,trtbelgesel,,,200,NO_LIVE_ENTRY
+645,trtbelgesel,,,200,NO_LIVE_ENTRY
+646,trtbelgesel,,,200,NO_LIVE_ENTRY
+647,trtbelgesel,,,200,NO_LIVE_ENTRY
+648,trtbelgesel,,,200,NO_LIVE_ENTRY
+649,trtbelgesel,,,200,NO_LIVE_ENTRY
+650,trtbelgesel,,,200,NO_LIVE_ENTRY
+651,trtbelgesel,,,200,NO_LIVE_ENTRY
+652,trtbelgesel,,,200,NO_LIVE_ENTRY
+653,trtbelgesel,,,200,NO_LIVE_ENTRY
+654,trtbelgesel,,,200,NO_LIVE_ENTRY
+655,trtbelgesel,,,200,NO_LIVE_ENTRY
+656,trtbelgesel,,,200,NO_LIVE_ENTRY
+657,trtbelgesel,,,200,NO_LIVE_ENTRY
+658,trtbelgesel,,,200,NO_LIVE_ENTRY
+659,659,Number 1 Ask - Live,http://tnaeu1.tulix.tv/live/a03e3bea0d6e32e939c3aedfdc6a442e/6af355c3/gt-number1ask.m3u8,200,STREAM_OK
+660,660,Number 1 Damar - Live,http://tnaeu1.tulix.tv/live/a03e3bea0d6e32e939c3aedfdc6a442e/6af355c3/gt-number1damar.m3u8,200,STREAM_OK
+661,trtbelgesel,,,200,NO_LIVE_ENTRY
+662,trtbelgesel,,,200,NO_LIVE_ENTRY
+663,trtbelgesel,,,200,NO_LIVE_ENTRY
+664,664,- Live,,200,NO_LIVE_HLS
+665,665,- Live,,200,NO_LIVE_HLS
+666,666,- Live,,200,NO_LIVE_HLS
+667,667,- Live,,200,NO_LIVE_HLS
+668,668,- Live,,200,NO_LIVE_HLS
+669,trtbelgesel,,,200,NO_LIVE_ENTRY
+670,trtbelgesel,,,200,NO_LIVE_ENTRY
+671,trtbelgesel,,,200,NO_LIVE_ENTRY
+672,trtbelgesel,,,200,NO_LIVE_ENTRY
+673,trtbelgesel,,,200,NO_LIVE_ENTRY
+674,trtbelgesel,,,200,NO_LIVE_ENTRY
+675,trtbelgesel,,,200,NO_LIVE_ENTRY
+676,trtbelgesel,,,200,NO_LIVE_ENTRY
+677,trtbelgesel,,,200,NO_LIVE_ENTRY
+678,trtbelgesel,,,200,NO_LIVE_ENTRY
+679,trtbelgesel,,,200,NO_LIVE_ENTRY
+680,trtbelgesel,,,200,NO_LIVE_ENTRY
+681,trtbelgesel,,,200,NO_LIVE_ENTRY
+682,trtbelgesel,,,200,NO_LIVE_ENTRY
+683,trtbelgesel,,,200,NO_LIVE_ENTRY
+684,trtbelgesel,,,200,NO_LIVE_ENTRY
+685,trtbelgesel,,,200,NO_LIVE_ENTRY
+686,trtbelgesel,,,200,NO_LIVE_ENTRY
+687,trtbelgesel,,,200,NO_LIVE_ENTRY
+688,trtbelgesel,,,200,NO_LIVE_ENTRY
+689,trtbelgesel,,,200,NO_LIVE_ENTRY
+690,trtbelgesel,,,200,NO_LIVE_ENTRY
+691,trtbelgesel,,,200,NO_LIVE_ENTRY
+692,trtbelgesel,,,200,NO_LIVE_ENTRY
+693,trtbelgesel,,,200,NO_LIVE_ENTRY
+694,trtbelgesel,,,200,NO_LIVE_ENTRY
+695,trtbelgesel,,,200,NO_LIVE_ENTRY
+696,trtbelgesel,,,200,NO_LIVE_ENTRY
+697,trtbelgesel,,,200,NO_LIVE_ENTRY
+698,trtbelgesel,,,200,NO_LIVE_ENTRY
+699,trtbelgesel,,,200,NO_LIVE_ENTRY
+700,trtbelgesel,,,200,NO_LIVE_ENTRY
+701,trtbelgesel,,,200,NO_LIVE_ENTRY
+702,trtbelgesel,,,200,NO_LIVE_ENTRY
+703,trtbelgesel,,,200,NO_LIVE_ENTRY
+704,trtbelgesel,,,200,NO_LIVE_ENTRY
+705,trtbelgesel,,,200,NO_LIVE_ENTRY
+706,trtbelgesel,,,200,NO_LIVE_ENTRY
+707,trtbelgesel,,,200,NO_LIVE_ENTRY
+708,trtbelgesel,,,200,NO_LIVE_ENTRY
+709,trtbelgesel,,,200,NO_LIVE_ENTRY
+710,trtbelgesel,,,200,NO_LIVE_ENTRY
+711,trtbelgesel,,,200,NO_LIVE_ENTRY
+712,trtbelgesel,,,200,NO_LIVE_ENTRY
+713,trtbelgesel,,,200,NO_LIVE_ENTRY
+714,trtbelgesel,,,200,NO_LIVE_ENTRY
+715,trtbelgesel,,,200,NO_LIVE_ENTRY
+716,trtbelgesel,,,200,NO_LIVE_ENTRY
+717,trtbelgesel,,,200,NO_LIVE_ENTRY
+718,718,NOW TV (EPG) - Live,https://trn03.tulix.tv/gt-nowtv-live/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+719,trtbelgesel,,,200,NO_LIVE_ENTRY
+720,trtbelgesel,,,200,NO_LIVE_ENTRY
+721,trtbelgesel,,,200,NO_LIVE_ENTRY
+722,trtbelgesel,,,200,NO_LIVE_ENTRY
+723,723,Star TV (EPG) - Live,https://trn03.tulix.tv/gt-star-tv1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+724,724,TV8 (EPG) - Live,https://trn03.tulix.tv/gt-tv8-tvs/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+725,trtbelgesel,,,200,NO_LIVE_ENTRY
+726,trtbelgesel,,,200,NO_LIVE_ENTRY
+727,trtbelgesel,,,200,NO_LIVE_ENTRY
+728,trtbelgesel,,,200,NO_LIVE_ENTRY
+729,trtbelgesel,,,200,NO_LIVE_ENTRY
+730,trtbelgesel,,,200,NO_LIVE_ENTRY
+731,trtbelgesel,,,200,NO_LIVE_ENTRY
+732,732,TYTTURK - Live,https://trn03.tulix.tv/gt-tytturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+733,733,TV8.5 (EPG) - Live,https://trn03.tulix.tv/gt-tv8_5/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+734,734,Kanal D (EPG) - Live,https://trn03.tulix.tv/gt-kanald-1tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+735,735,Show TV (EPG) - Live,https://trn03.tulix.tv/gt-shows-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+736,736,Show Max - Live,https://trn03.tulix.tv/gt-showmax/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+737,trtbelgesel,,,200,NO_LIVE_ENTRY
+738,738,TV100 (EPG) - Live,https://trn03.tulix.tv/gt-tv100/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+739,739,Beyaz TV (EPG) - Live,https://trn03.tulix.tv/gt-beyaztv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+740,740,Kanal 7 (EPG) - Live,https://trn03.tulix.tv/gt-kanal7/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+741,741,Ulke TV (EPG) - Live,https://trn03.tulix.tv/gt-ulketv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+742,742,Sky 360 (EPG) - Live,https://trn03.tulix.tv/gt-sky360/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+743,743,TRT Turk (EPG) - Live,https://trn03.tulix.tv/gt-trtturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+744,744,A2 (EPG) - Live,https://trn03.tulix.tv/gt-atv-a2tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+745,745,TLC Turkiye (EPG) - Live,https://trn03.tulix.tv/gt-tlc-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+746,746,DMAX Turkiye - Live,https://trn03.tulix.tv/gt-dmax-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+747,747,TRT Avaz (EPG) - Live,https://trn03.tulix.tv/gt-trtavaz/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+748,trtbelgesel,,,200,NO_LIVE_ENTRY
+749,749,TRT Spor Yildiz (EPG) - Live,https://trn03.tulix.tv/gt-trt-spor2/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+750,750,A News - Live,https://trn03.tulix.tv/gt-anews/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+751,751,beIN Sports Haber (EPG) - Live,https://trn03.tulix.tv/gt-beinsportshaber/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+752,752,Fenerbahce TV (EPG) - Live,https://trn03.tulix.tv/gt-fbtv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+753,753,Ekol TV - Live,https://trn03.tulix.tv/gt-ekoltv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+754,754,Sports TV (EPG) - Live,https://trn03.tulix.tv/gt-sporttv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+755,755,beIN Sports Lig Tv1 - Live,https://trn03.tulix.tv/gt-lig-tv-1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+756,756,beIN Sports Lig Tv2 - Live,https://trn03.tulix.tv/gt-lig-tv2/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+757,757,beIN Sports Lig Tv3 - Live,https://trn03.tulix.tv/gt-lig-tv3/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+758,758,TRT Muzik (EPG). - Live,https://trn03.tulix.tv/gt-trtmusic/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+759,trtbelgesel,,,200,NO_LIVE_ENTRY
+760,760,Diyanet TV (EPG) - Live,https://trn03.tulix.tv/gt-trtdiyanet/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+761,761,Yaban TV (EPG) - Live,https://trn03.tulix.tv/gt-yaban/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+762,762,TRT Belgesel (EPG) - Live,https://trn03.tulix.tv/gt-trtbelgesel/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+763,trtbelgesel,,,200,NO_LIVE_ENTRY
+764,764,TRT Cocuk (EPG) - Live,https://trn03.tulix.tv/gt-trtcocuk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+765,765,minika Cocuk (EPG) - Live,https://trn03.tulix.tv/gt-minikacocuk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+766,766,minika GO (EPG) - Live,https://trn03.tulix.tv/gt-minikago/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+767,trtbelgesel,,,200,NO_LIVE_ENTRY
+768,768,Cartoon Network TR (EPG) - Live,https://trn03.tulix.tv/gt-cartoontr/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+769,769,NTV (EPG) - Live,https://trn03.tulix.tv/gt-ntv-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+770,770,CNN Turk (EPG) - Live,https://trn03.tulix.tv/gt-cnnturk-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+771,771,Haber Turk (EPG) - Live,https://trn03.tulix.tv/gt-haberturktv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+772,772,Haber Global (EPG) - Live,https://trn03.tulix.tv/gt-haber-globaltv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+773,773,KRT Kultur TV (EPG) - Live,https://trn03.tulix.tv/gt-krt--tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+774,774,Ulusal TV (EPG) - Live,https://trn03.tulix.tv/gt-ulusal-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+775,775,A Haber - (EPG) - Live,https://trn03.tulix.tv/gt-ahabertv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+776,776,EkoTurk(EPG) - Live,https://trn03.tulix.tv/gt-ekoturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+777,777,Kanal 24 (EPG) - Live,https://trn03.tulix.tv/gt-kanal24/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+778,778,TRT Haber (EPG) - Live,https://trn03.tulix.tv/gt-trthaber/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+779,779,TRT World (EPG) - Live,https://trn03.tulix.tv/gt-trtworld/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+780,780,TVNET (EPG) - Live,https://trn03.tulix.tv/gt-tvnettv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+781,781,Idman TV (EPG) - Live,https://trn03.tulix.tv/gt-idmantv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+782,782,CBC Sport Azerbaijan (EPG) - Live,https://trn03.tulix.tv/gt-cbcsport/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+783,trtbelgesel,,,200,NO_LIVE_ENTRY
+784,trtbelgesel,,,200,NO_LIVE_ENTRY
+785,785,TRT Spor (EPG) - Live,https://trn03.tulix.tv/gt-trt-sportv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+786,786,TRT 4K - Live,https://trn03.tulix.tv/gt-trt-4k/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+787,787,TRT 1 (EPG) - Live,https://trn03.tulix.tv/gt-trt_1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+788,788,- Live,,200,NO_LIVE_HLS
+789,trtbelgesel,,,200,NO_LIVE_ENTRY
+790,790,Spor Smart HD - Live,https://trn03.tulix.tv/gt-sporsmarthd/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+791,791,S SPORT - Live,https://trn03.tulix.tv/gt-ssport-1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+792,trtbelgesel,,,200,NO_LIVE_ENTRY
+793,793,Spor Smart 2 HD - Live,https://trn03.tulix.tv/gt-sporsmarthd2/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+794,trtbelgesel,,,200,NO_LIVE_ENTRY
+795,trtbelgesel,,,200,NO_LIVE_ENTRY
+796,trtbelgesel,,,200,NO_LIVE_ENTRY
+797,797,Tivibu Spor - Live,https://trn03.tulix.tv/gt-tivibuspor1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+798,trtbelgesel,,,200,NO_LIVE_ENTRY
+799,trtbelgesel,,,200,NO_LIVE_ENTRY
+800,800,Power Turk - Live,https://trn03.tulix.tv/gt-powerturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+801,801,Exxen 1 - Live,https://trn03.tulix.tv/gt-exxen--1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+802,802,Halk TV - (EPG) - Live,https://trn03.tulix.tv/gt-halk-tvs/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+803,trtbelgesel,,,200,NO_LIVE_ENTRY
+804,trtbelgesel,,,200,NO_LIVE_ENTRY
+805,805,ATV Avrupa (EPG) - Live,https://trn03.tulix.tv/gt-atv-avrupa-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+806,806,TV8  Int (EPG) - Live,https://trn03.tulix.tv/gt-tv8international/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+807,807,TRT 1 TV (EPG) - Live,https://trn03.tulix.tv/gt-trt1-tveu/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+808,808,TRT Turk (EPG) - Live,https://trn03.tulix.tv/gt-trtturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+809,809,TRT Spor HD (EPG) - Live,https://trn03.tulix.tv/gt-trt-spor1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+810,trtbelgesel,,,200,NO_LIVE_ENTRY
+811,811,TRT Muzik (EPG) - Live,https://trn03.tulix.tv/gt-trtmusic/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+812,812,TRT Cocuk (EPG) - Live,https://trn03.tulix.tv/gt-trtcocuk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+813,813,NTV (EPG) - Live,https://trn03.tulix.tv/gt-ntvtv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+814,814,Kanal 7 (EPG) - Live,https://trn03.tulix.tv/gt-kanal7/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+815,815,Ulke TV (EPG) - Live,https://trn03.tulix.tv/gt-ulketv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+816,816,ATV (EPG) - Live,https://trn03.tulix.tv/gt-atv-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+817,817,Star TV (EPG) - Live,https://trn03.tulix.tv/gt-star-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+818,818,TV8 (EPG) - Live,https://trn03.tulix.tv/tv8-hd-tv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+819,819,TRT Haber (EPG) - Live,https://trn03.tulix.tv/gt-trthaber/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+820,820,- Live,,200,NO_LIVE_HLS
+821,trtbelgesel,,,200,NO_LIVE_ENTRY
+822,822,A Spor (EPG) - Live,https://trn03.tulix.tv/gt-asportv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+823,trtbelgesel,,,200,NO_LIVE_ENTRY
+824,824,Announcement / Duyuru - Live,http://uni6rtmp.tulix.tv/vod/mp4:ginturkfeb1_0.mp4/playlist.m3u8,200,STREAM_OK
+825,825,TV8 - Live,https://trn03.tulix.tv/tv8-hdtv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+826,826,StarTV - Live,https://trn03.tulix.tv/gt-startv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+827,trtbelgesel,,,200,NO_LIVE_ENTRY
+828,828,Bein Sports Xtra - Live,https://trn03.tulix.tv/BeinSportsXtra/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+829,829,- Live,,200,NO_LIVE_HLS
+830,830,TRT Spor HD - Live,https://trn03.tulix.tv/gt-trt-spor1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+831,831,TRT 1 - Live,https://trn03.tulix.tv/gt-trt1-tveu/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+832,trtbelgesel,,,200,NO_LIVE_ENTRY
+833,trtbelgesel,,,200,NO_LIVE_ENTRY
+834,834,- Live,,200,NO_LIVE_HLS
+835,835,Install New Roku App - Watch - Live,http://uni6rtmp.tulix.tv/vod/mp4:gt-feb23_0.mp4/playlist.m3u8,200,STREAM_OK
+836,trtbelgesel,,,200,NO_LIVE_ENTRY
+837,trtbelgesel,,,200,NO_LIVE_ENTRY
+838,trtbelgesel,,,200,NO_LIVE_ENTRY
+839,trtbelgesel,,,200,NO_LIVE_ENTRY
+840,trtbelgesel,,,200,NO_LIVE_ENTRY
+841,trtbelgesel,,,200,NO_LIVE_ENTRY
+842,trtbelgesel,,,200,NO_LIVE_ENTRY
+843,trtbelgesel,,,200,NO_LIVE_ENTRY
+844,trtbelgesel,,,200,NO_LIVE_ENTRY
+845,845,- Live,,200,NO_LIVE_HLS
+846,trtbelgesel,,,200,NO_LIVE_ENTRY
+847,847,- Live,,200,NO_LIVE_HLS
+848,trtbelgesel,,,200,NO_LIVE_ENTRY
+849,849,- Live,,200,NO_LIVE_HLS
+850,850,- Live,,200,NO_LIVE_HLS
+851,trtbelgesel,,,200,NO_LIVE_ENTRY
+852,852,- Live,,200,NO_LIVE_HLS
+853,trtbelgesel,,,200,NO_LIVE_ENTRY
+854,854,- Live,,200,NO_LIVE_HLS
+855,855,- Live,,200,NO_LIVE_HLS
+856,trtbelgesel,,,200,NO_LIVE_ENTRY
+857,857,- Live,,200,NO_LIVE_HLS
+858,trtbelgesel,,,200,NO_LIVE_ENTRY
+859,trtbelgesel,,,200,NO_LIVE_ENTRY
+860,860,- Live,,200,NO_LIVE_HLS
+861,trtbelgesel,,,200,NO_LIVE_ENTRY
+862,862,Anadolu Dernek TV - Live,http://tna6.tulix.tv/live/ea1cb7419f275cb7dea8da1600005929/6af355c4/gt-anadoludernek.m3u8,200,STREAM_OK
+863,863,TIVI6 - Live,https://waw1.artiyerelmedya.net/tivi6/bant1/playlist.m3u8,200,STREAM_OK
+864,trtbelgesel,,,200,NO_LIVE_ENTRY
+865,trtbelgesel,,,200,NO_LIVE_ENTRY
+866,trtbelgesel,,,200,NO_LIVE_ENTRY
+867,trtbelgesel,,,200,NO_LIVE_ENTRY
+868,868,AZNEWS Azerbayzan - Live,https://edge1.socialsmart.tv/aznews/smil:aznews.smil/playlist.m3u8,200,STREAM_OK
+869,869,Gebele TV  - Live,https://qebele.tv/live/stream/tracks-v1a1/mono.m3u8,200,STREAM_OK
+870,870,- Live,,200,NO_LIVE_HLS
+871,871,- Live,,200,NO_LIVE_HLS
+872,872,Sozcu TV (EPG) - Live,https://trn03.tulix.tv/gt-sozcu-livetv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+873,873,- Live,,200,NO_LIVE_HLS
+874,trtbelgesel,,,200,NO_LIVE_ENTRY
+875,875,Berat TV - Live,https://cdn-berattv.yayin.com.tr/berattv/berattv/playlist.m3u8,200,STREAM_OK
+876,876,Sat7 Turk - Live,https://trn03.tulix.tv/gt-sat7turk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+877,trtbelgesel,,,200,NO_LIVE_ENTRY
+878,trtbelgesel,,,200,NO_LIVE_ENTRY
+879,879,LUYS TV - Live,https://b01c02nl.mediatriple.net/videoonlylive/mtpayqrfkgirxelive/broadcast_5e91c5ac96898.smil/playlist.m3u8,200,STREAM_OK
+880,880,Kentron TV - Live,https://trn03.tulix.tv/gt-kentron/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+881,881,1TV Armenia H1 - Live,https://trn03.tulix.tv/gt-1tvar/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+882,882,Al Jazeera - Live,https://rpn.tulixcdn.com/GCN-Gredvrfl05Q3/gin-aljazeeraint/tracks-v1a1/mono.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvOS8yMDI2IDU6MzU6MDEgUE0maGFzaF92YWx1ZT1xRDlUWEFneW9TYlpTc3g0RUVNeFlnPT0mdmFsaWRtaW51dGVzPTE0NDAmc3RybV9sZW49MzM=,200,STREAM_OK
+883,883,BBC World News - Live,https://rpn.tulixcdn.com/GCN-Fwtrn03Ixgt0/gin-bbcworld/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+884,884,France 24 English - Live,https://glb.tulixcdn.com/glb/gin-france24english/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+885,885,Deutsche Welle (DW) - Live,https://36bay4.tulix.tv/gcntv-dw-dvr/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+886,886,Euro News - Live,https://36bay4.tulix.tv/gcntv-euronews-dvr/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+887,trtbelgesel,,,200,NO_LIVE_ENTRY
+888,trtbelgesel,,,200,NO_LIVE_ENTRY
+889,trtbelgesel,,,200,NO_LIVE_ENTRY
+890,trtbelgesel,,,200,NO_LIVE_ENTRY
+891,891,TRT 2 (EPG) - Live,https://trn03.tulix.tv/gt-trt2/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+892,trtbelgesel,,,200,NO_LIVE_ENTRY
+893,trtbelgesel,,,200,NO_LIVE_ENTRY
+894,894,- Live,,200,NO_LIVE_HLS
+895,895,- Live,,200,NO_LIVE_HLS
+896,trtbelgesel,,,200,NO_LIVE_ENTRY
+897,trtbelgesel,,,200,NO_LIVE_ENTRY
+898,898,- Live,,200,NO_LIVE_HLS
+899,899,Armnews TV  - Live,https://36bay4.tulix.tv/am3abr/tracks-v1a1/mono.m3u8,200,STREAM_OK
+900,900,Song TV - Live,https://songtv.hls.iptvdc.com/web-armenia/playlist.m3u8,200,STREAM_OK
+901,901,5 TV Channel - Live,https://gintna100-2.tulix.tv/almo_live/gt-5tvarmenia1/526c080c9f0ce9ff6e691a209c43b9de/6af355c5/tracks-v1a1/mono.m3u8,200,STREAM_OK
+902,902,- Live,,200,NO_LIVE_HLS
+903,903,Baku TV - Live,https://rtmp.baku.tv/hls/bakutv.m3u8,200,STREAM_OK
+904,904,ARB 24 TV - Live,https://trn03.tulix.tv/gt-arb24-tv1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+905,905,ARB TV - Live,https://trn03.tulix.tv/gt-arb-tv1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+906,906,Ictimai TV - Live,https://trn03.tulix.tv/gt-ictimaitv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+907,907,Medeniyyet TV - Live,https://trn03.tulix.tv/gt-medeniyyet/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+908,908,Real TV - Live,https://trn03.tulix.tv/gt-realtv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+909,909,Zexer Xeber - Live,https://trn03.tulix.tv/gt-zexer-xeber/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+910,910,AzStar TV - Live,https://live.livestreamtv.ca/azstar/amlst:azstar/playlist.m3u8,200,STREAM_OK
+911,911,Kepez TV - Live,https://trn03.tulix.tv/gt-kepez-tv-azeri/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+912,912,Space TV - Live,https://trn03.tulix.tv/gt-spacetv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+913,913,Start TV - Live,https://trn03.tulix.tv/gt-startv-azer/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+914,trtbelgesel,,,200,NO_LIVE_ENTRY
+915,915,Kibris BRT1 - Live,https://trn03.tulix.tv/gt-brt1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+916,916,TIVI6 - Live,https://trn03.tulix.tv/gt-tivi6/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+917,917,TV4 - Live,https://trn03.tulix.tv/gt-tv4/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+918,918,Dream Turk - Live,https://trn03.tulix.tv/gt-dreamturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+919,919,Bengu Turk - Live,https://trn03.tulix.tv/gt-benguturk/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+920,920,Kibris BRT2 - Live,https://trn03.tulix.tv/gt-brt2/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+921,921,A Para - Live,https://trn03.tulix.tv/gt-apara/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+922,922,Bloomberg Haber Turk - Live,https://trn03.tulix.tv/gt-bloomberght/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+923,trtbelgesel,,,200,NO_LIVE_ENTRY
+924,924,Bosnia Hayat - Live,https://trn03.tulix.tv/gt-BosniaHayat1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+925,925,Bosnia BHT1 - Live,https://trn03.tulix.tv/gt-BosniaBHT1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+926,926,Bosnia Arena Sport1 - Live,https://trn03.tulix.tv/gt-BosniaArenaSport1/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+927,trtbelgesel,,,200,NO_LIVE_ENTRY
+928,trtbelgesel,,,200,NO_LIVE_ENTRY
+929,929,Fresh TV - Live,https://freshtv-live.ru/FreshTV/tracks-v1a1/mono.m3u8?token=armfilm-live,200,STREAM_OK
+930,trtbelgesel,,,200,NO_LIVE_ENTRY
+931,trtbelgesel,,,200,NO_LIVE_ENTRY
+932,trtbelgesel,,,200,NO_LIVE_ENTRY
+933,trtbelgesel,,,200,NO_LIVE_ENTRY
+934,934,- Live,,200,NO_LIVE_HLS
+935,trtbelgesel,,,200,NO_LIVE_ENTRY
+936,trtbelgesel,,,200,NO_LIVE_ENTRY
+937,937,- Live,,200,NO_LIVE_HLS
+938,trtbelgesel,,,200,NO_LIVE_ENTRY
+939,trtbelgesel,,,200,NO_LIVE_ENTRY
+940,940,Turkmeneli TV - Live,https://trn09.tulixcdn.com/gt-turkmeneli/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+941,941,- Live,,200,NO_LIVE_HLS
+942,trtbelgesel,,,200,NO_LIVE_ENTRY
+943,trtbelgesel,,,200,NO_LIVE_ENTRY
+944,944,- Live,,200,NO_LIVE_HLS
+945,945,EuroStar - Live,https://trn03.tulix.tv/gt-eurostar/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+946,trtbelgesel,,,200,NO_LIVE_ENTRY
+947,trtbelgesel,,,200,NO_LIVE_ENTRY
+948,trtbelgesel,,,200,NO_LIVE_ENTRY
+949,949,- Live,,200,NO_LIVE_HLS
+950,950,- Live,,200,NO_LIVE_HLS
+951,951,- Live,,200,NO_LIVE_HLS
+952,952,- Live,,200,NO_LIVE_HLS
+953,953,- Live,,200,NO_LIVE_HLS
+954,954,HT Spor - Live,https://trn03.tulix.tv/gt-htspor/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+955,955,CNBC-E Turk - Live,https://trn03.tulix.tv/gt-cnbce/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+956,956,PowerTurk Akustik - Live,https://listen.powerapp.com.tr/pturkakustik/akustik.smil/playlist.m3u8,200,STREAM_OK
+957,957,PowerTurk Slow - Live,https://listen.powerapp.com.tr/pturkslow/slow.smil/playlist.m3u8,200,STREAM_OK
+958,958,PowerTurk Taptaze - Live,https://listen.powerapp.com.tr/pturktaptaze/taptaze.smil/playlist.m3u8,200,STREAM_OK
+959,959,Number 1 Ask - Live,https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e18f9cea15_1/playlist.m3u8,200,STREAM_OK
+960,960,Number 1 Damar - Live,https://b01c02nl.mediatriple.net/videoonlylive/mtkgeuihrlfwlive/u_stream_5c9e198784bdc_1/playlist.m3u8,200,STREAM_OK
+961,961,VOD test - Live,https://vod.boraacer.dev/stream/00aa6a9c-4bc1-44f1-bb07-28512b09128c/playlist.m3u8,200,STREAM_OK
+962,962,Fox 5 - Live,https://tgn.tulixcdn.com/gin-dvrfl05/gin-fox5/tracks-v1a1/mono.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvOS8yMDI2IDU6MzU6MDEgUE0maGFzaF92YWx1ZT1pbUlTRSt0Q3I2R0J0OGRPRXpGNlB3PT0mdmFsaWRtaW51dGVzPTE0NDAmc3RybV9sZW49MjA=,200,STREAM_OK
+963,963,NBC - Live,https://glb.tulixcdn.com/glb/giniko/giniko-nbcatl/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+964,964,ABC TV - Live,https://glb.tulixcdn.com/glb/hondu/hondu-rick-abc/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+965,965,- Live,,200,NO_LIVE_HLS
+966,966,CBS - Live,https://glb.tulixcdn.com/glb/giniko/giniko-cbs/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+967,967,CW HD - Live,https://glb.tulixcdn.com/glb/hondu/hondu-ovair1-cwhd/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+968,trtbelgesel,,,200,NO_LIVE_ENTRY
+969,trtbelgesel,,,200,NO_LIVE_ENTRY
+970,trtbelgesel,,,200,NO_LIVE_ENTRY
+971,trtbelgesel,,,200,NO_LIVE_ENTRY
+972,trtbelgesel,,,200,NO_LIVE_ENTRY
+973,973,- Live,,200,NO_LIVE_HLS
+974,974,- Live,,200,NO_LIVE_HLS
+975,975,New Amazon FireTV App - Live,https://trn03.tulix.tv/vod/gt-amazon-firetv-promo.mp4/tracks-v1a1/mono.m3u8,200,STREAM_OK
+976,976,- Live,,200,NO_LIVE_HLS
+977,977,- Live,,200,NO_LIVE_HLS
+978,trtbelgesel,,,200,NO_LIVE_ENTRY
+979,trtbelgesel,,,200,NO_LIVE_ENTRY
+980,980,- Live,,200,NO_LIVE_HLS
+981,trtbelgesel,,,200,NO_LIVE_ENTRY
+982,trtbelgesel,,,200,NO_LIVE_ENTRY
+983,trtbelgesel,,,200,NO_LIVE_ENTRY
+984,trtbelgesel,,,200,NO_LIVE_ENTRY
+985,985,CNN International - Live,https://trn03.tulix.tv/CNN-International/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+986,trtbelgesel,,,200,NO_LIVE_ENTRY
+987,987,- Live,,200,NO_LIVE_HLS
+988,988,Russia Today - Live,https://rt-glb.rttv.com/dvr/rtnews/playlist.m3u8,200,STREAM_OK
+989,989,- Live,,200,NO_LIVE_HLS
+990,trtbelgesel,,,200,NO_LIVE_ENTRY
+991,991,- Live,,200,NO_LIVE_HLS
+992,992,Koza TV - Live,https://trn03.tulix.tv/gt-kozatv/tracks-v1a1/mono.m3u8?token=ed45f6b2c2ebd6190beed889118a1228,200,STREAM_OK
+993,trtbelgesel,,,200,NO_LIVE_ENTRY
+994,994,Announcing New Android TV App - Live,https://trn03.tulix.tv/vod/gt-android-tv-promo.mp4/tracks-v1a1/mono.m3u8,200,STREAM_OK
+995,995,- Live,,200,NO_LIVE_HLS
+996,trtbelgesel,,,200,NO_LIVE_ENTRY
+997,trtbelgesel,,,200,NO_LIVE_ENTRY
+998,trtbelgesel,,,200,NO_LIVE_ENTRY
+999,trtbelgesel,,,200,NO_LIVE_ENTRY
+1000,trtbelgesel,,,200,NO_LIVE_ENTRY
