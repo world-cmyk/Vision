@@ -1,5 +1,5 @@
 #EXTM3U
 #EXT-X-STREAM-INF:AVERAGE-BANDWIDTH=870000,BANDWIDTH=1090000,RESOLUTION=852x480,FRAME-RATE=25.000,CODECS="avc1.4d4020,mp4a.40.2",CLOSED-CAPTIONS=NONE
-https://trn03.tulix.tv/gt-kanald-1tv/tracks-v2a1/mono.m3u8?token=637faf9f124cf244dd68a9bd48ffd8c5
+https://trn03.tulix.tv/gt-kanald-1tv/tracks-v2a1/mono.m3u8?token=c9e40364d3a46812066026920245d561
 #EXT-X-STREAM-INF:AVERAGE-BANDWIDTH=2420000,BANDWIDTH=3030000,RESOLUTION=1280x720,FRAME-RATE=25.000,CODECS="avc1.4d4028,mp4a.40.2",CLOSED-CAPTIONS=NONE
-https://trn03.tulix.tv/gt-kanald-1tv/tracks-v1a1/mono.m3u8?token=637faf9f124cf244dd68a9bd48ffd8c5
+https://trn03.tulix.tv/gt-kanald-1tv/tracks-v1a1/mono.m3u8?token=c9e40364d3a46812066026920245d561
