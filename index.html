@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -63,10 +62,16 @@ tr.drop-target{outline:2px dashed var(--blue)}
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px}
 .toast{position:fixed;bottom:20px;right:20px;background:#1d2c44;border:1px solid var(--border);padding:13px 18px;border-radius:12px;display:none;z-index:30;max-width:90vw}
 .toast.show{display:block}
-@media(max-width:800px){main{padding:12px}.stats{grid-template-columns:repeat(2,1fr)}header{padding:15px}.form-grid{grid-template-columns:1fr}}
+@media(max-width:800px){
+ main{padding:12px}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ header{padding:15px}
+ .form-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
 <header>
   <div class="brand">📺 <span>VisionX</span> Playlist Manager</div>
   <div class="header-actions">
@@ -79,95 +84,137 @@ tr.drop-target{outline:2px dashed var(--blue)}
 </header>
 
 <main>
-  <section class="stats">
-    <div class="stat"><div class="label">Sender insgesamt</div><div class="number" id="totalCount">0</div></div>
-    <div class="stat"><div class="label">Online</div><div class="number online" id="onlineCount">0</div></div>
-    <div class="stat"><div class="label">Offline</div><div class="number offline" id="offlineCount">0</div></div>
-    <div class="stat"><div class="label">Favoriten</div><div class="number" id="favoriteCount">0</div></div>
-  </section>
 
-  <div class="toolbar">
-    <input id="search" placeholder="🔎 Sender suchen…" oninput="render()">
-    <select id="groupFilter" onchange="render()"><option value="">Alle Gruppen</option></select>
-    <select id="statusFilter" onchange="render()">
-      <option value="">Alle Status</option><option value="online">Online</option>
-      <option value="offline">Offline</option><option value="unknown">Nicht prüfbar</option>
-    </select>
-    <select id="sortSelect" onchange="render()">
-      <option value="manual">Manuelle Reihenfolge</option><option value="name">Name A–Z</option>
-      <option value="group">Gruppe</option>
-    </select>
-    <button onclick="checkAll()">🔍 Alle prüfen</button>
-    <button onclick="manageGroups()">📁 Gruppen</button>
-  </div>
+<section class="stats">
+  <div class="stat"><div class="label">Sender insgesamt</div><div class="number" id="totalCount">0</div></div>
+  <div class="stat"><div class="label">Online</div><div class="number online" id="onlineCount">0</div></div>
+  <div class="stat"><div class="label">Offline</div><div class="number offline" id="offlineCount">0</div></div>
+  <div class="stat"><div class="label">Favoriten</div><div class="number" id="favoriteCount">0</div></div>
+</section>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>↕</th><th>Sender</th><th>Gruppe</th><th>Status</th><th>Speed</th><th>Antwort</th><th>★</th><th>Aktionen</th></tr>
-      </thead>
-      <tbody id="channelTable"></tbody>
-    </table>
-  </div>
-  <div class="small" style="margin-top:10px">
-    Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
-    „Nicht prüfbar“ bedeutet nicht automatisch „Offline“.
-  </div>
+<div class="toolbar">
+  <input id="search" placeholder="🔎 Sender suchen…" oninput="render()">
+
+  <select id="groupFilter" onchange="render()">
+    <option value="">Alle Gruppen</option>
+  </select>
+
+  <select id="sourceFilter" onchange="render()">
+    <option value="">Alle Quellen</option>
+  </select>
+
+  <button class="danger" onclick="deleteSelectedSource()">🗑 Quelle löschen</button>
+
+  <select id="statusFilter" onchange="render()">
+    <option value="">Alle Status</option>
+    <option value="online">Online</option>
+    <option value="offline">Offline</option>
+    <option value="unknown">Nicht prüfbar</option>
+  </select>
+
+  <select id="sortSelect" onchange="render()">
+    <option value="manual">Manuelle Reihenfolge</option>
+    <option value="name">Name A–Z</option>
+    <option value="group">Gruppe</option>
+  </select>
+
+  <button onclick="checkAll()">🔍 Alle prüfen</button>
+  <button onclick="manageGroups()">📁 Gruppen</button>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>↕</th><th>Sender</th><th>Gruppe</th>
+<th>Status</th><th>Speed</th><th>Antwort</th><th>★</th><th>Aktionen</th>
+</tr>
+</thead>
+<tbody id="channelTable"></tbody>
+</table>
+</div>
+
+<div class="small" style="margin-top:10px">
+Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
+„Nicht prüfbar“ bedeutet nicht automatisch „Offline“.
+</div>
+
 </main>
 
 <!-- Sender bearbeiten -->
 <div class="modal-backdrop" id="editorModal">
-  <div class="modal">
-    <h2 id="editorTitle">Sender bearbeiten</h2>
-    <div class="form-grid">
-      <div class="form-field full"><label>Sendername</label><input id="fName"></div>
-      <div class="form-field full"><label>Stream URL</label><input id="fURL"></div>
-      <div class="form-field full"><label>Alternativer Stream-Link</label><input id="fAlt"></div>
-      <div class="form-field"><label>Gruppe</label><input id="fGroup" list="groupList"><datalist id="groupList"></datalist></div>
-      <div class="form-field"><label>TVG-ID</label><input id="fTVG"></div>
-      <div class="form-field full"><label>TVG-Logo URL</label><input id="fLogo"></div>
-      <div class="form-field full">
-        <label>Werkzeuge</label>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button type="button" onclick="searchAlternative()">🔗 Alternativen suchen</button>
-          <button type="button" onclick="searchTVG()">🆔 TVG-ID suchen</button>
-          <button type="button" onclick="searchLogo()">🖼️ Logo suchen</button>
-        </div>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button onclick="closeEditor()">Abbrechen</button>
-      <button class="primary" onclick="saveChannel()">Speichern</button>
-    </div>
-  </div>
+<div class="modal">
+<h2 id="editorTitle">Sender bearbeiten</h2>
+
+<div class="form-grid">
+<div class="form-field full"><label>Sendername</label><input id="fName"></div>
+<div class="form-field full"><label>Stream URL</label><input id="fURL"></div>
+<div class="form-field full"><label>Alternativer Stream-Link</label><input id="fAlt"></div>
+<div class="form-field"><label>Gruppe</label><input id="fGroup" list="groupList"><datalist id="groupList"></datalist></div>
+<div class="form-field"><label>TVG-ID</label><input id="fTVG"></div>
+<div class="form-field full"><label>TVG-Logo URL</label><input id="fLogo"></div>
+
+<div class="form-field full">
+<label>Werkzeuge</label>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button type="button" onclick="searchAlternative()">🔗 Alternativen suchen</button>
+<button type="button" onclick="searchTVG()">🆔 TVG-ID suchen</button>
+<button type="button" onclick="searchLogo()">🖼️ Logo suchen</button>
+</div>
+</div>
+</div>
+
+<div class="modal-actions">
+<button onclick="closeEditor()">Abbrechen</button>
+<button class="primary" onclick="saveChannel()">Speichern</button>
+</div>
+</div>
 </div>
 
 <!-- Import -->
 <div class="modal-backdrop" id="importModal">
-  <div class="modal">
-    <h2>M3U importieren</h2>
-    <div class="form-field"><label>Playlist-URL</label><input id="importURL" placeholder="https://…m3u"></div>
-    <div class="modal-actions" style="justify-content:flex-start">
-      <button class="primary" onclick="importFromURL()">URL laden</button>
-      <button onclick="document.getElementById('fileInput').click()">Datei auswählen</button>
-    </div>
-    <input type="file" id="fileInput" accept=".m3u,.m3u8,.txt" hidden>
-    <p class="small">Bei URL-Import kann der externe Server den Zugriff durch CORS blockieren. Der Dateiimport funktioniert lokal.</p>
-    <div class="modal-actions"><button onclick="closeImport()">Schließen</button></div>
-  </div>
+<div class="modal">
+<h2>M3U importieren</h2>
+
+<div class="form-field">
+<label>Playlist-URL</label>
+<input id="importURL" placeholder="https://…m3u">
+</div>
+
+<div class="modal-actions" style="justify-content:flex-start">
+<button class="primary" onclick="importFromURL()">URL laden</button>
+<button onclick="document.getElementById('fileInput').click()">Datei auswählen</button>
+</div>
+
+<input type="file" id="fileInput" accept=".m3u,.m3u8,.txt" hidden>
+
+<p class="small">
+Bei URL-Import kann der externe Server den Zugriff durch CORS blockieren.
+Der Dateiimport funktioniert lokal.
+</p>
+
+<div class="modal-actions">
+<button onclick="closeImport()">Schließen</button>
+</div>
+</div>
 </div>
 
 <!-- Gruppen -->
 <div class="modal-backdrop" id="groupsModal">
-  <div class="modal">
-    <h2>Gruppen verwalten</h2>
-    <div style="display:flex;gap:8px;margin-bottom:15px">
-      <input id="newGroup" placeholder="Neue Gruppe">
-      <button class="primary" onclick="addGroup()">＋ Hinzufügen</button>
-    </div>
-    <div id="groupsList"></div>
-    <div class="modal-actions"><button onclick="closeGroups()">Schließen</button></div>
-  </div>
+<div class="modal">
+<h2>Gruppen verwalten</h2>
+
+<div style="display:flex;gap:8px;margin-bottom:15px">
+<input id="newGroup" placeholder="Neue Gruppe">
+<button class="primary" onclick="addGroup()">＋ Hinzufügen</button>
+</div>
+
+<div id="groupsList"></div>
+
+<div class="modal-actions">
+<button onclick="closeGroups()">Schließen</button>
+</div>
+</div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -177,94 +224,300 @@ tr.drop-target{outline:2px dashed var(--blue)}
 "use strict";
 
 const STORAGE_KEY="visionx_playlist_manager_v1";
+
 let channels=[];
 let groups=[];
+let sources=[];
 let editingId=null;
 let draggedId=null;
 let checking=false;
 
-function uid(){return "vx_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8)}
-function esc(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),3500)}
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify({channels,groups}))}
-function load(){
-  try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");channels=Array.isArray(d.channels)?d.channels:[];groups=Array.isArray(d.groups)?d.groups:[]}
-  catch{channels=[];groups=[]}
+function uid(){
+ return "vx_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8);
 }
-function ensureGroup(g){g=(g||"").trim();if(g&&!groups.includes(g))groups.push(g)}
+
+function esc(s=""){
+ return String(s).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function toast(msg){
+ const t=document.getElementById("toast");
+ t.textContent=msg;
+ t.classList.add("show");
+ clearTimeout(toast.timer);
+ toast.timer=setTimeout(()=>t.classList.remove("show"),3500);
+}
+
+function save(){
+ localStorage.setItem(STORAGE_KEY,JSON.stringify({channels,groups,sources}));
+}
+
+function load(){
+ try{
+  const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
+  channels=Array.isArray(d.channels)?d.channels:[];
+  groups=Array.isArray(d.groups)?d.groups:[];
+  sources=Array.isArray(d.sources)?d.sources:[[];
+ }catch{
+  channels=[];
+  groups=[];
+  sources=[];
+ }
+}
+
+function ensureGroup(g){
+ g=(g||"").trim();
+ if(g&&!groups.includes(g))groups.push(g);
+}
+
 function normalize(c){
- return {id:c.id||uid(),name:c.name||"Unbekannter Sender",url:c.url||"",alt:c.alt||"",
- group:c.group||"",tvgId:c.tvgId||"",logo:c.logo||"",status:c.status||"unknown",
- speed:c.speed||"",response:c.response||"",favorite:!!c.favorite,enabled:c.enabled!==false};
+ return {
+  id:c.id||uid(),
+  name:c.name||"Unbekannter Sender",
+  url:c.url||"",
+  alt:c.alt||"",
+  group:c.group||"",
+  tvgId:c.tvgId||"",
+  logo:c.logo||"",
+  status:c.status||"unknown",
+  speed:c.speed||"",
+  response:c.response||"",
+  favorite:!!c.favorite,
+  enabled:c.enabled!==false,
+  sourceId:c.sourceId||"",
+  sourceURL:c.sourceURL||"",
+  sourceName:c.sourceName||""
+ };
 }
 
 function render(){
-  updateStats();updateGroupControls();
-  const tbody=document.getElementById("channelTable");
-  const query=document.getElementById("search").value.toLowerCase();
-  const group=document.getElementById("groupFilter").value;
-  const status=document.getElementById("statusFilter").value;
-  const sort=document.getElementById("sortSelect").value;
-  let list=channels.filter(c=>(!query||(c.name+" "+c.url+" "+c.group+" "+c.tvgId).toLowerCase().includes(query))&&(!group||c.group===group)&&(!status||c.status===status));
-  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
-  if(sort==="group")list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
-  tbody.innerHTML="";
-  if(!list.length){tbody.innerHTML='<tr><td colspan="8" class="empty">Keine Sender gefunden.</td></tr>';return}
-  for(const c of list){
-    const tr=document.createElement("tr");tr.dataset.id=c.id;tr.draggable=sort==="manual";
-    if(!c.enabled)tr.classList.add("disabled-row");
-    const statusText=c.status==="online"?"🟢 Online":c.status==="offline"?"🔴 Offline":c.status==="checking"?"🔵 Prüft…":"🟠 Nicht prüfbar";
-    const statusClass=c.status;
-    tr.innerHTML=`
-      <td>${sort==="manual"?"☰":""}</td>
-      <td><div class="channel">
-        ${c.logo?`<img class="logo" src="${esc(c.logo)}" onerror="this.style.display='none'">`:'<div class="logo-placeholder">📺</div>'}
-        <div><div class="channel-name">${esc(c.name)}</div><div class="channel-url" title="${esc(c.url)}">${esc(c.url)}</div></div>
-      </div></td>
-      <td>${esc(c.group||"—")}</td>
-      <td><span class="status ${statusClass}">${statusText}</span></td>
-      <td>${esc(c.speed||"—")}</td><td>${esc(c.response||"—")}</td>
-      <td><span class="fav" onclick="toggleFavorite('${c.id}')">${c.favorite?"★":"☆"}</span></td>
-      <td><div class="actions">
-        <button onclick="checkOne('${c.id}')">Check</button>
-        <button onclick="toggleEnabled('${c.id}')">${c.enabled?"Deaktivieren":"Aktivieren"}</button>
-        <button onclick="editChannel('${c.id}')">Edit</button>
-        <button class="danger" onclick="deleteChannel('${c.id}')">✕</button>
-      </div></td>`;
-    if(sort==="manual"){
-      tr.addEventListener("dragstart",e=>{draggedId=c.id;tr.classList.add("dragging");e.dataTransfer.effectAllowed="move"});
-      tr.addEventListener("dragend",()=>{draggedId=null;tr.classList.remove("dragging");document.querySelectorAll(".drop-target").forEach(x=>x.classList.remove("drop-target"))});
-      tr.addEventListener("dragover",e=>{e.preventDefault();tr.classList.add("drop-target")});
-      tr.addEventListener("dragleave",()=>tr.classList.remove("drop-target"));
-      tr.addEventListener("drop",e=>{e.preventDefault();tr.classList.remove("drop-target");moveChannel(draggedId,c.id)});
-    }
-    tbody.appendChild(tr);
+ updateStats();
+ updateGroupControls();
+ updateSourceFilter();
+
+ const tbody=document.getElementById("channelTable");
+ const query=document.getElementById("search").value.toLowerCase();
+ const group=document.getElementById("groupFilter").value;
+ const status=document.getElementById("statusFilter").value;
+ const sort=document.getElementById("sortSelect").value;
+ const sourceFilter=document.getElementById("sourceFilter").value;
+
+ let list=channels.filter(c=>
+  (!query||(c.name+" "+c.url+" "+c.group+" "+c.tvgId).toLowerCase().includes(query))&&
+  (!group||c.group===group)&&
+  (!status||c.status===status)&&
+  (!sourceFilter||c.sourceId===sourceFilter)
+ );
+
+ if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+ if(sort==="group")list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
+
+ tbody.innerHTML="";
+
+ if(!list.length){
+  tbody.innerHTML='<tr><td colspan="8" class="empty">Keine Sender gefunden.</td></tr>';
+  return;
+ }
+
+ for(const c of list){
+  const tr=document.createElement("tr");
+  tr.dataset.id=c.id;
+  tr.draggable=sort==="manual";
+
+  if(!c.enabled)tr.classList.add("disabled-row");
+
+  const statusText=c.status==="online"?"🟢 Online":
+   c.status==="offline"?"🔴 Offline":
+   c.status==="checking"?"🔵 Prüft…":"🟠 Nicht prüfbar";
+
+  tr.innerHTML=`
+   <td>${sort==="manual"?"☰":""}</td>
+   <td><div class="channel">
+    ${c.logo?`<img class="logo" src="${esc(c.logo)}" onerror="this.style.display='none'">`:'<div class="logo-placeholder">📺</div>'}
+    <div>
+      <div class="channel-name">${esc(c.name)}</div>
+      <div class="channel-url" title="${esc(c.url)}">${esc(c.url)}</div>
+    </div>
+   </div></td>
+   <td>${esc(c.group||"—")}</td>
+   <td><span class="status ${c.status}">${statusText}</span></td>
+   <td>${esc(c.speed||"—")}</td>
+   <td>${esc(c.response||"—")}</td>
+   <td><span class="fav" onclick="toggleFavorite('${c.id}')">${c.favorite?"★":"☆"}</span></td>
+   <td><div class="actions">
+    <button onclick="checkOne('${c.id}')">Check</button>
+    <button onclick="toggleEnabled('${c.id}')">${c.enabled?"Deaktivieren":"Aktivieren"}</button>
+    <button onclick="editChannel('${c.id}')">Edit</button>
+    <button class="danger" onclick="deleteChannel('${c.id}')">✕</button>
+   </div></td>`;
+
+  if(sort==="manual"){
+   tr.addEventListener("dragstart",e=>{
+    draggedId=c.id;
+    tr.classList.add("dragging");
+    e.dataTransfer.effectAllowed="move";
+   });
+
+   tr.addEventListener("dragend",()=>{
+    draggedId=null;
+    tr.classList.remove("dragging");
+    document.querySelectorAll(".drop-target").forEach(x=>x.classList.remove("drop-target"));
+   });
+
+   tr.addEventListener("dragover",e=>{
+    e.preventDefault();
+    tr.classList.add("drop-target");
+   });
+
+   tr.addEventListener("dragleave",()=>tr.classList.remove("drop-target"));
+
+   tr.addEventListener("drop",e=>{
+    e.preventDefault();
+    tr.classList.remove("drop-target");
+    moveChannel(draggedId,c.id);
+   });
   }
+
+  tbody.appendChild(tr);
+ }
 }
+
 function updateStats(){
  document.getElementById("totalCount").textContent=channels.length;
  document.getElementById("onlineCount").textContent=channels.filter(c=>c.status==="online").length;
  document.getElementById("offlineCount").textContent=channels.filter(c=>c.status==="offline").length;
  document.getElementById("favoriteCount").textContent=channels.filter(c=>c.favorite).length;
 }
+
 function updateGroupControls(){
- const f=document.getElementById("groupFilter"),v=f.value;
- f.innerHTML='<option value="">Alle Gruppen</option>'+groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
+ const f=document.getElementById("groupFilter");
+ const v=f.value;
+
+ f.innerHTML='<option value="">Alle Gruppen</option>'+
+  groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
+
  f.value=groups.includes(v)?v:"";
- document.getElementById("groupList").innerHTML=groups.map(g=>`<option value="${esc(g)}">`).join("");
+
+ document.getElementById("groupList").innerHTML=
+  groups.map(g=>`<option value="${esc(g)}">`).join("");
 }
+
+function updateSourceFilter(){
+ const select=document.getElementById("sourceFilter");
+ if(!select)return;
+
+ const current=select.value;
+
+ const activeSources=[...new Map(
+  channels.filter(c=>c.sourceId).map(c=>[
+   c.sourceId,
+   {id:c.sourceId,name:c.sourceName||c.sourceURL||"Importquelle"}
+  ])
+ ).values()];
+
+ select.innerHTML='<option value="">Alle Quellen</option>'+
+  activeSources.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join("");
+
+ if(activeSources.some(s=>s.id===current))select.value=current;
+}
+
+function deleteSelectedSource(){
+ const id=document.getElementById("sourceFilter").value;
+
+ if(!id){
+  toast("Bitte zuerst eine Importquelle im Filter auswählen.");
+  return;
+ }
+
+ const list=channels.filter(c=>c.sourceId===id);
+
+ if(!list.length){
+  toast("Keine Sender dieser Quelle gefunden.");
+  return;
+ }
+
+ const name=list[0].sourceName||list[0].sourceURL||"Importquelle";
+
+ if(!confirm(
+  `Quelle "${name}" wirklich löschen?\n\n`+
+  `${list.length} Sender werden entfernt. Andere Quellen bleiben erhalten.`
+ ))return;
+
+ channels=channels.filter(c=>c.sourceId!==id);
+ sources=sources.filter(s=>s.id!==id);
+
+ document.getElementById("sourceFilter").value="";
+
+ save();
+ render();
+
+ toast(`${list.length} Sender aus Quelle gelöscht.`);
+}
+
+function sourceHash(str){
+ let h=2166136261;
+ for(let i=0;i<str.length;i++){
+  h^=str.charCodeAt(i);
+  h=Math.imul(h,16777619);
+ }
+ return (h>>>0).toString(36);
+}
+
+function registerSource(source){
+ if(!source.sourceId)return;
+
+ const existing=sources.find(s=>s.id===source.sourceId);
+
+ const record={
+  id:source.sourceId,
+  name:source.sourceName||"Importquelle",
+  url:source.sourceURL||"",
+  type:source.type||"url",
+  importedAt:new Date().toISOString()
+ };
+
+ if(existing)Object.assign(existing,record);
+ else sources.push(record);
+}
+
 function moveChannel(from,to){
  if(!from||from===to)return;
- const a=channels.findIndex(c=>c.id===from),b=channels.findIndex(c=>c.id===to);
+
+ const a=channels.findIndex(c=>c.id===from);
+ const b=channels.findIndex(c=>c.id===to);
+
  if(a<0||b<0)return;
- const [item]=channels.splice(a,1);channels.splice(b,0,item);save();render();
+
+ const [item]=channels.splice(a,1);
+ channels.splice(b,0,item);
+
+ save();
+ render();
 }
-function toggleFavorite(id){const c=channels.find(x=>x.id===id);if(c){c.favorite=!c.favorite;save();render()}}
-function toggleEnabled(id){const c=channels.find(x=>x.id===id);if(c){c.enabled=!c.enabled;save();render()}}
-function deleteChannel(id){if(!confirm("Sender wirklich löschen?"))return;channels=channels.filter(c=>c.id!==id);save();render()}
+
+function toggleFavorite(id){
+ const c=channels.find(x=>x.id===id);
+ if(c){c.favorite=!c.favorite;save();render()}
+}
+
+function toggleEnabled(id){
+ const c=channels.find(x=>x.id===id);
+ if(c){c.enabled=!c.enabled;save();render()}
+}
+
+function deleteChannel(id){
+ if(!confirm("Sender wirklich löschen?"))return;
+ channels=channels.filter(c=>c.id!==id);
+ save();
+ render();
+}
+
 function openEditor(id=null){
  editingId=id;
  const c=id?channels.find(x=>x.id===id):null;
+
  document.getElementById("editorTitle").textContent=c?"Sender bearbeiten":"Sender hinzufügen";
  document.getElementById("fName").value=c?.name||"";
  document.getElementById("fURL").value=c?.url||"";
@@ -272,101 +525,331 @@ function openEditor(id=null){
  document.getElementById("fGroup").value=c?.group||"";
  document.getElementById("fTVG").value=c?.tvgId||"";
  document.getElementById("fLogo").value=c?.logo||"";
+
  document.getElementById("editorModal").classList.add("open");
 }
+
 function editChannel(id){openEditor(id)}
 function closeEditor(){document.getElementById("editorModal").classList.remove("open")}
+
 function saveChannel(){
- const c=normalize({id:editingId||uid(),name:document.getElementById("fName").value.trim(),
- url:document.getElementById("fURL").value.trim(),alt:document.getElementById("fAlt").value.trim(),
- group:document.getElementById("fGroup").value.trim(),tvgId:document.getElementById("fTVG").value.trim(),
- logo:document.getElementById("fLogo").value.trim(),...(editingId?channels.find(x=>x.id===editingId):{})});
- if(!c.name||!c.url){toast("Name und Stream URL sind erforderlich.");return}
+ const existing=editingId?channels.find(x=>x.id===editingId):{};
+
+ const c=normalize({
+  ...existing,
+  id:editingId||uid(),
+  name:document.getElementById("fName").value.trim(),
+  url:document.getElementById("fURL").value.trim(),
+  alt:document.getElementById("fAlt").value.trim(),
+  group:document.getElementById("fGroup").value.trim(),
+  tvgId:document.getElementById("fTVG").value.trim(),
+  logo:document.getElementById("fLogo").value.trim()
+ });
+
+ if(!c.name||!c.url){
+  toast("Name und Stream URL sind erforderlich.");
+  return;
+ }
+
  ensureGroup(c.group);
- if(editingId){const i=channels.findIndex(x=>x.id===editingId);if(i>=0)channels[i]=c}
- else channels.push(c);
- save();closeEditor();render();toast("Sender gespeichert.");
+
+ if(editingId){
+  const i=channels.findIndex(x=>x.id===editingId);
+  if(i>=0)channels[i]=c;
+ }else channels.push(c);
+
+ save();
+ closeEditor();
+ render();
+ toast("Sender gespeichert.");
 }
-function searchAlternative(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" alternative stream link IPTV"),"_blank","noopener")}
-function searchTVG(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" tvg-id xmltv"),"_blank","noopener")}
-function searchLogo(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(n+" TV logo"),"_blank","noopener")}
-function manageGroups(){renderGroups();document.getElementById("groupsModal").classList.add("open")}
-function closeGroups(){document.getElementById("groupsModal").classList.remove("open")}
+
+function searchAlternative(){
+ const n=document.getElementById("fName").value.trim();
+ if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" alternative stream link IPTV"),"_blank","noopener");
+}
+
+function searchTVG(){
+ const n=document.getElementById("fName").value.trim();
+ if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" tvg-id xmltv"),"_blank","noopener");
+}
+
+function searchLogo(){
+ const n=document.getElementById("fName").value.trim();
+ if(n)window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(n+" TV logo),"_blank","noopener");
+}
+
+function manageGroups(){
+ renderGroups();
+ document.getElementById("groupsModal").classList.add("open");
+}
+
+function closeGroups(){
+ document.getElementById("groupsModal").classList.remove("open");
+}
+
 function renderGroups(){
  const el=document.getElementById("groupsList");
- el.innerHTML=groups.map((g,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0">
- <input value="${esc(g)}" onchange="renameGroup(${i},this.value)">
- <button class="danger" onclick="deleteGroup(${i})">Löschen</button></div>`).join("")||'<p class="small">Keine Gruppen vorhanden.</p>';
+
+ el.innerHTML=groups.map((g,i)=>`
+  <div style="display:flex;gap:8px;align-items:center;margin:8px 0">
+   <input value="${esc(g)}" onchange="renameGroup(${i},this.value)">
+   <button class="danger" onclick="deleteGroup(${i})">Löschen</button>
+  </div>
+ `).join("")||'<p class="small">Keine Gruppen vorhanden.</p>';
 }
-function addGroup(){const v=document.getElementById("newGroup").value.trim();if(!v)return;if(groups.includes(v)){toast("Gruppe existiert bereits.");return}groups.push(v);document.getElementById("newGroup").value="";save();renderGroups();render()}
-function renameGroup(i,v){v=v.trim();if(!v||groups.includes(v)){toast("Gruppenname ungültig oder bereits vorhanden.");renderGroups();return}const old=groups[i];groups[i]=v;channels.forEach(c=>{if(c.group===old)c.group=v});save();renderGroups();render()}
-function deleteGroup(i){const g=groups[i];if(!confirm(`Gruppe "${g}" löschen? Sender werden keiner Gruppe zugeordnet.`))return;groups.splice(i,1);channels.forEach(c=>{if(c.group===g)c.group=""});save();renderGroups();render()}
-function openImport(){document.getElementById("importModal").classList.add("open")}
-function closeImport(){document.getElementById("importModal").classList.remove("open")}
+
+function addGroup(){
+ const v=document.getElementById("newGroup").value.trim();
+ if(!v)return;
+
+ if(groups.includes(v)){
+  toast("Gruppe existiert bereits.");
+  return;
+ }
+
+ groups.push(v);
+ document.getElementById("newGroup").value="";
+
+ save();
+ renderGroups();
+ render();
+}
+
+function renameGroup(i,v){
+ v=v.trim();
+
+ if(!v||groups.includes(v)){
+  toast("Gruppenname ungültig oder bereits vorhanden.");
+  renderGroups();
+  return;
+ }
+
+ const old=groups[i];
+ groups[i]=v;
+
+ channels.forEach(c=>{if(c.group===old)c.group=v});
+
+ save();
+ renderGroups();
+ render();
+}
+
+function deleteGroup(i){
+ const g=groups[i];
+
+ if(!confirm(`Gruppe "${g}" löschen? Sender werden keiner Gruppe zugeordnet.`))return;
+
+ groups.splice(i,1);
+ channels.forEach(c=>{if(c.group===g)c.group=""});
+
+ save();
+ renderGroups();
+ render();
+}
+
+function openImport(){
+ document.getElementById("importModal").classList.add("open");
+}
+
+function closeImport(){
+ document.getElementById("importModal").classList.remove("open");
+}
+
 document.getElementById("fileInput").addEventListener("change",async e=>{
- const file=e.target.files?.[0];if(!file)return;
- try{parseM3U(await file.text());closeImport();toast("Playlist importiert.");}catch(err){toast("Import fehlgeschlagen: "+err.message)}
+ const file=e.target.files?.[0];
+ if(!file)return;
+
+ try{
+  const source={
+   sourceId:"file_"+uid(),
+   sourceURL:"",
+   sourceName:file.name,
+   type:"file"
+  };
+
+  parseM3U(await file.text(),source);
+  closeImport();
+  toast("Playlist importiert.");
+ }catch(err){
+  toast("Import fehlgeschlagen: "+err.message);
+ }
+
  e.target.value="";
 });
-function parseM3U(text){
+
+function parseM3U(text,source={}){
  text=text.replace(/^\uFEFF/,"");
- const lines=text.split(/\r?\n/);let pending=null,added=0;
+
+ const lines=text.split(/\r?\n/);
+ let pending=null,added=0;
+
  for(const line of lines){
   if(line.startsWith("#EXTINF:")){
-   const attrs={};for(const m of line.matchAll(/([\w-]+)="([^"]*)"/g))attrs[m[1]]=m[2];
-   const name=line.substring(line.lastIndexOf(",")+1).trim()||attrs["tvg-name"]||"Unbekannter Sender";
-   pending={name,group:attrs["group-title"]||"",tvgId:attrs["tvg-id"]||"",logo:attrs["tvg-logo"]||"",url:"",alt:""};
+   const attrs={};
+
+   for(const m of line.matchAll(/([\w-]+)="([^"]*)"/g))
+    attrs[m[1]]=m[2];
+
+   const name=line.substring(line.lastIndexOf(",")+1).trim()||
+    attrs["tvg-name"]||"Unbekannter Sender";
+
+   pending={
+    name,
+    group:attrs["group-title"]||"",
+    tvgId:attrs["tvg-id"]||"",
+    logo:attrs["tvg-logo"]||"",
+    url:"",
+    alt:"",
+    sourceId:source.sourceId||"",
+    sourceURL:source.sourceURL||"",
+    sourceName:source.sourceName||""
+   };
+
   }else if(line.trim()&&!line.startsWith("#")&&pending){
+
    pending.url=line.trim();
-   const duplicate=channels.some(c=>c.url===pending.url);
-   if(!duplicate){ensureGroup(pending.group);channels.push(normalize(pending));added++}
+
+   const duplicate=channels.some(c=>
+    c.url===pending.url&&c.sourceId===(source.sourceId||"")
+   );
+
+   if(!duplicate){
+    ensureGroup(pending.group);
+    channels.push(normalize(pending));
+    added++;
+   }
+
    pending=null;
   }
  }
- save();render();toast(`${added} Sender importiert.`);
+
+ if(source.sourceId)registerSource(source);
+
+ save();
+ render();
+ toast(`${added} Sender importiert.`);
 }
+
 async function importFromURL(){
- const url=document.getElementById("importURL").value.trim();if(!url){toast("URL eingeben.");return}
- try{const r=await fetch(url);if(!r.ok)throw new Error("HTTP "+r.status);parseM3U(await r.text());closeImport()}
- catch(e){toast("URL nicht abrufbar (möglicherweise CORS). Bitte Playlist herunterladen und als Datei importieren.")}
+ const url=document.getElementById("importURL").value.trim();
+
+ if(!url){
+  toast("URL eingeben.");
+  return;
+ }
+
+ try{
+  const r=await fetch(url);
+
+  if(!r.ok)throw new Error("HTTP "+r.status);
+
+  const sourceId="url_"+sourceHash(url);
+  const sourceName=url.split("/").pop()||url;
+
+  // Bei erneutem Import derselben URL werden die alten Sender ersetzt.
+  channels=channels.filter(c=>c.sourceId!==sourceId);
+  sources=sources.filter(s=>s.id!==sourceId);
+
+  parseM3U(await r.text(),{
+   sourceId,
+   sourceURL:url,
+   sourceName,
+   type:"url"
+  });
+
+  closeImport();
+
+ }catch(e){
+  toast("URL nicht abrufbar (möglicherweise CORS). Bitte Playlist herunterladen und als Datei importieren.");
+ }
 }
+
 function exportM3U(){
  const list=channels.filter(c=>c.enabled);
  let out="#EXTM3U\n";
+
  for(const c of list){
   out+=`#EXTINF:-1 tvg-id="${c.tvgId||""}" tvg-logo="${c.logo||""}" group-title="${c.group||""}",${c.name}\n`;
   out+=`${c.url}\n`;
  }
+
  const blob=new Blob([out],{type:"audio/x-mpegurl"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="VisionX.m3u";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+ const a=document.createElement("a");
+
+ a.href=URL.createObjectURL(blob);
+ a.download="VisionX.m3u";
+ a.click();
+
+ setTimeout(()=>URL.revokeObjectURL(a.href),1500);
  toast("M3U exportiert.");
 }
-function backupJSON(){const blob=new Blob([JSON.stringify({channels,groups},null,2)],{type:"application/json"});downloadBlob(blob,"VisionX-backup.json")}
-function downloadBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
-function restoreJSON(){document.getElementById("jsonFile").click()}
+
+function backupJSON(){
+ const blob=new Blob([JSON.stringify({channels,groups,sources},null,2)],{type:"application/json"});
+ downloadBlob(blob,"VisionX-backup.json");
+}
+
+function downloadBlob(blob,name){
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download=name;
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+}
+
+function restoreJSON(){
+ document.getElementById("jsonFile").click();
+}
+
 document.getElementById("jsonFile").addEventListener("change",async e=>{
- const file=e.target.files?.[0];if(!file)return;
- try{const d=JSON.parse(await file.text());if(!Array.isArray(d.channels))throw new Error("Ungültige Datei");
- channels=d.channels.map(normalize);groups=Array.isArray(d.groups)?d.groups:[];
- channels.forEach(c=>ensureGroup(c.group));save();render();toast("Backup wiederhergestellt.")
- }catch{toast("Backup konnte nicht gelesen werden.")}
+ const file=e.target.files?.[0];
+ if(!file)return;
+
+ try{
+  const d=JSON.parse(await file.text());
+
+  if(!Array.isArray(d.channels))throw new Error("Ungültige Datei");
+
+  channels=d.channels.map(normalize);
+  groups=Array.isArray(d.groups)?d.groups:[];
+  sources=Array.isArray(d.sources)?d.sources:[];
+
+  channels.forEach(c=>ensureGroup(c.group));
+
+  save();
+  render();
+  toast("Backup wiederhergestellt.");
+
+ }catch{
+  toast("Backup konnte nicht gelesen werden.");
+ }
+
  e.target.value="";
 });
 
 async function checkOne(id){
- const c=channels.find(x=>x.id===id);if(!c)return;
- c.status="checking";render();
+ const c=channels.find(x=>x.id===id);
+ if(!c)return;
+
+ c.status="checking";
+ render();
+
  const start=performance.now();
+
  try{
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),7000);
+
   const response=await fetch(c.url,{
    method:"GET",
    headers:{"Range":"bytes=0-65535"},
    signal:controller.signal,
    cache:"no-store"
   });
+
   clearTimeout(timer);
+
   const elapsed=Math.round(performance.now()-start);
   c.response=elapsed+" ms";
 
@@ -375,90 +858,109 @@ async function checkOne(id){
    c.speed="—";
   }else if(response.ok){
    c.status="online";
+
    try{
     const reader=response.body?.getReader();
+
     if(reader){
      const speedStart=performance.now();
      const first=await reader.read();
      const duration=(performance.now()-speedStart)/1000;
+
      if(first.value&&duration>0){
       const bytes=first.value.byteLength;
       c.speed=(bytes/duration/1024).toFixed(1)+" KB/s";
      }else c.speed="Nicht messbar";
+
      try{await reader.cancel()}catch{}
     }else c.speed="Nicht messbar";
-   }catch{c.speed="Nicht messbar"}
+
+   }catch{
+    c.speed="Nicht messbar";
+   }
+
   }else{
-   // Andere HTTP-Fehler nicht automatisch als offline behandeln
    c.status="unknown";
    c.speed="Nicht messbar";
   }
+
  }catch(err){
-  // CORS, Timeout oder Netzwerkfehler sind kein sicherer Offline-Nachweis.
+  // CORS oder Timeout ist kein sicherer Offline-Nachweis.
   c.status="unknown";
   c.response=Math.round(performance.now()-start)+" ms";
   c.speed="Nicht messbar";
  }
- save();render();
+
+ save();
+ render();
 }
+
 async function checkAll(){
  if(checking)return;
- checking=true;toast("Streamprüfung gestartet…");
+
+ checking=true;
+ toast("Streamprüfung gestartet…");
+
  for(const c of channels){
   if(!c.enabled)continue;
   await checkOne(c.id);
  }
- checking=false;toast("Streamprüfung abgeschlossen.");
-}
 
-/* -------------------------------------------------------
-   Sender zwischen Gruppen verschieben
-   Drag & Drop ändert die Reihenfolge.
-   Gruppenwechsel erfolgt über die Senderbearbeitung.
-------------------------------------------------------- */
+ checking=false;
+ toast("Streamprüfung abgeschlossen.");
+}
 
 function openChannelMove(id){
  const c=channels.find(x=>x.id===id);
  if(!c)return;
+
  const target=prompt("Neue Gruppe eingeben:\n\n"+groups.join("\n"),c.group);
  if(target===null)return;
+
  const group=target.trim();
  ensureGroup(group);
  c.group=group;
- save();render();toast("Sendergruppe geändert.");
+
+ save();
+ render();
+ toast("Sendergruppe geändert.");
 }
 
-/* Alternative URL übernehmen */
 function useAlternative(id){
  const c=channels.find(x=>x.id===id);
  if(!c||!c.alt)return;
+
  const old=c.url;
  c.url=c.alt;
  c.alt=old;
  c.status="unknown";
  c.speed="";
  c.response="";
- save();render();
+
+ save();
+ render();
  toast("Stream-URL gewechselt.");
 }
 
-/* -------------------------------------------------------
-   Zusätzliche Sender-Aktionen in der Tabelle
-------------------------------------------------------- */
 const originalRender=render;
+
 render=function(){
  originalRender();
+
  document.querySelectorAll("#channelTable tr[data-id]").forEach(tr=>{
   const id=tr.dataset.id;
   const c=channels.find(x=>x.id===id);
   if(!c)return;
+
   const actionCell=tr.querySelector(".actions");
   if(!actionCell)return;
+
   const move=document.createElement("button");
   move.textContent="📁 Gruppe";
   move.title="Sender in eine andere Gruppe verschieben";
   move.onclick=()=>openChannelMove(id);
   actionCell.insertBefore(move,actionCell.firstChild);
+
   if(c.alt){
    const alt=document.createElement("button");
    alt.textContent="↔ Link";
@@ -469,42 +971,35 @@ render=function(){
  });
 };
 
-/* -------------------------------------------------------
-   M3U-Parser: weitere Attribute / Kompatibilität
-------------------------------------------------------- */
 function parseM3UAdvanced(text){
  parseM3U(text);
 }
 
-/* -------------------------------------------------------
-   UI-Events
-------------------------------------------------------- */
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){
-  closeEditor();closeImport();closeGroups();
+  closeEditor();
+  closeImport();
+  closeGroups();
  }
 });
+
 document.querySelectorAll(".modal-backdrop").forEach(back=>{
  back.addEventListener("click",e=>{
   if(e.target===back)back.classList.remove("open");
  });
 });
 
-/* Keine automatischen Seitenreloads.
-   Daten werden nach Änderungen lokal gespeichert. */
+// Keine automatischen Seitenreloads.
 window.addEventListener("beforeunload",e=>{
- // Kein Reload wird ausgelöst. Dieser Listener verhindert lediglich
- // unbeabsichtigtes Verlassen mit unspeicherbaren Änderungen.
+ // Daten werden bei Änderungen gespeichert.
 });
 
-/* -------------------------------------------------------
-   Start
-------------------------------------------------------- */
 load();
 channels=channels.map(normalize);
 channels.forEach(c=>ensureGroup(c.group));
 render();
 save();
+
 </script>
 </body>
 </html>
