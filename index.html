@@ -3,432 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VisionX</title>
+<title>VisionX Stream Manager</title>
 
 <style>
 :root {
-    --bg: #080b12;
-    --panel: #111722;
-    --panel2: #171f2d;
-    --border: #263244;
-    --text: #e9eef6;
-    --muted: #8b98ab;
-    --green: #00e676;
-    --red: #ff4d61;
-    --orange: #ffb020;
-    --blue: #3b82f6;
+    --bg:#080b12;
+    --panel:#111722;
+    --panel2:#171f2d;
+    --border:#263244;
+    --text:#e9eef6;
+    --muted:#8b98ab;
+    --green:#00e676;
+    --red:#ff4d61;
+    --orange:#ffb020;
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, Arial, sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+}
+
+button,input {
+    font-family:inherit;
 }
 
 button {
-    cursor: pointer;
-    border: none;
-    font-family: inherit;
+    cursor:pointer;
+    border:none;
 }
 
 .app {
-    display: flex;
-    min-height: 100vh;
+    display:flex;
+    min-height:100vh;
 }
 
-/* SIDEBAR */
-
 .sidebar {
-    width: 240px;
-    background: #0d121b;
-    border-right: 1px solid var(--border);
-    padding: 25px 18px;
+    width:240px;
+    background:#0d121b;
+    border-right:1px solid var(--border);
+    padding:25px 18px;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:2px;
 }
 
 .logo span {
-    color: var(--green);
+    color:var(--green);
 }
 
 .subtitle {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 3px;
-    margin-top: 5px;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:3px;
+    margin-top:5px;
 }
 
 .nav {
-    margin-top: 40px;
+    margin-top:40px;
 }
 
 .nav-item {
-    padding: 13px;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    color: var(--muted);
-    cursor: pointer;
+    padding:13px;
+    margin-bottom:8px;
+    border-radius:10px;
+    color:var(--muted);
 }
 
 .nav-item.active {
-    background: rgba(0,230,118,0.1);
-    color: var(--green);
+    background:rgba(0,230,118,.1);
+    color:var(--green);
 }
 
-/* MAIN */
-
 .main {
-    flex: 1;
-    padding: 35px;
-    overflow: hidden;
+    flex:1;
+    padding:35px;
+    min-width:0;
 }
 
 .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    gap:15px;
 }
 
 .topbar h1 {
-    margin: 0;
-    font-size: 27px;
+    margin:0;
+    font-size:27px;
 }
 
 .topbar p {
-    color: var(--muted);
-    margin-top: 8px;
+    color:var(--muted);
+    margin-top:8px;
 }
 
 .import-btn {
-    background: var(--green);
-    color: #06130c;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: 700;
+    background:var(--green);
+    color:#06130c;
+    padding:12px 18px;
+    border-radius:10px;
+    font-weight:700;
 }
 
-/* STATISTICS */
-
 .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:30px;
 }
 
 .stat-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 22px;
-    border-radius: 15px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:22px;
+    border-radius:15px;
 }
 
 .stat-label {
-    color: var(--muted);
-    font-size: 13px;
+    color:var(--muted);
+    font-size:13px;
 }
 
 .stat-value {
-    font-size: 32px;
-    font-weight: 800;
-    margin-top: 12px;
-}
-
-.stat-total {
-    color: white;
+    font-size:32px;
+    font-weight:800;
+    margin-top:12px;
 }
 
 .stat-online {
-    color: var(--green);
+    color:var(--green);
 }
 
 .stat-offline {
-    color: var(--red);
+    color:var(--red);
 }
-
-/* PLAYLIST */
 
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.section-header h2 {
-    font-size: 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
 }
 
 .search {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    color: white;
-    padding: 12px;
-    border-radius: 10px;
-    outline: none;
-    width: 250px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    color:white;
+    padding:12px;
+    border-radius:10px;
+    outline:none;
+    width:250px;
 }
 
 .playlist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:18px;
 }
 
 .playlist-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 20px;
-    border-radius: 15px;
-    transition: .2s;
-}
-
-.playlist-card:hover {
-    border-color: #3b4659;
-    transform: translateY(-2px);
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:15px;
 }
 
 .playlist-title {
-    font-size: 17px;
-    font-weight: 700;
+    font-size:17px;
+    font-weight:700;
 }
 
 .playlist-url {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 10px;
-    overflow-wrap: anywhere;
+    font-size:11px;
+    color:var(--muted);
+    margin-top:10px;
+    overflow-wrap:anywhere;
 }
 
 .playlist-count {
-    margin-top: 18px;
-    color: var(--muted);
-    font-size: 13px;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:13px;
 }
 
 .status-row {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    font-size: 13px;
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+    font-size:13px;
+    flex-wrap:wrap;
 }
 
 .online {
-    color: var(--green);
+    color:var(--green);
 }
 
 .offline {
-    color: var(--red);
+    color:var(--red);
 }
 
 .unknown {
-    color: var(--orange);
+    color:var(--orange);
 }
 
 .card-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 20px;
-    flex-wrap: wrap;
+    display:flex;
+    gap:8px;
+    margin-top:20px;
+    flex-wrap:wrap;
 }
 
 .action-btn {
-    padding: 9px 12px;
-    border-radius: 8px;
-    background: var(--panel2);
-    color: var(--text);
-    font-size: 12px;
+    padding:9px 12px;
+    border-radius:8px;
+    background:var(--panel2);
+    color:var(--text);
+    font-size:12px;
 }
 
 .action-btn:hover {
-    background: #243246;
+    background:#243246;
 }
 
 .delete-btn {
-    color: var(--red);
+    color:var(--red);
 }
-
-/* EMPTY */
 
 .empty {
-    padding: 50px 20px;
-    text-align: center;
-    color: var(--muted);
-    border: 1px dashed var(--border);
-    border-radius: 15px;
+    padding:50px 20px;
+    text-align:center;
+    color:var(--muted);
+    border:1px dashed var(--border);
+    border-radius:15px;
+    grid-column:1/-1;
 }
 
-/* MODAL */
-
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.75);
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    padding: 20px;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+    padding:20px;
 }
 
 .modal.show {
-    display: flex;
+    display:flex;
 }
 
 .modal-content {
-    width: 100%;
-    max-width: 500px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 25px;
-}
-
-.modal-content h2 {
-    margin-top: 0;
+    width:100%;
+    max-width:500px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:25px;
 }
 
 .form-group {
-    margin-top: 20px;
+    margin-top:20px;
 }
 
 .form-group label {
-    display: block;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 8px;
+    display:block;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:8px;
 }
 
 .form-group input {
-    width: 100%;
-    padding: 13px;
-    border-radius: 10px;
-    background: #080d15;
-    color: white;
-    border: 1px solid var(--border);
-    outline: none;
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    background:#080d15;
+    color:white;
+    border:1px solid var(--border);
+    outline:none;
 }
 
 .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 25px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:25px;
 }
 
 .cancel-btn {
-    background: var(--panel2);
-    color: white;
-    padding: 12px 16px;
-    border-radius: 9px;
+    background:var(--panel2);
+    color:white;
+    padding:12px 16px;
+    border-radius:9px;
 }
 
 .save-btn {
-    background: var(--green);
-    color: #04130a;
-    padding: 12px 16px;
-    border-radius: 9px;
-    font-weight: 700;
+    background:var(--green);
+    color:#04130a;
+    padding:12px 16px;
+    border-radius:9px;
+    font-weight:700;
 }
 
 .toast {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    padding: 15px 20px;
-    border-radius: 10px;
-    display: none;
-    z-index: 200;
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    padding:15px 20px;
+    border-radius:10px;
+    display:none;
+    z-index:200;
+    max-width:90%;
 }
 
-/* CHANNEL LIST */
-
 .channel-container {
-    display: none;
-    margin-top: 25px;
+    display:none;
+    margin-top:25px;
 }
 
 .channel-container.show {
-    display: block;
+    display:block;
 }
 
 .channel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    gap:10px;
 }
 
 .channel-list {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    max-height: 600px;
-    overflow-y: auto;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    max-height:600px;
+    overflow-y:auto;
 }
 
 .channel-item {
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.channel-item:last-child {
-    border-bottom: none;
+    padding:13px 16px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
 }
 
 .channel-name {
-    font-size: 13px;
+    font-size:13px;
+    overflow-wrap:anywhere;
 }
 
 .channel-status {
-    font-size: 12px;
+    font-size:12px;
+    white-space:nowrap;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
+@media(max-width:900px) {
     .sidebar {
-        display: none;
+        display:none;
     }
 
     .main {
-        padding: 20px;
+        padding:20px;
     }
 
     .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
+    .topbar,
     .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        flex-direction:column;
+        align-items:flex-start;
     }
 
     .search {
-        width: 100%;
+        width:100%;
     }
 }
 </style>
@@ -438,71 +403,71 @@ button {
 
 <div class="app">
 
-    <aside class="sidebar">
-        <div class="logo">VISION<span>X</span></div>
-        <div class="subtitle">STREAM MANAGEMENT</div>
+<aside class="sidebar">
+    <div class="logo">VISION<span>X</span></div>
+    <div class="subtitle">STREAM MANAGEMENT</div>
 
-        <div class="nav">
-            <div class="nav-item active">📊 Dashboard</div>
-            <div class="nav-item">📁 Playlists</div>
-        </div>
-    </aside>
+    <div class="nav">
+        <div class="nav-item active">📊 Dashboard</div>
+        <div class="nav-item">📁 Playlists</div>
+    </div>
+</aside>
 
-    <main class="main">
+<main class="main">
 
-        <div class="topbar">
-            <div>
-                <h1>Dashboard</h1>
-                <p>Deine Playlist-Übersicht</p>
-            </div>
-
-            <button class="import-btn" onclick="openModal()">
-                ＋ Import Playlist
-            </button>
+    <div class="topbar">
+        <div>
+            <h1>Dashboard</h1>
+            <p>Deine Playlist-Übersicht</p>
         </div>
 
-        <div class="stats">
+        <button class="import-btn" onclick="openModal()">
+            ＋ Import Playlist
+        </button>
+    </div>
 
-            <div class="stat-card">
-                <div class="stat-label">TOTAL STREAMS</div>
-                <div class="stat-value stat-total" id="totalStreams">0</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">ONLINE</div>
-                <div class="stat-value stat-online" id="onlineStreams">0</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">OFFLINE</div>
-                <div class="stat-value stat-offline" id="offlineStreams">0</div>
-            </div>
-
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-label">TOTAL STREAMS</div>
+            <div class="stat-value" id="totalStreams">0</div>
         </div>
 
-        <div class="section-header">
-            <h2>Meine Playlists</h2>
-            <input
-                class="search"
-                id="searchInput"
-                placeholder="🔍 Playlist suchen..."
-                oninput="renderPlaylists()"
-            >
+        <div class="stat-card">
+            <div class="stat-label">ONLINE</div>
+            <div class="stat-value stat-online" id="onlineStreams">0</div>
         </div>
 
-        <div id="playlistGrid" class="playlist-grid"></div>
+        <div class="stat-card">
+            <div class="stat-label">OFFLINE</div>
+            <div class="stat-value stat-offline" id="offlineStreams">0</div>
+        </div>
+    </div>
 
-        <div id="channelContainer" class="channel-container">
-            <div class="channel-header">
-                <h2 id="channelTitle">Channels</h2>
-                <button class="action-btn" onclick="closeChannels()">← Zurück</button>
-            </div>
+    <div class="section-header">
+        <h2>Meine Playlists</h2>
 
-            <div class="channel-list" id="channelList"></div>
+        <input
+            class="search"
+            id="searchInput"
+            placeholder="🔍 Playlist suchen..."
+            oninput="renderPlaylists()"
+        >
+    </div>
+
+    <div id="playlistGrid" class="playlist-grid"></div>
+
+    <div id="channelContainer" class="channel-container">
+
+        <div class="channel-header">
+            <h2 id="channelTitle">Channels</h2>
+            <button class="action-btn" onclick="closeChannels()">← Zurück</button>
         </div>
 
-    </main>
+        <div class="channel-list" id="channelList"></div>
 
+    </div>
+
+</main>
 </div>
 
 <!-- IMPORT MODAL -->
@@ -519,12 +484,12 @@ button {
 
         <div class="form-group">
             <label>M3U Playlist URL</label>
-            <input id="playlistUrl" placeholder="https://example.com/playlist.m3u">
+            <input id="playlistUrl" placeholder="https://github.com/.../playlist.m3u">
         </div>
 
         <div class="modal-actions">
             <button class="cancel-btn" onclick="closeModal()">Abbrechen</button>
-            <button class="save-btn" onclick="importPlaylist()">Importieren</button>
+            <button class="save-btn" id="importButton" onclick="importPlaylist()">Importieren</button>
         </div>
 
     </div>
@@ -559,20 +524,44 @@ function showToast(message) {
 
     setTimeout(() => {
         toast.style.display = "none";
-    }, 3000);
+    }, 4500);
 }
 
-/* PLAYLIST IMPORT */
+/* URL NORMALIZATION */
+
+function normalizePlaylistURL(url) {
+
+    url = url.trim();
+
+    // GitHub Blob automatisch in Raw umwandeln
+    if (url.includes("github.com") && url.includes("/blob/")) {
+
+        url = url
+            .replace("https://github.com/", "https://raw.githubusercontent.com/")
+            .replace("/blob/", "/");
+
+    }
+
+    return url;
+}
+
+/* IMPORT */
 
 async function importPlaylist() {
 
     const name = document.getElementById("playlistName").value.trim();
-    const url = document.getElementById("playlistUrl").value.trim();
+    let url = document.getElementById("playlistUrl").value.trim();
 
     if (!name || !url) {
-        showToast("Bitte Name und URL eingeben.");
+        showToast("Bitte Name und Playlist-URL eingeben.");
         return;
     }
+
+    url = normalizePlaylistURL(url);
+
+    const importButton = document.getElementById("importButton");
+    importButton.disabled = true;
+    importButton.textContent = "Lädt...";
 
     showToast("Playlist wird geladen...");
 
@@ -581,12 +570,20 @@ async function importPlaylist() {
         const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error("Playlist konnte nicht geladen werden.");
+            throw new Error("HTTP " + response.status);
         }
 
         const text = await response.text();
 
+        if (!text.trim()) {
+            throw new Error("Die Playlist ist leer.");
+        }
+
         const channels = parseM3U(text);
+
+        if (!channels.length) {
+            throw new Error("Keine Streams gefunden. Ist die Datei eine gültige M3U?");
+        }
 
         const playlist = {
             id: Date.now(),
@@ -599,19 +596,29 @@ async function importPlaylist() {
         playlists.push(playlist);
 
         saveData();
+        renderPlaylists();
 
         closeModal();
 
         document.getElementById("playlistName").value = "";
         document.getElementById("playlistUrl").value = "";
 
-        renderPlaylists();
-
-        showToast(channels.length + " Streams importiert.");
+        showToast(channels.length + " Streams erfolgreich importiert!");
 
     } catch (error) {
 
-        showToast("Import fehlgeschlagen. Möglicherweise CORS-Sperre.");
+        console.error("VisionX Import:", error);
+
+        if (error.name === "TypeError") {
+            showToast("Import nicht möglich. CORS-Sperre oder URL nicht erreichbar.");
+        } else {
+            showToast("Import fehlgeschlagen: " + error.message);
+        }
+
+    } finally {
+
+        importButton.disabled = false;
+        importButton.textContent = "Importieren";
 
     }
 
@@ -625,6 +632,7 @@ function parseM3U(text) {
     const channels = [];
 
     let currentName = "Unbekannter Kanal";
+    let currentGroup = "";
 
     for (let line of lines) {
 
@@ -638,18 +646,21 @@ function parseM3U(text) {
                 currentName = line.substring(comma + 1).trim();
             }
 
-        } else if (
-            line &&
-            !line.startsWith("#")
-        ) {
+            const groupMatch = line.match(/group-title="([^"]*)"/i);
+
+            currentGroup = groupMatch ? groupMatch[1] : "";
+
+        } else if (line && !line.startsWith("#")) {
 
             channels.push({
                 name: currentName,
                 url: line,
+                group: currentGroup,
                 status: "unknown"
             });
 
             currentName = "Unbekannter Kanal";
+            currentGroup = "";
 
         }
 
@@ -658,7 +669,7 @@ function parseM3U(text) {
     return channels;
 }
 
-/* RENDER */
+/* RENDER PLAYLISTS */
 
 function renderPlaylists() {
 
@@ -676,32 +687,26 @@ function renderPlaylists() {
         total += playlist.channels.length;
 
         playlist.channels.forEach(channel => {
-
             if (channel.status === "online") online++;
             if (channel.status === "offline") offline++;
-
         });
 
-        if (!playlist.name.toLowerCase().includes(search)) {
-            return;
-        }
-
-        const card = document.createElement("div");
-        card.className = "playlist-card";
+        if (!playlist.name.toLowerCase().includes(search)) return;
 
         const onlineCount = playlist.channels.filter(c => c.status === "online").length;
         const offlineCount = playlist.channels.filter(c => c.status === "offline").length;
         const unknownCount = playlist.channels.filter(c => c.status === "unknown").length;
 
+        const card = document.createElement("div");
+        card.className = "playlist-card";
+
         card.innerHTML = `
             <div class="playlist-title">📁 ${escapeHTML(playlist.name)}</div>
 
-            <div class="playlist-url">
-                ${escapeHTML(playlist.url)}
-            </div>
+            <div class="playlist-url">${escapeHTML(playlist.url)}</div>
 
             <div class="playlist-count">
-                ${playlist.channels.length} Channels
+                ${playlist.channels.length} Streams
             </div>
 
             <div class="status-row">
@@ -712,18 +717,15 @@ function renderPlaylists() {
 
             <div class="card-actions">
 
-                <button class="action-btn"
-                    onclick="openChannels(${playlist.id})">
+                <button class="action-btn" onclick="openChannels(${playlist.id})">
                     Öffnen
                 </button>
 
-                <button class="action-btn"
-                    onclick="checkPlaylist(${playlist.id})">
+                <button class="action-btn" onclick="checkPlaylist(${playlist.id})">
                     Prüfen
                 </button>
 
-                <button class="action-btn delete-btn"
-                    onclick="deletePlaylist(${playlist.id})">
+                <button class="action-btn delete-btn" onclick="deletePlaylist(${playlist.id})">
                     Löschen
                 </button>
 
@@ -743,7 +745,15 @@ function renderPlaylists() {
         grid.innerHTML = `
             <div class="empty">
                 <h3>Noch keine Playlists</h3>
-                <p>Importiere deine erste M3U Playlist.</p>
+                <p>Importiere deine erste Playlist.</p>
+            </div>
+        `;
+
+    } else if (grid.innerHTML === "") {
+
+        grid.innerHTML = `
+            <div class="empty">
+                Keine Playlist gefunden.
             </div>
         `;
 
@@ -760,21 +770,20 @@ function openChannels(id) {
     if (!playlist) return;
 
     document.getElementById("channelTitle").textContent =
-        playlist.name + " – " + playlist.channels.length + " Channels";
+        playlist.name + " – " + playlist.channels.length + " Streams";
 
     const list = document.getElementById("channelList");
-
     list.innerHTML = "";
 
     playlist.channels.forEach(channel => {
-
-        const item = document.createElement("div");
-        item.className = "channel-item";
 
         let statusText = "🟠 Unbekannt";
 
         if (channel.status === "online") statusText = "🟢 Online";
         if (channel.status === "offline") statusText = "🔴 Offline";
+
+        const item = document.createElement("div");
+        item.className = "channel-item";
 
         item.innerHTML = `
             <div class="channel-name">${escapeHTML(channel.name)}</div>
@@ -786,9 +795,12 @@ function openChannels(id) {
     });
 
     document.getElementById("channelContainer").classList.add("show");
-}
 
-/* CLOSE CHANNELS */
+    document.getElementById("channelContainer").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
 
 function closeChannels() {
     document.getElementById("channelContainer").classList.remove("show");
@@ -823,16 +835,16 @@ async function checkPlaylist(id) {
 
         try {
 
-            const response = await fetch(channel.url, {
+            await fetch(channel.url, {
                 method: "GET",
                 mode: "no-cors"
             });
 
-            channel.status = "online";
+            channel.status = "unknown";
 
         } catch (error) {
 
-            channel.status = "offline";
+            channel.status = "unknown";
 
         }
 
@@ -841,11 +853,11 @@ async function checkPlaylist(id) {
     saveData();
     renderPlaylists();
 
-    showToast("Prüfung abgeschlossen.");
+    showToast("Prüfung abgeschlossen. Browserstatus ist eingeschränkt.");
 
 }
 
-/* SECURITY */
+/* HTML ESCAPE */
 
 function escapeHTML(text) {
 
@@ -858,7 +870,7 @@ function escapeHTML(text) {
 
 }
 
-/* INITIALIZE */
+/* START */
 
 renderPlaylists();
 
