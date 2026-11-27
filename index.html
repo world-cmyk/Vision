@@ -2,14 +2,10 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VisionX Playlist Manager</title>
 <style>
-:root{
-  --bg:#0b1120;--panel:#131c2e;--panel2:#18243a;--border:#263650;
-  --text:#e9eef8;--muted:#91a1bb;--blue:#4f8cff;--green:#25c58a;
-  --red:#ff647c;--orange:#ffb454;--radius:14px
-}
+:root{--bg:#0b1120;--panel:#131c2e;--panel2:#18243a;--border:#263650;--text:#e9eef8;--muted:#91a1bb;--blue:#4f8cff;--green:#25c58a;--red:#ff647c;--orange:#ffb454;--radius:14px}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
 button,input,select{font:inherit}
@@ -18,16 +14,16 @@ button:hover{border-color:var(--blue);background:#20304c}
 button.primary{background:var(--blue);border-color:var(--blue);color:white}
 button.danger{color:var(--red)}
 input,select{background:#0c1525;color:var(--text);border:1px solid var(--border);border-radius:9px;padding:10px;width:100%}
-input:focus,select:focus{outline:1px solid var(--blue)}
+input:focus,select:focus{outline:1px solid var(--blue}
 header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.brand{font-size:23px;font-weight:800;letter-spacing:.4px}
+.brand{font-size:23px;font-weight:800}
 .brand span{color:var(--blue)}
 .header-actions{display:flex;gap:8px;flex-wrap:wrap}
 main{max-width:1500px;margin:auto;padding:22px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
 .stat{background:var(--panel);border:1px solid var(--border);padding:17px;border-radius:var(--radius)}
-.stat .number{font-size:25px;font-weight:800;margin-top:4px}
-.stat .label{color:var(--muted);font-size:13px}
+.number{font-size:25px;font-weight:800;margin-top:4px}
+.label{color:var(--muted);font-size:13px}
 .toolbar{background:var(--panel);padding:14px;border:1px solid var(--border);border-radius:var(--radius);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
 .toolbar>*{flex:1;min-width:140px}
 .toolbar button{flex:0 0 auto}
@@ -36,26 +32,24 @@ table{width:100%;border-collapse:collapse;min-width:900px}
 th,td{padding:11px 12px;border-bottom:1px solid var(--border);text-align:left}
 th{background:#17243a;color:var(--muted);font-size:12px;position:sticky;top:0}
 tr:hover{background:#17243a}
-tr.dragging{opacity:.35}
-tr.drop-target{outline:2px dashed var(--blue)}
 .channel{display:flex;align-items:center;gap:10px;min-width:240px}
 .logo{width:38px;height:38px;border-radius:8px;object-fit:contain;background:#0b1424;padding:3px}
 .logo-placeholder{width:38px;height:38px;border-radius:8px;background:#24344e;display:grid;place-items:center}
 .channel-name{font-weight:650}
 .channel-url{font-size:11px;color:var(--muted);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.status{font-size:12px;font-weight:700;white-space:nowrap}
-.online{color:var(--green)}.offline{color:var(--red)}.unknown{color:var(--orange)}.checking{color:var(--blue)}
+.online{color:var(--green)}
+.offline{color:var(--red)}
+.unknown{color:var(--orange)}
+.checking{color:var(--blue)}
 .small{font-size:12px;color:var(--muted)}
 .actions{display:flex;gap:5px;flex-wrap:wrap}
 .actions button{padding:6px 8px;font-size:12px}
 .fav{color:#ffd166;font-size:19px;cursor:pointer}
-.badge{padding:4px 8px;border-radius:20px;background:#23344e;font-size:11px}
 .disabled-row{opacity:.48}
 .empty{text-align:center;padding:40px;color:var(--muted)}
 .modal-backdrop{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:15px;z-index:10}
 .modal-backdrop.open{display:flex}
 .modal{width:min(700px,100%);max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px}
-.modal h2{margin-top:0}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-field{display:flex;flex-direction:column;gap:6px}
 .form-field.full{grid-column:1/-1}
@@ -63,89 +57,70 @@ tr.drop-target{outline:2px dashed var(--blue)}
 .toast{position:fixed;bottom:20px;right:20px;background:#1d2c44;border:1px solid var(--border);padding:13px 18px;border-radius:12px;display:none;z-index:30;max-width:90vw}
 .toast.show{display:block}
 @media(max-width:800px){
- main{padding:12px}
- .stats{grid-template-columns:repeat(2,1fr)}
- header{padding:15px}
- .form-grid{grid-template-columns:1fr}
+main{padding:12px}
+.stats{grid-template-columns:repeat(2,1fr)}
+header{padding:15px}
+.form-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand">📺 <span>VisionX</span> Playlist Manager</div>
-  <div class="header-actions">
-    <button onclick="openImport()">📥 Import</button>
-    <button onclick="exportM3U()">📤 M3U Export</button>
-    <button onclick="backupJSON()">💾 Backup</button>
-    <button onclick="restoreJSON()">📂 Restore</button>
-    <button class="primary" onclick="openEditor()">＋ Sender</button>
-  </div>
+<div class="brand">📺 <span>VisionX</span> Playlist Manager</div>
+<div class="header-actions">
+<button onclick="openImport()">📥 Import</button>
+<button onclick="exportM3U()">📤 M3U Export</button>
+<button onclick="backupJSON()">💾 Backup</button>
+<button onclick="restoreJSON()">📂 Restore</button>
+<button class="primary" onclick="openEditor()">＋ Sender</button>
+</div>
 </header>
 
 <main>
 
 <section class="stats">
-  <div class="stat"><div class="label">Sender insgesamt</div><div class="number" id="totalCount">0</div></div>
-  <div class="stat"><div class="label">Online</div><div class="number online" id="onlineCount">0</div></div>
-  <div class="stat"><div class="label">Offline</div><div class="number offline" id="offlineCount">0</div></div>
-  <div class="stat"><div class="label">Favoriten</div><div class="number" id="favoriteCount">0</div></div>
+<div class="stat"><div class="label">Sender insgesamt</div><div class="number" id="totalCount">0</div></div>
+<div class="stat"><div class="label">Online</div><div class="number online" id="onlineCount">0</div></div>
+<div class="stat"><div class="label">Offline</div><div class="number offline" id="offlineCount">0</div></div>
+<div class="stat"><div class="label">Favoriten</div><div class="number" id="favoriteCount">0</div></div>
 </section>
 
 <div class="toolbar">
-  <input id="search" placeholder="🔎 Sender suchen…" oninput="render()">
-
-  <select id="groupFilter" onchange="render()">
-    <option value="">Alle Gruppen</option>
-  </select>
-
-  <select id="sourceFilter" onchange="render()">
-    <option value="">Alle Quellen</option>
-  </select>
-
-  <button class="danger" onclick="deleteSelectedSource()">🗑 Quelle löschen</button>
-
-  <select id="statusFilter" onchange="render()">
-    <option value="">Alle Status</option>
-    <option value="online">Online</option>
-    <option value="offline">Offline</option>
-    <option value="unknown">Nicht prüfbar</option>
-  </select>
-
-  <select id="sortSelect" onchange="render()">
-    <option value="manual">Manuelle Reihenfolge</option>
-    <option value="name">Name A–Z</option>
-    <option value="group">Gruppe</option>
-  </select>
-
-  <button onclick="checkAll()">🔍 Alle prüfen</button>
-  <button onclick="manageGroups()">📁 Gruppen</button>
+<input id="search" placeholder="🔎 Sender suchen…" oninput="render()">
+<select id="groupFilter" onchange="render()"><option value="">Alle Gruppen</option></select>
+<select id="sourceFilter" onchange="render()"><option value="">Alle Quellen</option></select>
+<button class="danger" onclick="deleteSelectedSource()">🗑 Quelle löschen</button>
+<select id="statusFilter" onchange="render()">
+<option value="">Alle Status</option>
+<option value="online">Online</option>
+<option value="offline">Offline</option>
+<option value="unknown">Nicht prüfbar</option>
+</select>
+<select id="sortSelect" onchange="render()">
+<option value="manual">Manuelle Reihenfolge</option>
+<option value="name">Name A–Z</option>
+<option value="group">Gruppe</option>
+</select>
+<button onclick="checkAll()">🔍 Alle prüfen</button>
+<button onclick="manageGroups()">📁 Gruppen</button>
 </div>
 
 <div class="table-wrap">
 <table>
 <thead>
-<tr>
-<th>↕</th><th>Sender</th><th>Gruppe</th>
-<th>Status</th><th>Speed</th><th>Antwort</th><th>★</th><th>Aktionen</th>
-</tr>
+<tr><th>↕</th><th>Sender</th><th>Gruppe</th><th>Quelle</th><th>Status</th><th>Antwort</th><th>★</th><th>Aktionen</th></tr>
 </thead>
 <tbody id="channelTable"></tbody>
 </table>
 </div>
 
-<div class="small" style="margin-top:10px">
-Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
-„Nicht prüfbar“ bedeutet nicht automatisch „Offline“.
-</div>
-
+<p class="small">Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein. „Nicht prüfbar“ bedeutet nicht automatisch „Offline“.</p>
 </main>
 
-<!-- Sender bearbeiten -->
 <div class="modal-backdrop" id="editorModal">
 <div class="modal">
 <h2 id="editorTitle">Sender bearbeiten</h2>
-
 <div class="form-grid">
 <div class="form-field full"><label>Sendername</label><input id="fName"></div>
 <div class="form-field full"><label>Stream URL</label><input id="fURL"></div>
@@ -153,7 +128,6 @@ Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
 <div class="form-field"><label>Gruppe</label><input id="fGroup" list="groupList"><datalist id="groupList"></datalist></div>
 <div class="form-field"><label>TVG-ID</label><input id="fTVG"></div>
 <div class="form-field full"><label>TVG-Logo URL</label><input id="fLogo"></div>
-
 <div class="form-field full">
 <label>Werkzeuge</label>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -162,8 +136,6 @@ Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
 <button type="button" onclick="searchLogo()">🖼️ Logo suchen</button>
 </div>
 </div>
-</div>
-
 <div class="modal-actions">
 <button onclick="closeEditor()">Abbrechen</button>
 <button class="primary" onclick="saveChannel()">Speichern</button>
@@ -171,49 +143,32 @@ Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
 </div>
 </div>
 
-<!-- Import -->
 <div class="modal-backdrop" id="importModal">
 <div class="modal">
 <h2>M3U importieren</h2>
-
 <div class="form-field">
 <label>Playlist-URL</label>
 <input id="importURL" placeholder="https://…m3u">
 </div>
-
 <div class="modal-actions" style="justify-content:flex-start">
 <button class="primary" onclick="importFromURL()">URL laden</button>
 <button onclick="document.getElementById('fileInput').click()">Datei auswählen</button>
 </div>
-
 <input type="file" id="fileInput" accept=".m3u,.m3u8,.txt" hidden>
-
-<p class="small">
-Bei URL-Import kann der externe Server den Zugriff durch CORS blockieren.
-Der Dateiimport funktioniert lokal.
-</p>
-
-<div class="modal-actions">
-<button onclick="closeImport()">Schließen</button>
-</div>
+<p class="small">URL-Import kann durch CORS blockiert werden. Dateiimport funktioniert ohne CORS.</p>
+<div class="modal-actions"><button onclick="closeImport()">Schließen</button></div>
 </div>
 </div>
 
-<!-- Gruppen -->
 <div class="modal-backdrop" id="groupsModal">
 <div class="modal">
 <h2>Gruppen verwalten</h2>
-
 <div style="display:flex;gap:8px;margin-bottom:15px">
 <input id="newGroup" placeholder="Neue Gruppe">
 <button class="primary" onclick="addGroup()">＋ Hinzufügen</button>
 </div>
-
 <div id="groupsList"></div>
-
-<div class="modal-actions">
-<button onclick="closeGroups()">Schließen</button>
-</div>
+<div class="modal-actions"><button onclick="closeGroups()">Schließen</button></div>
 </div>
 </div>
 
@@ -224,782 +179,456 @@ Der Dateiimport funktioniert lokal.
 "use strict";
 
 const STORAGE_KEY="visionx_playlist_manager_v1";
-
-let channels=[];
-let groups=[];
-let sources=[];
-let editingId=null;
-let draggedId=null;
-let checking=false;
+let channels=[],groups=[],sources=[],editingId=null,draggedId=null,checking=false;
 
 function uid(){
- return "vx_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8);
+return "vx_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8)
 }
 
 function esc(s=""){
- return String(s).replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))
 }
 
 function toast(msg){
- const t=document.getElementById("toast");
- t.textContent=msg;
- t.classList.add("show");
- clearTimeout(toast.timer);
- toast.timer=setTimeout(()=>t.classList.remove("show"),3500);
+const t=document.getElementById("toast");
+t.textContent=msg;
+t.classList.add("show");
+clearTimeout(toast.timer);
+toast.timer=setTimeout(()=>t.classList.remove("show"),4000)
 }
 
 function save(){
- localStorage.setItem(STORAGE_KEY,JSON.stringify({channels,groups,sources}));
+localStorage.setItem(STORAGE_KEY,JSON.stringify({channels,groups,sources}))
 }
 
 function load(){
- try{
-  const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
-  channels=Array.isArray(d.channels)?d.channels:[];
-  groups=Array.isArray(d.groups)?d.groups:[];
-  sources=Array.isArray(d.sources)?d.sources:[[];
- }catch{
-  channels=[];
-  groups=[];
-  sources=[];
- }
+try{
+const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
+channels=Array.isArray(d.channels)?d.channels:[];
+groups=Array.isArray(d.groups)?d.groups:[];
+sources=Array.isArray(d.sources)?d.sources:[]
+}catch{
+channels=[];
+groups=[];
+sources=[]
+}
 }
 
 function ensureGroup(g){
- g=(g||"").trim();
- if(g&&!groups.includes(g))groups.push(g);
+g=(g||"").trim();
+if(g&&!groups.includes(g))groups.push(g)
 }
 
 function normalize(c){
- return {
-  id:c.id||uid(),
-  name:c.name||"Unbekannter Sender",
-  url:c.url||"",
-  alt:c.alt||"",
-  group:c.group||"",
-  tvgId:c.tvgId||"",
-  logo:c.logo||"",
-  status:c.status||"unknown",
-  speed:c.speed||"",
-  response:c.response||"",
-  favorite:!!c.favorite,
-  enabled:c.enabled!==false,
-  sourceId:c.sourceId||"",
-  sourceURL:c.sourceURL||"",
-  sourceName:c.sourceName||""
- };
+return{
+id:c.id||uid(),
+name:c.name||"Unbekannter Sender",
+url:c.url||"",
+alt:c.alt||"",
+group:c.group||"",
+tvgId:c.tvgId||"",
+logo:c.logo||"",
+status:c.status||"unknown",
+speed:c.speed||"",
+response:c.response||"",
+favorite:!!c.favorite,
+enabled:c.enabled!==false,
+sourceId:c.sourceId||"",
+sourceURL:c.sourceURL||"",
+sourceName:c.sourceName||""
 }
-
-function render(){
- updateStats();
- updateGroupControls();
- updateSourceFilter();
-
- const tbody=document.getElementById("channelTable");
- const query=document.getElementById("search").value.toLowerCase();
- const group=document.getElementById("groupFilter").value;
- const status=document.getElementById("statusFilter").value;
- const sort=document.getElementById("sortSelect").value;
- const sourceFilter=document.getElementById("sourceFilter").value;
-
- let list=channels.filter(c=>
-  (!query||(c.name+" "+c.url+" "+c.group+" "+c.tvgId).toLowerCase().includes(query))&&
-  (!group||c.group===group)&&
-  (!status||c.status===status)&&
-  (!sourceFilter||c.sourceId===sourceFilter)
- );
-
- if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
- if(sort==="group")list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
-
- tbody.innerHTML="";
-
- if(!list.length){
-  tbody.innerHTML='<tr><td colspan="8" class="empty">Keine Sender gefunden.</td></tr>';
-  return;
- }
-
- for(const c of list){
-  const tr=document.createElement("tr");
-  tr.dataset.id=c.id;
-  tr.draggable=sort==="manual";
-
-  if(!c.enabled)tr.classList.add("disabled-row");
-
-  const statusText=c.status==="online"?"🟢 Online":
-   c.status==="offline"?"🔴 Offline":
-   c.status==="checking"?"🔵 Prüft…":"🟠 Nicht prüfbar";
-
-  tr.innerHTML=`
-   <td>${sort==="manual"?"☰":""}</td>
-   <td><div class="channel">
-    ${c.logo?`<img class="logo" src="${esc(c.logo)}" onerror="this.style.display='none'">`:'<div class="logo-placeholder">📺</div>'}
-    <div>
-      <div class="channel-name">${esc(c.name)}</div>
-      <div class="channel-url" title="${esc(c.url)}">${esc(c.url)}</div>
-    </div>
-   </div></td>
-   <td>${esc(c.group||"—")}</td>
-   <td><span class="status ${c.status}">${statusText}</span></td>
-   <td>${esc(c.speed||"—")}</td>
-   <td>${esc(c.response||"—")}</td>
-   <td><span class="fav" onclick="toggleFavorite('${c.id}')">${c.favorite?"★":"☆"}</span></td>
-   <td><div class="actions">
-    <button onclick="checkOne('${c.id}')">Check</button>
-    <button onclick="toggleEnabled('${c.id}')">${c.enabled?"Deaktivieren":"Aktivieren"}</button>
-    <button onclick="editChannel('${c.id}')">Edit</button>
-    <button class="danger" onclick="deleteChannel('${c.id}')">✕</button>
-   </div></td>`;
-
-  if(sort==="manual"){
-   tr.addEventListener("dragstart",e=>{
-    draggedId=c.id;
-    tr.classList.add("dragging");
-    e.dataTransfer.effectAllowed="move";
-   });
-
-   tr.addEventListener("dragend",()=>{
-    draggedId=null;
-    tr.classList.remove("dragging");
-    document.querySelectorAll(".drop-target").forEach(x=>x.classList.remove("drop-target"));
-   });
-
-   tr.addEventListener("dragover",e=>{
-    e.preventDefault();
-    tr.classList.add("drop-target");
-   });
-
-   tr.addEventListener("dragleave",()=>tr.classList.remove("drop-target"));
-
-   tr.addEventListener("drop",e=>{
-    e.preventDefault();
-    tr.classList.remove("drop-target");
-    moveChannel(draggedId,c.id);
-   });
-  }
-
-  tbody.appendChild(tr);
- }
 }
 
 function updateStats(){
- document.getElementById("totalCount").textContent=channels.length;
- document.getElementById("onlineCount").textContent=channels.filter(c=>c.status==="online").length;
- document.getElementById("offlineCount").textContent=channels.filter(c=>c.status==="offline").length;
- document.getElementById("favoriteCount").textContent=channels.filter(c=>c.favorite).length;
+document.getElementById("totalCount").textContent=channels.length;
+document.getElementById("onlineCount").textContent=channels.filter(c=>c.status==="online").length;
+document.getElementById("offlineCount").textContent=channels.filter(c=>c.status==="offline").length;
+document.getElementById("favoriteCount").textContent=channels.filter(c=>c.favorite).length
 }
 
 function updateGroupControls(){
- const f=document.getElementById("groupFilter");
- const v=f.value;
-
- f.innerHTML='<option value="">Alle Gruppen</option>'+
-  groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
-
- f.value=groups.includes(v)?v:"";
-
- document.getElementById("groupList").innerHTML=
-  groups.map(g=>`<option value="${esc(g)}">`).join("");
+const f=document.getElementById("groupFilter"),v=f.value;
+f.innerHTML='<option value="">Alle Gruppen</option>'+groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
+f.value=groups.includes(v)?v:"";
+document.getElementById("groupList").innerHTML=groups.map(g=>`<option value="${esc(g)}">`).join("")
 }
 
 function updateSourceFilter(){
- const select=document.getElementById("sourceFilter");
- if(!select)return;
+const select=document.getElementById("sourceFilter"),current=select.value;
+const list=[...new Map(channels.filter(c=>c.sourceId).map(c=>[c.sourceId,{id:c.sourceId,name:c.sourceName||c.sourceURL||"Importquelle"}])).values()];
+select.innerHTML='<option value="">Alle Quellen</option>'+list.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join("");
+if(list.some(s=>s.id===current))select.value=current
+}
 
- const current=select.value;
+function render(){
+updateStats();
+updateGroupControls();
+updateSourceFilter();
 
- const activeSources=[...new Map(
-  channels.filter(c=>c.sourceId).map(c=>[
-   c.sourceId,
-   {id:c.sourceId,name:c.sourceName||c.sourceURL||"Importquelle"}
-  ])
- ).values()];
+const tbody=document.getElementById("channelTable");
+const q=document.getElementById("search").value.toLowerCase();
+const group=document.getElementById("groupFilter").value;
+const status=document.getElementById("statusFilter").value;
+const sort=document.getElementById("sortSelect").value;
+const source=document.getElementById("sourceFilter").value;
 
- select.innerHTML='<option value="">Alle Quellen</option>'+
-  activeSources.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join("");
+let list=channels.filter(c=>
+(!q||(c.name+" "+c.url+" "+c.group+" "+c.tvgId).toLowerCase().includes(q)&&(!group||c.group===group)&&(!status||c.status===status)&&(!source||c.sourceId===source))
+);
 
- if(activeSources.some(s=>s.id===current))select.value=current;
+if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+if(sort==="group")list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
+
+tbody.innerHTML="";
+
+if(!list.length){
+tbody.innerHTML='<tr><td colspan="8" class="empty">Keine Sender gefunden.</td></tr>';
+return
+}
+
+for(const c of list){
+const tr=document.createElement("tr");
+tr.dataset.id=c.id;
+tr.draggable=sort==="manual";
+if(!c.enabled)tr.classList.add("disabled-row");
+
+const statusText=c.status==="online"?"🟢 Online":c.status==="offline"?"🔴 Offline":c.status==="checking"?"🔵 Prüft…":"🟠 Nicht prüfbar";
+
+tr.innerHTML=`
+<td>${sort==="manual"?"☰":""}</td>
+<td><div class="channel">
+${c.logo?`<img class="logo" src="${esc(c.logo)}" onerror="this.style.display='none'">`:'<div class="logo-placeholder">📺</div>'}
+<div><div class="channel-name">${esc(c.name)}</div><div class="channel-url" title="${esc(c.url)}">${esc(c.url)}</div></div></div></td>
+<td>${esc(c.group||"—")}</td>
+<td>${esc(c.sourceName||"—")}</td>
+<td><span class="${c.status}">${statusText}</span></td>
+<td>${esc(c.response||"—")}</td>
+<td><span class="fav" onclick="toggleFavorite('${c.id}')">${c.favorite?"★":"☆"}</span></td>
+<td><div class="actions">
+<button onclick="checkOne('${c.id}')">Check</button>
+<button onclick="toggleEnabled('${c.id}')">${c.enabled?"Deaktivieren":"Aktivieren"}</button>
+<button onclick="editChannel('${c.id}')">Edit</button>
+<button class="danger" onclick="deleteChannel('${c.id}')">✕</button>
+</div></td>`;
+
+if(sort==="manual"){
+tr.addEventListener("dragstart",e=>{draggedId=c.id;e.dataTransfer.effectAllowed="move"});
+tr.addEventListener("dragover",e=>e.preventDefault());
+tr.addEventListener("drop",e=>{e.preventDefault();moveChannel(draggedId,c.id)})
+}
+tbody.appendChild(tr)
+}
 }
 
 function deleteSelectedSource(){
- const id=document.getElementById("sourceFilter").value;
-
- if(!id){
-  toast("Bitte zuerst eine Importquelle im Filter auswählen.");
-  return;
- }
-
- const list=channels.filter(c=>c.sourceId===id);
-
- if(!list.length){
-  toast("Keine Sender dieser Quelle gefunden.");
-  return;
- }
-
- const name=list[0].sourceName||list[0].sourceURL||"Importquelle";
-
- if(!confirm(
-  `Quelle "${name}" wirklich löschen?\n\n`+
-  `${list.length} Sender werden entfernt. Andere Quellen bleiben erhalten.`
- ))return;
-
- channels=channels.filter(c=>c.sourceId!==id);
- sources=sources.filter(s=>s.id!==id);
-
- document.getElementById("sourceFilter").value="";
-
- save();
- render();
-
- toast(`${list.length} Sender aus Quelle gelöscht.`);
+const id=document.getElementById("sourceFilter").value;
+if(!id){toast("Bitte zuerst eine Quelle auswählen.");return}
+const list=channels.filter(c=>c.sourceId===id);
+if(!list.length){toast("Keine Sender dieser Quelle gefunden.");return}
+const name=list[0].sourceName||list[0].sourceURL||"Importquelle";
+if(!confirm(`Quelle "${name}" und ${list.length} Sender wirklich löschen?`))return;
+channels=channels.filter(c=>c.sourceId!==id);
+sources=sources.filter(s=>s.id!==id);
+document.getElementById("sourceFilter").value="";
+save();render();
+toast(`${list.length} Sender aus Quelle gelöscht.`)
 }
 
 function sourceHash(str){
- let h=2166136261;
- for(let i=0;i<str.length;i++){
-  h^=str.charCodeAt(i);
-  h=Math.imul(h,16777619);
- }
- return (h>>>0).toString(36);
+let h=2166136261;
+for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}
+return(h>>>0).toString(36)
 }
 
-function registerSource(source){
- if(!source.sourceId)return;
-
- const existing=sources.find(s=>s.id===source.sourceId);
-
- const record={
-  id:source.sourceId,
-  name:source.sourceName||"Importquelle",
-  url:source.sourceURL||"",
-  type:source.type||"url",
-  importedAt:new Date().toISOString()
- };
-
- if(existing)Object.assign(existing,record);
- else sources.push(record);
+function registerSource(s){
+if(!s.sourceId)return;
+const rec={id:s.sourceId,name:s.sourceName||"Importquelle",url:s.sourceURL||"",type:s.type||"url",importedAt:new Date().toISOString()};
+const old=sources.find(x=>x.id===s.sourceId);
+if(old)Object.assign(old,rec);else sources.push(rec)
 }
 
 function moveChannel(from,to){
- if(!from||from===to)return;
-
- const a=channels.findIndex(c=>c.id===from);
- const b=channels.findIndex(c=>c.id===to);
-
- if(a<0||b<0)return;
-
- const [item]=channels.splice(a,1);
- channels.splice(b,0,item);
-
- save();
- render();
+if(!from||from===to)return;
+const a=channels.findIndex(c=>c.id===from),b=channels.findIndex(c=>c.id===to);
+if(a<0||b<0)return;
+const[item]=channels.splice(a,1);
+channels.splice(b,0,item);
+save();render()
 }
 
 function toggleFavorite(id){
- const c=channels.find(x=>x.id===id);
- if(c){c.favorite=!c.favorite;save();render()}
+const c=channels.find(x=>x.id===id);
+if(c){c.favorite=!c.favorite;save();render()}
 }
 
 function toggleEnabled(id){
- const c=channels.find(x=>x.id===id);
- if(c){c.enabled=!c.enabled;save();render()}
+const c=channels.find(x=>x.id===id);
+if(c){c.enabled=!c.enabled;save();render()}
 }
 
 function deleteChannel(id){
- if(!confirm("Sender wirklich löschen?"))return;
- channels=channels.filter(c=>c.id!==id);
- save();
- render();
+if(!confirm("Sender wirklich löschen?"))return;
+channels=channels.filter(c=>c.id!==id);
+save();render()
 }
 
 function openEditor(id=null){
- editingId=id;
- const c=id?channels.find(x=>x.id===id):null;
-
- document.getElementById("editorTitle").textContent=c?"Sender bearbeiten":"Sender hinzufügen";
- document.getElementById("fName").value=c?.name||"";
- document.getElementById("fURL").value=c?.url||"";
- document.getElementById("fAlt").value=c?.alt||"";
- document.getElementById("fGroup").value=c?.group||"";
- document.getElementById("fTVG").value=c?.tvgId||"";
- document.getElementById("fLogo").value=c?.logo||"";
-
- document.getElementById("editorModal").classList.add("open");
+editingId=id;
+const c=id?channels.find(x=>x.id===id):null;
+document.getElementById("editorTitle").textContent=c?"Sender bearbeiten":"Sender hinzufügen";
+document.getElementById("fName").value=c?.name||"";
+document.getElementById("fURL").value=c?.url||"";
+document.getElementById("fAlt").value=c?.alt||"";
+document.getElementById("fGroup").value=c?.group||"";
+document.getElementById("fTVG").value=c?.tvgId||"";
+document.getElementById("fLogo").value=c?.logo||"";
+document.getElementById("editorModal").classList.add("open")
 }
 
 function editChannel(id){openEditor(id)}
 function closeEditor(){document.getElementById("editorModal").classList.remove("open")}
 
 function saveChannel(){
- const existing=editingId?channels.find(x=>x.id===editingId):{};
-
- const c=normalize({
-  ...existing,
-  id:editingId||uid(),
-  name:document.getElementById("fName").value.trim(),
-  url:document.getElementById("fURL").value.trim(),
-  alt:document.getElementById("fAlt").value.trim(),
-  group:document.getElementById("fGroup").value.trim(),
-  tvgId:document.getElementById("fTVG").value.trim(),
-  logo:document.getElementById("fLogo").value.trim()
- });
-
- if(!c.name||!c.url){
-  toast("Name und Stream URL sind erforderlich.");
-  return;
- }
-
- ensureGroup(c.group);
-
- if(editingId){
-  const i=channels.findIndex(x=>x.id===editingId);
-  if(i>=0)channels[i]=c;
- }else channels.push(c);
-
- save();
- closeEditor();
- render();
- toast("Sender gespeichert.");
+const prev=editingId?channels.find(x=>x.id===editingId)||{}:{};
+const c=normalize({...prev,id:editingId||uid(),name:document.getElementById("fName").value.trim(),url:document.getElementById("fURL").value.trim(),alt:document.getElementById("fAlt").value.trim(),group:document.getElementById("fGroup").value.trim(),tvgId:document.getElementById("fTVG").value.trim(),logo:document.getElementById("fLogo").value.trim()});
+if(!c.name||!c.url){toast("Name und Stream-URL sind erforderlich.");return}
+ensureGroup(c.group);
+if(editingId){const i=channels.findIndex(x=>x.id===editingId);if(i>=0)channels[i]=c}else channels.push(c);
+save();closeEditor();render();toast("Sender gespeichert.")
 }
 
 function searchAlternative(){
- const n=document.getElementById("fName").value.trim();
- if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" alternative stream link IPTV"),"_blank","noopener");
+const n=document.getElementById("fName").value.trim();
+if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" alternative stream link IPTV"),"_blank","noopener")
 }
 
 function searchTVG(){
- const n=document.getElementById("fName").value.trim();
- if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" tvg-id xmltv"),"_blank","noopener");
+const n=document.getElementById("fName").value.trim();
+if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" tvg-id xmltv"),"_blank","noopener")
 }
 
 function searchLogo(){
- const n=document.getElementById("fName").value.trim();
- if(n)window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(n+" TV logo"),"_blank","noopener");
+const n=document.getElementById("fName").value.trim();
+if(n)window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(n+" TV logo),"_blank","noopener")
 }
 
-function manageGroups(){
- renderGroups();
- document.getElementById("groupsModal").classList.add("open");
-}
-
-function closeGroups(){
- document.getElementById("groupsModal").classList.remove("open");
-}
+function manageGroups(){renderGroups();document.getElementById("groupsModal").classList.add("open")}
+function closeGroups(){document.getElementById("groupsModal").classList.remove("open")}
 
 function renderGroups(){
- const el=document.getElementById("groupsList");
-
- el.innerHTML=groups.map((g,i)=>`
-  <div style="display:flex;gap:8px;align-items:center;margin:8px 0">
-   <input value="${esc(g)}" onchange="renameGroup(${i},this.value)">
-   <button class="danger" onclick="deleteGroup(${i})">Löschen</button>
-  </div>
- `).join("")||'<p class="small">Keine Gruppen vorhanden.</p>';
+document.getElementById("groupsList").innerHTML=groups.map((g,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0"><input value="${esc(g)}" onchange="renameGroup(${i},this.value)"><button class="danger" onclick="deleteGroup(${i})">Löschen</button></div>`).join("")||'<p class="small">Keine Gruppen vorhanden.</p>'
 }
 
 function addGroup(){
- const v=document.getElementById("newGroup").value.trim();
- if(!v)return;
-
- if(groups.includes(v)){
-  toast("Gruppe existiert bereits.");
-  return;
- }
-
- groups.push(v);
- document.getElementById("newGroup").value="";
-
- save();
- renderGroups();
- render();
+const v=document.getElementById("newGroup").value.trim();
+if(!v)return;
+if(groups.includes(v)){toast("Gruppe existiert bereits.");return}
+groups.push(v);
+document.getElementById("newGroup").value="";
+save();renderGroups();render()
 }
 
 function renameGroup(i,v){
- v=v.trim();
-
- if(!v||groups.includes(v)){
-  toast("Gruppenname ungültig oder bereits vorhanden.");
-  renderGroups();
-  return;
- }
-
- const old=groups[i];
- groups[i]=v;
-
- channels.forEach(c=>{if(c.group===old)c.group=v});
-
- save();
- renderGroups();
- render();
+v=v.trim();
+if(!v||groups.includes(v)){toast("Gruppenname ungültig oder bereits vorhanden.");renderGroups();return}
+const old=groups[i];
+groups[i]=v;
+channels.forEach(c=>{if(c.group===old)c.group=v});
+save();renderGroups();render()
 }
 
 function deleteGroup(i){
- const g=groups[i];
-
- if(!confirm(`Gruppe "${g}" löschen? Sender werden keiner Gruppe zugeordnet.`))return;
-
- groups.splice(i,1);
- channels.forEach(c=>{if(c.group===g)c.group=""});
-
- save();
- renderGroups();
- render();
+const g=groups[i];
+if(!confirm(`Gruppe "${g}" löschen? Sender werden keiner Gruppe zugeordnet.`))return;
+groups.splice(i,1);
+channels.forEach(c=>{if(c.group===g)c.group=""});
+save();renderGroups();render()
 }
 
-function openImport(){
- document.getElementById("importModal").classList.add("open");
-}
+function openImport(){document.getElementById("importModal").classList.add("open")}
+function closeImport(){document.getElementById("importModal").classList.remove("open")}
 
-function closeImport(){
- document.getElementById("importModal").classList.remove("open");
+function parseM3U(text,source={}){
+text=String(text||"").replace(/^\uFEFF/,"");
+const lines=text.split(/\r?\n/);
+let pending=null,added=0;
+for(const raw of lines){
+const line=raw.trim();
+if(!line)continue;
+if(line.startsWith("#EXTINF:")){
+const info=line.slice(8),comma=info.indexOf(","),meta=comma<0?info:info.slice(0,comma),display=comma<0?"":info.slice(comma+1).trim(),attrs={};
+for(const m of meta.matchAll(/([\w-]+)="([^"]*)"/g))attrs[m[1]]=m[2];
+pending={name:display||attrs["tvg-name"]||"Unbekannter Sender",group:attrs["group-title"]||"",tvgId:attrs["tvg-id"]||"",logo:attrs["tvg-logo"]||"",url:"",alt:"",sourceId:source.sourceId||"",sourceURL:source.sourceURL||"",sourceName:source.sourceName||""}
+}else if(!line.startsWith("#")&&pending){
+pending.url=line;
+const dup=channels.some(c=>c.url===pending.url&&c.sourceId===pending.sourceId);
+if(!dup){ensureGroup(pending.group);channels.push(normalize(pending));added++}
+pending=null
+}
+}
+if(source.sourceId)registerSource(source);
+save();render();
+return added
 }
 
 document.getElementById("fileInput").addEventListener("change",async e=>{
- const file=e.target.files?.[0];
- if(!file)return;
-
- try{
-  const source={
-   sourceId:"file_"+uid(),
-   sourceURL:"",
-   sourceName:file.name,
-   type:"file"
-  };
-
-  parseM3U(await file.text(),source);
-  closeImport();
-  toast("Playlist importiert.");
- }catch(err){
-  toast("Import fehlgeschlagen: "+err.message);
- }
-
- e.target.value="";
+const file=e.target.files?.[0];
+if(!file)return;
+try{
+const text=await file.text();
+if(!text.trim())throw new Error("Die Datei ist leer.");
+if(!text.includes("#EXTINF"))throw new Error("Keine M3U-Datei: #EXTINF fehlt.");
+const sourceId="file_"+sourceHash(file.name+"_"+file.size+"_"+file.lastModified);
+channels=channels.filter(c=>c.sourceId!==sourceId);
+sources=sources.filter(s=>s.id!==sourceId);
+const count=parseM3U(text,{sourceId,sourceURL:"",sourceName:file.name,type:"file"});
+if(count===0)throw new Error("Keine Sender mit Stream-URL gefunden.");
+closeImport();
+toast(`${count} Sender aus ${file.name} importiert.`);
+}catch(err){
+toast("Import fehlgeschlagen: "+err.message)
+}
+e.target.value=""
 });
 
-function parseM3U(text,source={}){
- text=text.replace(/^\uFEFF/,"");
-
- const lines=text.split(/\r?\n/);
- let pending=null,added=0;
-
- for(const line of lines){
-  if(line.startsWith("#EXTINF:")){
-   const attrs={};
-
-   for(const m of line.matchAll(/([\w-]+)="([^"]*)"/g))
-    attrs[m[1]]=m[2];
-
-   const name=line.substring(line.lastIndexOf(",")+1).trim()||
-    attrs["tvg-name"]||"Unbekannter Sender";
-
-   pending={
-    name,
-    group:attrs["group-title"]||"",
-    tvgId:attrs["tvg-id"]||"",
-    logo:attrs["tvg-logo"]||"",
-    url:"",
-    alt:"",
-    sourceId:source.sourceId||"",
-    sourceURL:source.sourceURL||"",
-    sourceName:source.sourceName||""
-   };
-
-  }else if(line.trim()&&!line.startsWith("#")&&pending){
-
-   pending.url=line.trim();
-
-   const duplicate=channels.some(c=>
-    c.url===pending.url&&c.sourceId===(source.sourceId||"")
-   );
-
-   if(!duplicate){
-    ensureGroup(pending.group);
-    channels.push(normalize(pending));
-    added++;
-   }
-
-   pending=null;
-  }
- }
-
- if(source.sourceId)registerSource(source);
-
- save();
- render();
- toast(`${added} Sender importiert.`);
-}
-
 async function importFromURL(){
- const url=document.getElementById("importURL").value.trim();
-
- if(!url){
-  toast("URL eingeben.");
-  return;
- }
-
- try{
-  const r=await fetch(url);
-
-  if(!r.ok)throw new Error("HTTP "+r.status);
-
-  const sourceId="url_"+sourceHash(url);
-  const sourceName=url.split("/").pop()||url;
-
-  // Bei erneutem Import derselben URL werden die alten Sender ersetzt.
-  channels=channels.filter(c=>c.sourceId!==sourceId);
-  sources=sources.filter(s=>s.id!==sourceId);
-
-  parseM3U(await r.text(),{
-   sourceId,
-   sourceURL:url,
-   sourceName,
-   type:"url"
-  });
-
-  closeImport();
-
- }catch(e){
-  toast("URL nicht abrufbar (möglicherweise CORS). Bitte Playlist herunterladen und als Datei importieren.");
- }
+const url=document.getElementById("importURL").value.trim();
+if(!url){toast("Bitte Playlist-URL eingeben.");return}
+if(!/^https?:\/\//i.test(url)){toast("Bitte eine HTTP- oder HTTPS-URL eingeben.");return}
+try{
+const response=await fetch(url,{cache:"no-store"});
+if(!response.ok)throw new Error("HTTP "+response.status);
+const text=await response.text();
+if(!text.includes("#EXTINF"))throw new Error("Keine gültige M3U-Playlist");
+const sourceId="url_"+sourceHash(url),sourceName=url.split("/").pop()||url;
+channels=channels.filter(c=>c.sourceId!==sourceId);
+sources=sources.filter(s=>s.id!==sourceId);
+const count=parseM3U(text,{sourceId,sourceURL:url,sourceName,type:"url"});
+if(!count)throw new Error("Keine Sender gefunden");
+closeImport();toast(`${count} Sender importiert.`);
+}catch(err){
+toast("URL-Import fehlgeschlagen: CORS oder ungültige Playlist. Lade die M3U-Datei herunter und importiere sie über 'Datei auswählen'.")
+}
 }
 
 function exportM3U(){
- const list=channels.filter(c=>c.enabled);
- let out="#EXTM3U\n";
-
- for(const c of list){
-  out+=`#EXTINF:-1 tvg-id="${c.tvgId||""}" tvg-logo="${c.logo||""}" group-title="${c.group||""}",${c.name}\n`;
-  out+=`${c.url}\n`;
- }
-
- const blob=new Blob([out],{type:"audio/x-mpegurl"});
- const a=document.createElement("a");
-
- a.href=URL.createObjectURL(blob);
- a.download="VisionX.m3u";
- a.click();
-
- setTimeout(()=>URL.revokeObjectURL(a.href),1500);
- toast("M3U exportiert.");
+let out="#EXTM3U\n";
+for(const c of channels.filter(c=>c.enabled)){
+out+=`#EXTINF:-1 tvg-id="${c.tvgId||""}" tvg-logo="${c.logo||""}" group-title="${c.group||""}",${c.name}\n${c.url}\n`
+}
+downloadBlob(new Blob([out],{type:"audio/x-mpegurl"}),"VisionX.m3u");
+toast("M3U exportiert.")
 }
 
 function backupJSON(){
- const blob=new Blob([JSON.stringify({channels,groups,sources},null,2)],{type:"application/json"});
- downloadBlob(blob,"VisionX-backup.json");
+downloadBlob(new Blob([JSON.stringify({channels,groups,sources},null,2)],{type:"application/json"}),"VisionX-backup.json")
 }
 
 function downloadBlob(blob,name){
- const a=document.createElement("a");
- a.href=URL.createObjectURL(blob);
- a.download=name;
- a.click();
- setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+const a=document.createElement("a"),url=URL.createObjectURL(blob);
+a.href=url;a.download=name;a.click();
+setTimeout(()=>URL.revokeObjectURL(url),1500)
 }
 
-function restoreJSON(){
- document.getElementById("jsonFile").click();
-}
+function restoreJSON(){document.getElementById("jsonFile").click()}
 
 document.getElementById("jsonFile").addEventListener("change",async e=>{
- const file=e.target.files?.[0];
- if(!file)return;
-
- try{
-  const d=JSON.parse(await file.text());
-
-  if(!Array.isArray(d.channels))throw new Error("Ungültige Datei");
-
-  channels=d.channels.map(normalize);
-  groups=Array.isArray(d.groups)?d.groups:[];
-  sources=Array.isArray(d.sources)?d.sources:[];
-
-  channels.forEach(c=>ensureGroup(c.group));
-
-  save();
-  render();
-  toast("Backup wiederhergestellt.");
-
- }catch{
-  toast("Backup konnte nicht gelesen werden.");
- }
-
- e.target.value="";
+const file=e.target.files?.[0];
+if(!file)return;
+try{
+const d=JSON.parse(await file.text());
+if(!Array.isArray(d.channels))throw new Error("Ungültige Backup-Datei");
+channels=d.channels.map(normalize);
+groups=Array.isArray(d.groups)?d.groups:[];
+sources=Array.isArray(d.sources)?d.sources:[];
+channels.forEach(c=>ensureGroup(c.group));
+save();render();toast("Backup wiederhergestellt.")
+}catch{
+toast("Backup konnte nicht gelesen werden.")
+}
+e.target.value=""
 });
 
 async function checkOne(id){
- const c=channels.find(x=>x.id===id);
- if(!c)return;
-
- c.status="checking";
- render();
-
- const start=performance.now();
-
- try{
-  const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),7000);
-
-  const response=await fetch(c.url,{
-   method:"GET",
-   headers:{"Range":"bytes=0-65535"},
-   signal:controller.signal,
-   cache:"no-store"
-  });
-
-  clearTimeout(timer);
-
-  const elapsed=Math.round(performance.now()-start);
-  c.response=elapsed+" ms";
-
-  if(response.status===404||response.status===410){
-   c.status="offline";
-   c.speed="—";
-  }else if(response.ok){
-   c.status="online";
-
-   try{
-    const reader=response.body?.getReader();
-
-    if(reader){
-     const speedStart=performance.now();
-     const first=await reader.read();
-     const duration=(performance.now()-speedStart)/1000;
-
-     if(first.value&&duration>0){
-      const bytes=first.value.byteLength;
-      c.speed=(bytes/duration/1024).toFixed(1)+" KB/s";
-     }else c.speed="Nicht messbar";
-
-     try{await reader.cancel()}catch{}
-    }else c.speed="Nicht messbar";
-
-   }catch{
-    c.speed="Nicht messbar";
-   }
-
-  }else{
-   c.status="unknown";
-   c.speed="Nicht messbar";
-  }
-
- }catch(err){
-  // CORS oder Timeout ist kein sicherer Offline-Nachweis.
-  c.status="unknown";
-  c.response=Math.round(performance.now()-start)+" ms";
-  c.speed="Nicht messbar";
- }
-
- save();
- render();
+const c=channels.find(x=>x.id===id);
+if(!c)return;
+c.status="checking";render();
+const start=performance.now();
+try{
+const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),7000);
+const response=await fetch(c.url,{method:"GET",headers:{Range:"bytes=0-65535"},signal:controller.signal,cache:"no-store"});
+clearTimeout(timer);
+c.response=Math.round(performance.now()-start)+" ms";
+if(response.status===404||response.status===410){c.status="offline";c.speed="—"}
+else if(response.ok){
+c.status="online";c.speed="Nicht messbar";
+try{
+const reader=response.body?.getReader();
+if(reader){const t=performance.now(),first=await reader.read(),dt=(performance.now()-t)/1000;if(first.value&&dt>0)c.speed=(first.value.byteLength/dt/1024).toFixed(1)+" KB/s";try{await reader.cancel()}catch{}}
+}catch{}
+}else{c.status="unknown";c.speed="Nicht messbar"}
+}catch{
+c.status="unknown";c.response=Math.round(performance.now()-start)+" ms";c.speed="Nicht messbar"
+}
+save();render()
 }
 
 async function checkAll(){
- if(checking)return;
-
- checking=true;
- toast("Streamprüfung gestartet…");
-
- for(const c of channels){
-  if(!c.enabled)continue;
-  await checkOne(c.id);
- }
-
- checking=false;
- toast("Streamprüfung abgeschlossen.");
+if(checking)return;
+checking=true;toast("Streamprüfung gestartet…");
+for(const c of channels){if(c.enabled)await checkOne(c.id)}
+checking=false;toast("Streamprüfung abgeschlossen.")
 }
 
 function openChannelMove(id){
- const c=channels.find(x=>x.id===id);
- if(!c)return;
-
- const target=prompt("Neue Gruppe eingeben:\n\n"+groups.join("\n"),c.group);
- if(target===null)return;
-
- const group=target.trim();
- ensureGroup(group);
- c.group=group;
-
- save();
- render();
- toast("Sendergruppe geändert.");
+const c=channels.find(x=>x.id===id);
+if(!c)return;
+const target=prompt("Neue Gruppe eingeben:",c.group);
+if(target===null)return;
+ensureGroup(target);c.group=target.trim();
+save();render();toast("Gruppe geändert.")
 }
 
 function useAlternative(id){
- const c=channels.find(x=>x.id===id);
- if(!c||!c.alt)return;
-
- const old=c.url;
- c.url=c.alt;
- c.alt=old;
- c.status="unknown";
- c.speed="";
- c.response="";
-
- save();
- render();
- toast("Stream-URL gewechselt.");
+const c=channels.find(x=>x.id===id);
+if(!c||!c.alt)return;
+[c.url,c.alt]=[c.alt,c.url];
+c.status="unknown";c.speed="";c.response="";
+save();render();toast("Stream-URL gewechselt.")
 }
 
-const originalRender=render;
-
+const baseRender=render;
 render=function(){
- originalRender();
-
- document.querySelectorAll("#channelTable tr[data-id]").forEach(tr=>{
-  const id=tr.dataset.id;
-  const c=channels.find(x=>x.id===id);
-  if(!c)return;
-
-  const actionCell=tr.querySelector(".actions");
-  if(!actionCell)return;
-
-  const move=document.createElement("button");
-  move.textContent="📁 Gruppe";
-  move.title="Sender in eine andere Gruppe verschieben";
-  move.onclick=()=>openChannelMove(id);
-  actionCell.insertBefore(move,actionCell.firstChild);
-
-  if(c.alt){
-   const alt=document.createElement("button");
-   alt.textContent="↔ Link";
-   alt.title="Alternative URL verwenden";
-   alt.onclick=()=>useAlternative(id);
-   actionCell.insertBefore(alt,actionCell.firstChild);
-  }
- });
+baseRender();
+document.querySelectorAll("#channelTable tr[data-id]").forEach(tr=>{
+const id=tr.dataset.id,c=channels.find(x=>x.id===id),cell=tr.querySelector(".actions");
+if(!c||!cell)return;
+const move=document.createElement("button");
+move.textContent="📁 Gruppe";
+move.onclick=()=>openChannelMove(id);
+cell.prepend(move);
+if(c.alt){
+const alt=document.createElement("button");
+alt.textContent="↔ Link";
+alt.onclick=()=>useAlternative(id);
+cell.prepend(alt)
+}
+})
 };
 
-function parseM3UAdvanced(text){
- parseM3U(text);
-}
-
 document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){
-  closeEditor();
-  closeImport();
-  closeGroups();
- }
+if(e.key==="Escape"){closeEditor();closeImport();closeGroups()}
 });
 
-document.querySelectorAll(".modal-backdrop").forEach(back=>{
- back.addEventListener("click",e=>{
-  if(e.target===back)back.classList.remove("open");
- });
-});
-
-// Keine automatischen Seitenreloads.
-window.addEventListener("beforeunload",e=>{
- // Daten werden bei Änderungen gespeichert.
-});
+document.querySelectorAll(".modal-backdrop").forEach(back=>back.addEventListener("click",e=>{
+if(e.target===back)back.classList.remove("open")
+}));
 
 load();
 channels=channels.map(normalize);
 channels.forEach(c=>ensureGroup(c.group));
 render();
 save();
-
 </script>
 </body>
 </html>
