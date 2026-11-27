@@ -3,7 +3,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VisionX Playlist Manager</title>
 
 <style>
@@ -20,9 +20,7 @@
   --yellow:#ffc857;
 }
 
-* {
-  box-sizing:border-box;
-}
+* { box-sizing:border-box }
 
 body {
   margin:0;
@@ -31,13 +29,8 @@ body {
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-button,input,select {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-}
+button,input,select { font:inherit }
+button { cursor:pointer }
 
 .app {
   max-width:1600px;
@@ -49,8 +42,8 @@ button {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:20px;
   flex-wrap:wrap;
+  gap:20px;
   margin-bottom:24px;
 }
 
@@ -77,9 +70,7 @@ button {
   font-size:24px;
 }
 
-.brand small {
-  color:var(--muted);
-}
+.brand small { color:var(--muted) }
 
 .headerActions {
   display:flex;
@@ -96,25 +87,10 @@ button {
   transition:.2s;
 }
 
-.btn:hover {
-  filter:brightness(1.2);
-  transform:translateY(-1px);
-}
-
-.btn.primary {
-  background:var(--accent);
-  border-color:var(--accent);
-  color:white;
-}
-
-.btn.danger {
-  color:var(--red);
-}
-
-.btn.small {
-  padding:6px 9px;
-  font-size:13px;
-}
+.btn:hover { filter:brightness(1.2) }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:white }
+.btn.danger { color:var(--red) }
+.btn.small { padding:6px 9px; font-size:13px }
 
 .dashboard {
   display:grid;
@@ -130,22 +106,9 @@ button {
   padding:18px;
 }
 
-.stat .label {
-  color:var(--muted);
-  font-size:13px;
-}
-
-.stat .value {
-  font-size:28px;
-  font-weight:800;
-  margin-top:8px;
-}
-
-.stat .sub {
-  font-size:12px;
-  color:var(--muted);
-  margin-top:4px;
-}
+.stat .label { color:var(--muted); font-size:13px }
+.stat .value { font-size:28px; font-weight:800; margin-top:8px }
+.stat .sub { font-size:12px; color:var(--muted); margin-top:4px }
 
 .panel {
   background:var(--panel);
@@ -171,14 +134,8 @@ input,select {
   outline:none;
 }
 
-input:focus,select:focus {
-  border-color:var(--accent);
-}
-
-.search {
-  min-width:240px;
-  flex:1;
-}
+input:focus,select:focus { border-color:var(--accent) }
+.search { min-width:240px; flex:1 }
 
 .tableWrap {
   overflow:auto;
@@ -208,9 +165,7 @@ th {
   z-index:2;
 }
 
-tbody tr:hover {
-  background:rgba(93,156,255,.06);
-}
+tbody tr:hover { background:rgba(93,156,255,.06) }
 
 .channel {
   display:flex;
@@ -226,14 +181,13 @@ tbody tr:hover {
   object-fit:contain;
   padding:4px;
   border:1px solid var(--border);
+  flex-shrink:0;
 }
 
-.channelName {
-  font-weight:600;
-}
+.channelName { font-weight:600 }
 
 .channelUrl {
-  max-width:300px;
+  max-width:320px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -302,12 +256,10 @@ tbody tr:hover {
   z-index:20;
 }
 
-.modalBack.show {
-  display:flex;
-}
+.modalBack.show { display:flex }
 
 .modal {
-  width:min(600px,100%);
+  width:min(650px,100%);
   max-height:90vh;
   overflow:auto;
   background:var(--panel);
@@ -316,9 +268,7 @@ tbody tr:hover {
   padding:22px;
 }
 
-.modal h2 {
-  margin-top:0;
-}
+.modal h2 { margin-top:0 }
 
 .formGrid {
   display:grid;
@@ -326,9 +276,7 @@ tbody tr:hover {
   gap:12px;
 }
 
-.formGrid .full {
-  grid-column:1/-1;
-}
+.formGrid .full { grid-column:1/-1 }
 
 .formGrid label {
   display:block;
@@ -337,10 +285,7 @@ tbody tr:hover {
   margin-bottom:5px;
 }
 
-.formGrid input,
-.formGrid select {
-  width:100%;
-}
+.formGrid input { width:100% }
 
 .modalActions {
   display:flex;
@@ -348,6 +293,8 @@ tbody tr:hover {
   gap:8px;
   margin-top:18px;
 }
+
+.fileHidden { display:none }
 
 .toast {
   position:fixed;
@@ -362,40 +309,18 @@ tbody tr:hover {
   display:none;
 }
 
-.toast.show {
-  display:block;
-}
-
-.fileHidden {
-  display:none;
-}
+.toast.show { display:block }
 
 @media(max-width:900px) {
-  .dashboard {
-    grid-template-columns:repeat(2,1fr);
-  }
+  .dashboard { grid-template-columns:repeat(2,1fr) }
 }
 
 @media(max-width:600px) {
-  .app {
-    padding:12px;
-  }
-
-  .dashboard {
-    grid-template-columns:1fr 1fr;
-  }
-
-  .brand h1 {
-    font-size:20px;
-  }
-
-  .formGrid {
-    grid-template-columns:1fr;
-  }
-
-  .formGrid .full {
-    grid-column:auto;
-  }
+  .app { padding:12px }
+  .dashboard { grid-template-columns:1fr 1fr }
+  .brand h1 { font-size:20px }
+  .formGrid { grid-template-columns:1fr }
+  .formGrid .full { grid-column:auto }
 }
 </style>
 </head>
@@ -414,27 +339,17 @@ tbody tr:hover {
   </div>
 
   <div class="headerActions">
-    <button class="btn" onclick="importFile()">📂 Playlist importieren</button>
+    <button class="btn" onclick="importFile()">📂 Datei importieren</button>
+    <button class="btn" onclick="importURL()">🌐 URL importieren</button>
     <button class="btn" onclick="exportM3U()">📤 M3U Export</button>
     <button class="btn" onclick="backupJSON()">💾 Backup</button>
+    <button class="btn" onclick="restoreBackup()">📥 Wiederherstellen</button>
     <button class="btn primary" onclick="openAdd()">＋ Sender hinzufügen</button>
   </div>
 </header>
 
-<input
-  id="fileInput"
-  class="fileHidden"
-  type="file"
-  accept=".m3u,.m3u8,.txt"
-  multiple
->
-
-<input
-  id="restoreInput"
-  class="fileHidden"
-  type="file"
-  accept=".json"
->
+<input id="fileInput" class="fileHidden" type="file" accept=".m3u,.m3u8,.txt" multiple>
+<input id="restoreInput" class="fileHidden" type="file" accept=".json">
 
 <section class="dashboard">
   <div class="stat">
@@ -442,25 +357,21 @@ tbody tr:hover {
     <div class="value" id="statTotal">0</div>
     <div class="sub">In deiner Playlist</div>
   </div>
-
   <div class="stat">
     <div class="label">Aktiv</div>
     <div class="value" id="statActive">0</div>
     <div class="sub">Aktivierte Sender</div>
   </div>
-
   <div class="stat">
     <div class="label">Deaktiviert</div>
     <div class="value" id="statDisabled">0</div>
     <div class="sub">Nicht ausgewählt</div>
   </div>
-
   <div class="stat">
     <div class="label">Favoriten</div>
     <div class="value" id="statFavorites">0</div>
     <div class="sub">Markierte Sender</div>
   </div>
-
   <div class="stat">
     <div class="label">Gruppen</div>
     <div class="value" id="statGroups">0</div>
@@ -469,15 +380,8 @@ tbody tr:hover {
 </section>
 
 <section class="panel">
-
   <div class="toolbar">
-
-    <input
-      id="searchInput"
-      class="search"
-      type="search"
-      placeholder="🔎 Sender, URL oder Gruppe suchen..."
-    >
+    <input id="searchInput" class="search" type="search" placeholder="🔎 Sender, URL oder Gruppe suchen...">
 
     <select id="groupFilter">
       <option value="">Alle Gruppen</option>
@@ -501,7 +405,6 @@ tbody tr:hover {
     <button class="btn small" onclick="selectAll(true)">☑ Alle aktiv</button>
     <button class="btn small" onclick="selectAll(false)">☐ Alle deaktivieren</button>
     <button class="btn small danger" onclick="deleteSelected()">🗑 Auswahl löschen</button>
-
   </div>
 
   <div class="tableWrap">
@@ -518,14 +421,14 @@ tbody tr:hover {
           <th>Aktionen</th>
         </tr>
       </thead>
-
       <tbody id="channelBody"></tbody>
     </table>
 
     <div id="emptyState" class="empty">
       <h3>🎬 Noch keine Sender vorhanden</h3>
       <p>Importiere eine M3U-Playlist oder füge Sender manuell hinzu.</p>
-      <button class="btn primary" onclick="importFile()">Playlist importieren</button>
+      <button class="btn primary" onclick="importFile()">Datei importieren</button>
+      <button class="btn" onclick="importURL()">URL importieren</button>
     </div>
   </div>
 
@@ -534,88 +437,61 @@ tbody tr:hover {
     <span>VisionX · Lokale Browser-Speicherung</span>
   </div>
 </section>
-
 </div>
 
-<!-- ADD / EDIT MODAL -->
-
+<!-- SENDER MODAL -->
 <div id="modalBack" class="modalBack">
   <div class="modal">
-
     <h2 id="modalTitle">Sender hinzufügen</h2>
-
     <div class="formGrid">
-
       <div class="full">
         <label>Sendername</label>
         <input id="fName" placeholder="z. B. ARD">
       </div>
-
       <div class="full">
         <label>Stream URL</label>
         <input id="fUrl" placeholder="https://...m3u8">
       </div>
-
       <div>
         <label>Gruppe</label>
         <input id="fGroup" list="groupList" placeholder="z. B. Deutschland">
         <datalist id="groupList"></datalist>
       </div>
-
       <div>
         <label>Logo URL</label>
         <input id="fLogo" placeholder="https://...png">
       </div>
-
       <div>
         <label>TVG ID</label>
         <input id="fTvg" placeholder="Sender-ID">
       </div>
-
       <div>
         <label>Quelle / Playlist</label>
         <input id="fSource" placeholder="Playlist name">
       </div>
-
       <div class="full">
-        <label>
-          <input type="checkbox" id="fEnabled" checked>
-          Sender aktiviert
-        </label>
-        &nbsp;&nbsp;
-        <label>
-          <input type="checkbox" id="fFavorite">
-          Favorit
-        </label>
+        <label><input type="checkbox" id="fEnabled" checked> Sender aktiviert</label>
+        <label><input type="checkbox" id="fFavorite"> Favorit</label>
       </div>
-
     </div>
-
     <div class="modalActions">
       <button class="btn" onclick="closeModal()">Abbrechen</button>
       <button class="btn primary" onclick="saveChannel()">Speichern</button>
     </div>
-
   </div>
 </div>
 
 <!-- GROUP MODAL -->
-
 <div id="groupBack" class="modalBack">
   <div class="modal">
     <h2>📁 Gruppen verwalten</h2>
-
-    <p>Gruppen werden automatisch aus importierten Playlists übernommen.</p>
-
     <div id="groupListArea"></div>
-
     <div class="formGrid" style="margin-top:15px">
       <div class="full">
         <label>Neue Gruppe</label>
         <input id="newGroupName" placeholder="Gruppenname">
       </div>
     </div>
-
     <div class="modalActions">
       <button class="btn" onclick="closeGroups()">Schließen</button>
       <button class="btn primary" onclick="addGroup()">＋ Gruppe erstellen</button>
@@ -626,8 +502,7 @@ tbody tr:hover {
 <div id="toast" class="toast"></div>
 
 <script>
-
-const STORAGE_KEY = "visionx_playlist_manager_v2";
+const STORAGE_KEY = "visionx_playlist_manager_v3";
 
 let channels = [];
 let groups = [];
@@ -640,21 +515,18 @@ function uid() {
 }
 
 function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[char]));
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[c]));
 }
 
 function loadData() {
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    channels = Array.isArray(saved.channels) ? saved.channels : [];
-    groups = Array.isArray(saved.groups) ? saved.groups : [];
-  } catch(e) {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    channels = Array.isArray(data.channels) ? data.channels : [];
+    groups = Array.isArray(data.groups) ? data.groups : [];
+  } catch {
     channels = [];
     groups = [];
   }
@@ -671,18 +543,13 @@ function loadData() {
 }
 
 function saveData() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({
-    channels,
-    groups
-  }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({channels,groups}));
 }
 
 function syncGroups() {
   channels.forEach(c => {
-    const g = (c.group || "").trim();
-    if (g && !groups.includes(g)) groups.push(g);
+    if (c.group && !groups.includes(c.group)) groups.push(c.group);
   });
-
   groups = [...new Set(groups)].filter(Boolean).sort();
 }
 
@@ -690,84 +557,53 @@ function toast(message) {
   const el = document.getElementById("toast");
   el.textContent = message;
   el.classList.add("show");
-
   clearTimeout(window.toastTimer);
-  window.toastTimer = setTimeout(() => {
-    el.classList.remove("show");
-  }, 2800);
+  window.toastTimer = setTimeout(() => el.classList.remove("show"), 3000);
 }
 
 function renderStats() {
   document.getElementById("statTotal").textContent = channels.length;
-  document.getElementById("statActive").textContent =
-    channels.filter(c => c.enabled).length;
-  document.getElementById("statDisabled").textContent =
-    channels.filter(c => !c.enabled).length;
-  document.getElementById("statFavorites").textContent =
-    channels.filter(c => c.favorite).length;
+  document.getElementById("statActive").textContent = channels.filter(c=>c.enabled).length;
+  document.getElementById("statDisabled").textContent = channels.filter(c=>!c.enabled).length;
+  document.getElementById("statFavorites").textContent = channels.filter(c=>c.favorite).length;
   document.getElementById("statGroups").textContent = groups.length;
 }
 
 function renderGroupOptions() {
   const filter = document.getElementById("groupFilter");
   const current = filter.value;
-
   filter.innerHTML = '<option value="">Alle Gruppen</option>';
 
   groups.forEach(g => {
-    filter.innerHTML +=
-      `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`;
+    filter.add(new Option(g,g));
   });
 
   if (groups.includes(current)) filter.value = current;
 
-  const dataList = document.getElementById("groupList");
-  dataList.innerHTML = groups
-    .map(g => `<option value="${escapeHtml(g)}"></option>`)
-    .join("");
+  document.getElementById("groupList").innerHTML =
+    groups.map(g=>`<option value="${escapeHtml(g)}"></option>`).join("");
 }
 
 function getFilteredChannels() {
-  const search = document.getElementById("searchInput").value
-    .toLowerCase().trim();
-
+  const search = document.getElementById("searchInput").value.toLowerCase().trim();
   const group = document.getElementById("groupFilter").value;
   const status = document.getElementById("statusFilter").value;
   const sort = document.getElementById("sortFilter").value;
 
   let list = channels.filter(c => {
-    const searchable = [
-      c.name, c.url, c.group, c.source, c.tvgId
-    ].join(" ").toLowerCase();
-
+    const searchable = [c.name,c.url,c.group,c.source,c.tvgId].join(" ").toLowerCase();
     if (search && !searchable.includes(search)) return false;
     if (group && c.group !== group) return false;
-
     if (status === "active" && !c.enabled) return false;
     if (status === "disabled" && c.enabled) return false;
     if (status === "favorite" && !c.favorite) return false;
-
     return true;
   });
 
-  if (sort === "name") {
-    list.sort((a,b) => a.name.localeCompare(b.name));
-  }
-
-  if (sort === "nameDesc") {
-    list.sort((a,b) => b.name.localeCompare(a.name));
-  }
-
-  if (sort === "group") {
-    list.sort((a,b) =>
-      (a.group || "").localeCompare(b.group || "") ||
-      a.name.localeCompare(b.name)
-    );
-  }
-
-  if (sort === "newest") {
-    list.sort((a,b) => (b.created || 0) - (a.created || 0));
-  }
+  if (sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
+  if (sort === "nameDesc") list.sort((a,b)=>b.name.localeCompare(a.name));
+  if (sort === "group") list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
+  if (sort === "newest") list.sort((a,b)=>(b.created||0)-(a.created||0));
 
   return list;
 }
@@ -782,290 +618,265 @@ function render() {
   const list = getFilteredChannels();
 
   body.innerHTML = "";
+  empty.style.display = channels.length ? "none" : "block";
 
-  empty.style.display = channels.length === 0 ? "block" : "none";
-
-  list.forEach((c, index) => {
+  list.forEach((c,index) => {
+    const tr = document.createElement("tr");
     const logo = c.logo
-      ? `<img class="channelLogo"
-          src="${escapeHtml(c.logo)}"
-          onerror="this.style.display='none'"
-          alt="">`
+      ? `<img class="channelLogo" src="${escapeHtml(c.logo)}" onerror="this.style.display='none'">`
       : `<div class="channelLogo"></div>`;
 
-    const tr = document.createElement("tr");
-
     tr.innerHTML = `
-      <td>
-        <input type="checkbox"
-          class="rowCheck"
-          data-id="${escapeHtml(c.id)}"
-          ${selectedIds.has(c.id) ? "checked" : ""}>
-      </td>
-
-      <td>${index + 1}</td>
-
+      <td><input type="checkbox" class="rowCheck" data-id="${escapeHtml(c.id)}" ${selectedIds.has(c.id)?"checked":""}></td>
+      <td>${index+1}</td>
       <td>
         <div class="channel">
           ${logo}
           <div>
             <div class="channelName">${escapeHtml(c.name)}</div>
-            <div class="channelUrl" title="${escapeHtml(c.url)}">
-              ${escapeHtml(c.url)}
-            </div>
+            <div class="channelUrl" title="${escapeHtml(c.url)}">${escapeHtml(c.url)}</div>
           </div>
         </div>
       </td>
-
-      <td>
-        ${c.group
-          ? `<span class="badge group">${escapeHtml(c.group)}</span>`
-          : `<span style="color:var(--muted)">–</span>`}
-      </td>
-
-      <td>
-        <span class="badge ${c.enabled ? "active" : "disabled"}">
-          ${c.enabled ? "Aktiv" : "Deaktiviert"}
-        </span>
-      </td>
-
-      <td>
-        <span class="star" data-fav="${escapeHtml(c.id)}">
-          ${c.favorite ? "★" : "☆"}
-        </span>
-      </td>
-
-      <td>
-        <input type="checkbox"
-          class="enabledCheck"
-          data-id="${escapeHtml(c.id)}"
-          ${c.enabled ? "checked" : ""}>
-      </td>
-
+      <td>${c.group ? `<span class="badge group">${escapeHtml(c.group)}</span>` : "–"}</td>
+      <td><span class="badge ${c.enabled?"active":"disabled"}">${c.enabled?"Aktiv":"Deaktiviert"}</span></td>
+      <td><span class="star" data-fav="${escapeHtml(c.id)}">${c.favorite?"★":"☆"}</span></td>
+      <td><input type="checkbox" class="enabledCheck" data-id="${escapeHtml(c.id)}" ${c.enabled?"checked":""}></td>
       <td>
         <div class="actions">
           <button class="btn small" data-edit="${escapeHtml(c.id)}">✏️</button>
           <button class="btn small" data-copy="${escapeHtml(c.id)}">📋</button>
           <button class="btn small danger" data-delete="${escapeHtml(c.id)}">🗑</button>
         </div>
-      </td>
-    `;
-
+      </td>`;
     body.appendChild(tr);
   });
 
-  document.getElementById("resultInfo").textContent =
-    `${list.length} von ${channels.length} Sendern`;
+  document.getElementById("resultInfo").textContent = `${list.length} von ${channels.length} Sendern`;
 
   document.getElementById("selectAllBox").checked =
-    list.length > 0 && list.every(c => selectedIds.has(c.id));
+    list.length>0 && list.every(c=>selectedIds.has(c.id));
 
-  body.querySelectorAll(".rowCheck").forEach(el => {
-    el.addEventListener("change", () => {
-      const id = el.dataset.id;
-      if (el.checked) selectedIds.add(id);
-      else selectedIds.delete(id);
-
+  body.querySelectorAll(".rowCheck").forEach(el=>{
+    el.onchange=()=>{
+      el.checked ? selectedIds.add(el.dataset.id) : selectedIds.delete(el.dataset.id);
       renderSelectAll();
-    });
+    };
   });
 
-  body.querySelectorAll(".enabledCheck").forEach(el => {
-    el.addEventListener("change", () => {
-      const c = channels.find(x => x.id === el.dataset.id);
-      if (!c) return;
-
-      c.enabled = el.checked;
+  body.querySelectorAll(".enabledCheck").forEach(el=>{
+    el.onchange=()=>{
+      const c=channels.find(x=>x.id===el.dataset.id);
+      if(!c)return;
+      c.enabled=el.checked;
       saveData();
       renderStats();
-    });
+    };
   });
 
-  body.querySelectorAll("[data-fav]").forEach(el => {
-    el.addEventListener("click", () => {
-      const c = channels.find(x => x.id === el.dataset.fav);
-      if (!c) return;
-
-      c.favorite = !c.favorite;
+  body.querySelectorAll("[data-fav]").forEach(el=>{
+    el.onclick=()=>{
+      const c=channels.find(x=>x.id===el.dataset.fav);
+      if(!c)return;
+      c.favorite=!c.favorite;
       saveData();
       render();
-    });
+    };
   });
 
-  body.querySelectorAll("[data-edit]").forEach(el => {
-    el.addEventListener("click", () => editChannel(el.dataset.edit));
-  });
-
-  body.querySelectorAll("[data-copy]").forEach(el => {
-    el.addEventListener("click", () => copyChannel(el.dataset.copy));
-  });
-
-  body.querySelectorAll("[data-delete]").forEach(el => {
-    el.addEventListener("click", () => deleteChannel(el.dataset.delete));
-  });
+  body.querySelectorAll("[data-edit]").forEach(el=>el.onclick=()=>editChannel(el.dataset.edit));
+  body.querySelectorAll("[data-copy]").forEach(el=>el.onclick=()=>copyChannel(el.dataset.copy));
+  body.querySelectorAll("[data-delete]").forEach(el=>el.onclick=()=>deleteChannel(el.dataset.delete));
 }
 
 function renderSelectAll() {
-  const list = getFilteredChannels();
+  const list=getFilteredChannels();
   document.getElementById("selectAllBox").checked =
-    list.length > 0 && list.every(c => selectedIds.has(c.id));
+    list.length>0 && list.every(c=>selectedIds.has(c.id));
 }
 
 function importFile() {
   document.getElementById("fileInput").click();
 }
 
-function parseM3U(text, sourceName) {
-  const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/);
-  const imported = [];
-  let metadata = {};
+/* URL-IMPORT */
+async function importURL() {
+  const defaultURL = "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u";
 
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
+  const url = prompt("M3U-Playlist URL eingeben:",defaultURL);
+  if(!url || !url.trim()) return;
 
-    if (!line) continue;
-
-    if (line.startsWith("#EXTINF:")) {
-      metadata = {};
-
-      const comma = line.indexOf(",");
-      const attrs = comma >= 0 ? line.substring(0, comma) : line;
-      const title = comma >= 0 ? line.substring(comma + 1).trim() : "";
-
-      const attrRegex = /([\w-]+)="([^"]*)"/g;
-      let match;
-
-      while ((match = attrRegex.exec(attrs)) !== null) {
-        metadata[match[1].toLowerCase()] = match[2];
-      }
-
-      metadata.title = title || metadata["tvg-name"] || "";
-      continue;
-    }
-
-    if (line.startsWith("#")) continue;
-
-    if (
-      line.startsWith("http://") ||
-      line.startsWith("https://") ||
-      line.startsWith("rtmp://") ||
-      line.startsWith("rtsp://") ||
-      line.startsWith("udp://") ||
-      line.startsWith("ftp://")
-    ) {
-      const url = line;
-
-      const name =
-        metadata.title ||
-        metadata["tvg-name"] ||
-        metadata["tvg-id"] ||
-        url;
-
-      imported.push({
-        id: uid(),
-        name,
-        url,
-        group: metadata["group-title"] || "",
-        logo: metadata["tvg-logo"] || "",
-        tvgId: metadata["tvg-id"] || "",
-        source: sourceName || "",
-        enabled: true,
-        favorite: false,
-        created: Date.now() + imported.length
-      });
-
-      metadata = {};
-    }
-  }
-
-  return imported;
+  await loadPlaylistURL(url.trim());
 }
 
-document.getElementById("fileInput").addEventListener("change", async e => {
-  const files = [...e.target.files];
-  if (!files.length) return;
+async function loadPlaylistURL(url) {
+  try {
+    toast("Playlist wird geladen…");
 
-  let allImported = [];
+    const response = await fetch(url,{
+      method:"GET",
+      cache:"no-cache"
+    });
 
-  for (const file of files) {
-    try {
-      const text = await file.text();
-      const parsed = parseM3U(text, file.name);
-      allImported = allImported.concat(parsed);
-    } catch(err) {
+    if(!response.ok) throw new Error("HTTP "+response.status);
+
+    const text = await response.text();
+
+    if(!text.trim().startsWith("#EXTM3U") && !text.includes("#EXTINF")) {
+      throw new Error("Keine gültige M3U-Datei");
+    }
+
+    processImport(text,url);
+
+  } catch(error) {
+    console.error("URL Import:",error);
+
+    alert(
+      "Der URL-Import ist fehlgeschlagen.\n\n" +
+      "Der Server könnte den Browserzugriff (CORS) blockieren.\n\n" +
+      "Bitte versuche es mit einer anderen URL oder lade die M3U " +
+      "herunter und importiere sie über 'Datei importieren'."
+    );
+  }
+}
+
+/* DATEI-IMPORT */
+document.getElementById("fileInput").addEventListener("change",async e=>{
+  const files=[...e.target.files];
+  if(!files.length)return;
+
+  let totalAdded=0;
+  let totalDuplicates=0;
+
+  for(const file of files){
+    try{
+      const text=await file.text();
+      const result=processImport(text,file.name,false);
+      totalAdded+=result.added;
+      totalDuplicates+=result.duplicates;
+    }catch(err){
       console.error(err);
-      toast("Datei konnte nicht gelesen werden: " + file.name);
+      toast("Fehler beim Lesen: "+file.name);
     }
   }
 
-  let duplicates = 0;
-  let added = 0;
+  render();
+  toast(`${totalAdded} importiert · ${totalDuplicates} Duplikate`);
+  e.target.value="";
+});
 
-  const existingUrls = new Set(
-    channels.map(c => c.url.trim())
-  );
+/* M3U PARSER */
+function parseM3U(text,sourceName="") {
+  const lines=text.replace(/^\uFEFF/,"").split(/\r?\n/);
+  const result=[];
+  let meta=null;
 
-  for (const c of allImported) {
-    if (existingUrls.has(c.url.trim())) {
-      duplicates++;
+  for(const raw of lines){
+    const line=raw.trim();
+    if(!line)continue;
+
+    if(line.startsWith("#EXTINF:")){
+      const comma=line.indexOf(",");
+      const attrText=comma>=0?line.substring(0,comma):line;
+      const title=comma>=0?line.substring(comma+1).trim():"";
+
+      meta={title,attributes:{}};
+
+      const regex=/([\w-]+)\s*=\s*"([^"]*)"/g;
+      let match;
+      while((match=regex.exec(attrText))!==null){
+        meta.attributes[match[1].toLowerCase()]=match[2];
+      }
       continue;
     }
 
-    existingUrls.add(c.url.trim());
+    if(line.startsWith("#"))continue;
+
+    if(meta && /^(https?|rtmp|rtsp|udp|ftp):\/\//i.test(line)){
+      const a=meta.attributes;
+
+      result.push({
+        id:uid(),
+        name:meta.title || a["tvg-name"] || a["tvg-id"] || line,
+        url:line,
+        group:a["group-title"]||"",
+        logo:a["tvg-logo"]||"",
+        tvgId:a["tvg-id"]||"",
+        source:sourceName,
+        enabled:true,
+        favorite:false,
+        created:Date.now()+result.length
+      });
+
+      meta=null;
+    }
+  }
+  return result;
+}
+
+/* IMPORT VERARBEITEN */
+function processImport(text,sourceName="",showToast=true) {
+  const imported=parseM3U(text,sourceName);
+  const urls=new Set(channels.map(c=>c.url.trim()));
+
+  let added=0;
+  let duplicates=0;
+
+  imported.forEach(c=>{
+    const key=c.url.trim();
+    if(urls.has(key)){
+      duplicates++;
+      return;
+    }
+    urls.add(key);
     channels.push(c);
     added++;
-  }
+  });
 
   syncGroups();
   saveData();
   render();
 
-  toast(`${added} Sender importiert · ${duplicates} Duplikate übersprungen`);
+  if(showToast){
+    toast(`${added} Sender importiert · ${duplicates} Duplikate übersprungen`);
+  }
 
-  e.target.value = "";
-});
+  return {added,duplicates};
+}
 
+/* ADD / EDIT */
 function openAdd() {
-  editingId = null;
-
-  document.getElementById("modalTitle").textContent =
-    "Sender hinzufügen";
-
+  editingId=null;
+  document.getElementById("modalTitle").textContent="Sender hinzufügen";
   clearForm();
-
   document.getElementById("modalBack").classList.add("show");
 }
 
 function editChannel(id) {
-  const c = channels.find(x => x.id === id);
-  if (!c) return;
+  const c=channels.find(x=>x.id===id);
+  if(!c)return;
 
-  editingId = id;
+  editingId=id;
+  document.getElementById("modalTitle").textContent="Sender bearbeiten";
 
-  document.getElementById("modalTitle").textContent =
-    "Sender bearbeiten";
-
-  document.getElementById("fName").value = c.name || "";
-  document.getElementById("fUrl").value = c.url || "";
-  document.getElementById("fGroup").value = c.group || "";
-  document.getElementById("fLogo").value = c.logo || "";
-  document.getElementById("fTvg").value = c.tvgId || "";
-  document.getElementById("fSource").value = c.source || "";
-  document.getElementById("fEnabled").checked = !!c.enabled;
-  document.getElementById("fFavorite").checked = !!c.favorite;
+  document.getElementById("fName").value=c.name||"";
+  document.getElementById("fUrl").value=c.url||"";
+  document.getElementById("fGroup").value=c.group||"";
+  document.getElementById("fLogo").value=c.logo||"";
+  document.getElementById("fTvg").value=c.tvgId||"";
+  document.getElementById("fSource").value=c.source||"";
+  document.getElementById("fEnabled").checked=!!c.enabled;
+  document.getElementById("fFavorite").checked=!!c.favorite;
 
   document.getElementById("modalBack").classList.add("show");
 }
 
 function clearForm() {
-  document.getElementById("fName").value = "";
-  document.getElementById("fUrl").value = "";
-  document.getElementById("fGroup").value = "";
-  document.getElementById("fLogo").value = "";
-  document.getElementById("fTvg").value = "";
-  document.getElementById("fSource").value = "";
-  document.getElementById("fEnabled").checked = true;
-  document.getElementById("fFavorite").checked = false;
+  ["fName","fUrl","fGroup","fLogo","fTvg","fSource"].forEach(id=>{
+    document.getElementById(id).value="";
+  });
+  document.getElementById("fEnabled").checked=true;
+  document.getElementById("fFavorite").checked=false;
 }
 
 function closeModal() {
@@ -1073,232 +884,161 @@ function closeModal() {
 }
 
 function saveChannel() {
-  const name = document.getElementById("fName").value.trim();
-  const url = document.getElementById("fUrl").value.trim();
+  const name=document.getElementById("fName").value.trim();
+  const url=document.getElementById("fUrl").value.trim();
 
-  if (!name) {
-    toast("Bitte Sendername eingeben");
+  if(!name||!url){
+    toast("Sendername und URL sind erforderlich");
     return;
   }
 
-  if (!url) {
-    toast("Bitte Stream URL eingeben");
-    return;
-  }
+  const duplicate=channels.find(c=>c.url.trim()===url&&c.id!==editingId);
+  if(duplicate && !confirm("Diese URL existiert bereits. Trotzdem speichern?"))return;
 
-  const duplicate = channels.find(c =>
-    c.url.trim() === url &&
-    c.id !== editingId
-  );
-
-  if (duplicate) {
-    if (!confirm("Diese URL existiert bereits. Trotzdem speichern?")) {
-      return;
-    }
-  }
-
-  const data = {
+  const data={
     name,
     url,
-    group: document.getElementById("fGroup").value.trim(),
-    logo: document.getElementById("fLogo").value.trim(),
-    tvgId: document.getElementById("fTvg").value.trim(),
-    source: document.getElementById("fSource").value.trim(),
-    enabled: document.getElementById("fEnabled").checked,
-    favorite: document.getElementById("fFavorite").checked
+    group:document.getElementById("fGroup").value.trim(),
+    logo:document.getElementById("fLogo").value.trim(),
+    tvgId:document.getElementById("fTvg").value.trim(),
+    source:document.getElementById("fSource").value.trim(),
+    enabled:document.getElementById("fEnabled").checked,
+    favorite:document.getElementById("fFavorite").checked
   };
 
-  if (editingId) {
-    const index = channels.findIndex(c => c.id === editingId);
-
-    if (index >= 0) {
-      channels[index] = {
-        ...channels[index],
-        ...data
-      };
-    }
-  } else {
-    channels.push({
-      id:uid(),
-      ...data,
-      created:Date.now()
-    });
+  if(editingId){
+    const index=channels.findIndex(c=>c.id===editingId);
+    if(index>=0)channels[index]={...channels[index],...data};
+  }else{
+    channels.push({id:uid(),...data,created:Date.now()});
   }
 
   syncGroups();
   saveData();
   closeModal();
   render();
-
-  toast(editingId ? "Sender aktualisiert" : "Sender hinzugefügt");
+  toast(editingId?"Sender aktualisiert":"Sender hinzugefügt");
 }
 
 function deleteChannel(id) {
-  const c = channels.find(x => x.id === id);
-  if (!c) return;
+  const c=channels.find(x=>x.id===id);
+  if(!c)return;
+  if(!confirm(`"${c.name}" wirklich löschen?`))return;
 
-  if (!confirm(`Sender "${c.name}" wirklich löschen?`)) return;
-
-  channels = channels.filter(x => x.id !== id);
+  channels=channels.filter(x=>x.id!==id);
   selectedIds.delete(id);
-
   saveData();
   render();
-
   toast("Sender gelöscht");
 }
 
 function copyChannel(id) {
-  const c = channels.find(x => x.id === id);
-  if (!c) return;
+  const c=channels.find(x=>x.id===id);
+  if(!c)return;
 
-  channels.push({
-    ...c,
-    id:uid(),
-    name:c.name + " (Kopie)",
-    created:Date.now()
-  });
-
+  channels.push({...c,id:uid(),name:c.name+" (Kopie)",created:Date.now()});
   saveData();
   render();
-
   toast("Sender kopiert");
 }
 
 function selectAll(enabled) {
-  getFilteredChannels().forEach(c => {
-    c.enabled = enabled;
-  });
-
+  getFilteredChannels().forEach(c=>c.enabled=enabled);
   saveData();
   render();
-
-  toast(enabled ? "Alle sichtbaren Sender aktiviert" :
-                 "Alle sichtbaren Sender deaktiviert");
+  toast(enabled?"Alle aktiviert":"Alle deaktiviert");
 }
 
 function deleteSelected() {
-  if (!selectedIds.size) {
+  if(!selectedIds.size){
     toast("Keine Sender ausgewählt");
     return;
   }
 
-  if (!confirm(`${selectedIds.size} ausgewählte Sender löschen?`)) return;
+  if(!confirm(`${selectedIds.size} Sender löschen?`))return;
 
-  channels = channels.filter(c => !selectedIds.has(c.id));
+  channels=channels.filter(c=>!selectedIds.has(c.id));
   selectedIds.clear();
-
   saveData();
   render();
-
   toast("Auswahl gelöscht");
 }
 
+/* M3U EXPORT */
 function exportM3U() {
-  const list = channels.filter(c => c.enabled);
+  const list=channels.filter(c=>c.enabled);
+  let output="#EXTM3U\n";
 
-  let output = "#EXTM3U\n";
+  list.forEach(c=>{
+    let info="#EXTINF:-1";
 
-  list.forEach(c => {
-    let info = "#EXTINF:-1";
+    if(c.tvgId)info+=` tvg-id="${c.tvgId}"`;
+    if(c.logo)info+=` tvg-logo="${c.logo}"`;
+    if(c.group)info+=` group-title="${c.group}"`;
 
-    if (c.tvgId) {
-      info += ` tvg-id="${c.tvgId}"`;
-    }
-
-    if (c.logo) {
-      info += ` tvg-logo="${c.logo}"`;
-    }
-
-    if (c.group) {
-      info += ` group-title="${c.group}"`;
-    }
-
-    info += `,${c.name}`;
-
-    output += info + "\n";
-    output += c.url + "\n";
+    info+=`,${c.name}\n`;
+    output+=info+c.url+"\n";
   });
 
-  downloadFile(
-    output,
-    "visionx_playlist.m3u",
-    "application/x-mpegURL"
-  );
-
+  downloadFile(output,"visionx_playlist.m3u","application/x-mpegURL");
   toast(`${list.length} Sender exportiert`);
 }
 
+/* BACKUP */
 function backupJSON() {
-  const data = JSON.stringify({
+  const data=JSON.stringify({
     application:"VisionX Playlist Manager",
-    version:2,
+    version:3,
     date:new Date().toISOString(),
     channels,
     groups
-  }, null, 2);
+  },null,2);
 
-  downloadFile(
-    data,
-    "visionx_backup.json",
-    "application/json"
-  );
-
+  downloadFile(data,"visionx_backup.json","application/json");
   toast("Backup erstellt");
-}
-
-function downloadFile(content, filename, type) {
-  const blob = new Blob([content], {type});
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function restoreBackup() {
   document.getElementById("restoreInput").click();
 }
 
-document.getElementById("restoreInput").addEventListener("change", async e => {
-  const file = e.target.files[0];
-  if (!file) return;
+document.getElementById("restoreInput").addEventListener("change",async e=>{
+  const file=e.target.files[0];
+  if(!file)return;
 
-  try {
-    const data = JSON.parse(await file.text());
+  try{
+    const data=JSON.parse(await file.text());
+    if(!Array.isArray(data.channels))throw new Error("Ungültiges Backup");
 
-    if (!Array.isArray(data.channels)) {
-      throw new Error("Ungültiges Backup");
-    }
+    if(!confirm("Backup importieren? Aktuelle Liste wird ersetzt."))return;
 
-    if (!confirm(
-      "Backup importieren? Deine aktuelle Senderliste wird ersetzt."
-    )) {
-      e.target.value = "";
-      return;
-    }
-
-    channels = data.channels;
-    groups = Array.isArray(data.groups) ? data.groups : [];
-
+    channels=data.channels;
+    groups=Array.isArray(data.groups)?data.groups:[];
     syncGroups();
     saveData();
     render();
-
-    toast("Backup erfolgreich wiederhergestellt");
-  } catch(err) {
+    toast("Backup wiederhergestellt");
+  }catch(err){
     console.error(err);
     toast("Backup konnte nicht gelesen werden");
   }
 
-  e.target.value = "";
+  e.target.value="";
 });
 
+function downloadFile(content,filename,type) {
+  const blob=new Blob([content],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+/* GRUPPEN */
 function manageGroups() {
   renderGroupManager();
   document.getElementById("groupBack").classList.add("show");
@@ -1309,24 +1049,15 @@ function closeGroups() {
 }
 
 function renderGroupManager() {
-  const area = document.getElementById("groupListArea");
+  const area=document.getElementById("groupListArea");
 
-  if (!groups.length) {
-    area.innerHTML = "<p style='color:var(--muted)'>Noch keine Gruppen.</p>";
+  if(!groups.length){
+    area.innerHTML="<p style='color:var(--muted)'>Noch keine Gruppen.</p>";
     return;
   }
 
-  area.innerHTML = groups.map(g => `
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:10px;
-      margin:6px 0;
-      background:var(--panel2);
-      border-radius:8px
-    ">
+  area.innerHTML=groups.map(g=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;margin:6px 0;background:var(--panel2);border-radius:8px">
       <span>${escapeHtml(g)}</span>
       <div>
         <button class="btn small" data-rename="${escapeHtml(g)}">✏️</button>
@@ -1335,121 +1066,89 @@ function renderGroupManager() {
     </div>
   `).join("");
 
-  area.querySelectorAll("[data-rename]").forEach(btn => {
-    btn.onclick = () => renameGroup(btn.dataset.rename);
+  area.querySelectorAll("[data-rename]").forEach(b=>{
+    b.onclick=()=>renameGroup(b.dataset.rename);
   });
 
-  area.querySelectorAll("[data-removegroup]").forEach(btn => {
-    btn.onclick = () => removeGroup(btn.dataset.removegroup);
+  area.querySelectorAll("[data-removegroup]").forEach(b=>{
+    b.onclick=()=>removeGroup(b.dataset.removegroup);
   });
 }
 
 function addGroup() {
-  const input = document.getElementById("newGroupName");
-  const name = input.value.trim();
+  const input=document.getElementById("newGroupName");
+  const name=input.value.trim();
 
-  if (!name) {
-    toast("Bitte Gruppennamen eingeben");
-    return;
-  }
-
-  if (groups.includes(name)) {
-    toast("Gruppe existiert bereits");
-    return;
-  }
+  if(!name)return toast("Gruppenname eingeben");
+  if(groups.includes(name))return toast("Gruppe existiert bereits");
 
   groups.push(name);
-  input.value = "";
-
+  input.value="";
   saveData();
   render();
   renderGroupManager();
-
   toast("Gruppe erstellt");
 }
 
 function renameGroup(oldName) {
-  const newName = prompt("Neuer Gruppenname:", oldName);
-  if (!newName) return;
+  const newName=prompt("Neuer Gruppenname:",oldName);
+  if(!newName)return;
 
-  const name = newName.trim();
+  const name=newName.trim();
+  if(!name||name===oldName)return;
+  if(groups.includes(name))return toast("Gruppe existiert bereits");
 
-  if (!name) return;
-  if (name === oldName) return;
-
-  if (groups.includes(name)) {
-    toast("Diese Gruppe existiert bereits");
-    return;
-  }
-
-  groups = groups.map(g => g === oldName ? name : g);
-
-  channels.forEach(c => {
-    if (c.group === oldName) c.group = name;
-  });
+  groups=groups.map(g=>g===oldName?name:g);
+  channels.forEach(c=>{if(c.group===oldName)c.group=name;});
 
   saveData();
   render();
   renderGroupManager();
-
   toast("Gruppe umbenannt");
 }
 
 function removeGroup(name) {
-  if (!confirm(`Gruppe "${name}" löschen? Sender bleiben erhalten und werden keiner Gruppe zugeordnet.`)) {
-    return;
-  }
+  if(!confirm(`Gruppe "${name}" löschen? Sender bleiben erhalten.`))return;
 
-  groups = groups.filter(g => g !== name);
-
-  channels.forEach(c => {
-    if (c.group === name) c.group = "";
-  });
+  groups=groups.filter(g=>g!==name);
+  channels.forEach(c=>{if(c.group===name)c.group="";});
 
   saveData();
   render();
   renderGroupManager();
-
   toast("Gruppe gelöscht");
 }
 
-// EVENTS
+/* EVENTS */
+document.getElementById("searchInput").addEventListener("input",render);
+document.getElementById("groupFilter").addEventListener("change",render);
+document.getElementById("statusFilter").addEventListener("change",render);
+document.getElementById("sortFilter").addEventListener("change",render);
 
-document.getElementById("searchInput").addEventListener("input", render);
-document.getElementById("groupFilter").addEventListener("change", render);
-document.getElementById("statusFilter").addEventListener("change", render);
-document.getElementById("sortFilter").addEventListener("change", render);
-
-document.getElementById("selectAllBox").addEventListener("change", e => {
-  getFilteredChannels().forEach(c => {
-    if (e.target.checked) selectedIds.add(c.id);
+document.getElementById("selectAllBox").addEventListener("change",e=>{
+  getFilteredChannels().forEach(c=>{
+    if(e.target.checked)selectedIds.add(c.id);
     else selectedIds.delete(c.id);
   });
-
   render();
 });
 
-// Modal schließen bei Klick auf Hintergrund
-
-document.getElementById("modalBack").addEventListener("click", e => {
-  if (e.target.id === "modalBack") closeModal();
+document.getElementById("modalBack").addEventListener("click",e=>{
+  if(e.target.id==="modalBack")closeModal();
 });
 
-document.getElementById("groupBack").addEventListener("click", e => {
-  if (e.target.id === "groupBack") closeGroups();
+document.getElementById("groupBack").addEventListener("click",e=>{
+  if(e.target.id==="groupBack")closeGroups();
 });
 
-// KEYBOARD
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
     closeModal();
     closeGroups();
   }
 });
 
-// START
-
+/* START */
 loadData();
 </script>
 
