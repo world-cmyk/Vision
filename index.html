@@ -5,1508 +5,506 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VisionX Playlist Manager</title>
-
 <style>
 :root{
-  --bg:#0b1020;
-  --panel:#121a2b;
-  --panel2:#182337;
-  --border:#27344a;
-  --text:#edf3ff;
-  --muted:#8c9bb5;
-  --accent:#5d9cff;
-  --green:#35d49a;
-  --red:#ff6376;
-  --yellow:#ffc857;
+  --bg:#0b1120;--panel:#131c2e;--panel2:#18243a;--border:#263650;
+  --text:#e9eef8;--muted:#91a1bb;--blue:#4f8cff;--green:#25c58a;
+  --red:#ff647c;--orange:#ffb454;--radius:14px
 }
-
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
-
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
 button,input,select{font:inherit}
-button{cursor:pointer}
-
-.app{
-  max-width:1600px;
-  margin:auto;
-  padding:24px;
-}
-
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-bottom:24px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.logo{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#5794ff,#8059ff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  font-size:22px;
-}
-
-.brand h1{
-  margin:0;
-  font-size:23px;
-}
-
-.brand small{color:var(--muted)}
-
-.headerActions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  border:1px solid var(--border);
-  background:var(--panel2);
-  color:var(--text);
-  border-radius:10px;
-  padding:10px 13px;
-}
-
-.btn:hover{filter:brightness(1.2)}
-
-.btn.primary{
-  background:var(--accent);
-  color:white;
-  border-color:var(--accent);
-}
-
-.btn.danger{color:var(--red)}
-.btn.small{padding:6px 9px;font-size:13px}
-
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(5,minmax(120px,1fr));
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.stat{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:17px;
-}
-
-.statLabel{color:var(--muted);font-size:13px}
-.statValue{font-size:28px;font-weight:800;margin-top:6px}
-
-.panel{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:15px;
-  overflow:hidden;
-}
-
-.toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:14px;
-  border-bottom:1px solid var(--border);
-}
-
-input,select{
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:10px;
-}
-
-input:focus,select:focus{outline:none;border-color:var(--accent)}
-
-.search{
-  flex:1;
-  min-width:220px;
-}
-
-.tableWrap{
-  overflow:auto;
-  max-height:70vh;
-}
-
-table{
-  border-collapse:collapse;
-  width:100%;
-  min-width:1000px;
-}
-
-th,td{
-  padding:11px 12px;
-  border-bottom:1px solid var(--border);
-  text-align:left;
-}
-
-th{
-  background:var(--panel);
-  color:var(--muted);
-  font-size:12px;
-  position:sticky;
-  top:0;
-  z-index:2;
-}
-
-tbody tr:hover{background:#5d9cff0b}
-
-.channel{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logoImg{
-  width:34px;
-  height:34px;
-  object-fit:contain;
-  border-radius:8px;
-  border:1px solid var(--border);
-  background:var(--panel2);
-  padding:3px;
-}
-
-.channelName{font-weight:600}
-
-.channelUrl{
-  max-width:280px;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  font-size:11px;
-  color:var(--muted);
-}
-
-.badge{
-  border-radius:20px;
-  padding:4px 8px;
-  font-size:11px;
-}
-
-.activeBadge{
-  color:var(--green);
-  background:#35d49a1c;
-}
-
-.disabledBadge{
-  color:var(--red);
-  background:#ff63761c;
-}
-
-.groupBadge{
-  color:var(--accent);
-  background:#5d9cff1c;
-}
-
-.star{
-  color:var(--yellow);
-  font-size:18px;
-  cursor:pointer;
-}
-
-.actions{
-  display:flex;
-  gap:4px;
-}
-
-.empty{
-  text-align:center;
-  padding:45px 20px;
-  color:var(--muted);
-}
-
-.footer{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:14px;
-  font-size:12px;
-  color:var(--muted);
-}
-
-.modalBack{
-  position:fixed;
-  inset:0;
-  background:#000b;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:50;
-}
-
-.modalBack.open{display:flex}
-
-.modal{
-  width:min(600px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-}
-
+button{cursor:pointer;border:1px solid var(--border);background:var(--panel2);color:var(--text);border-radius:9px;padding:9px 13px}
+button:hover{border-color:var(--blue);background:#20304c}
+button.primary{background:var(--blue);border-color:var(--blue);color:white}
+button.danger{color:var(--red)}
+input,select{background:#0c1525;color:var(--text);border:1px solid var(--border);border-radius:9px;padding:10px;width:100%}
+input:focus,select:focus{outline:1px solid var(--blue)}
+header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.brand{font-size:23px;font-weight:800;letter-spacing:.4px}
+.brand span{color:var(--blue)}
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}
+main{max-width:1500px;margin:auto;padding:22px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.stat{background:var(--panel);border:1px solid var(--border);padding:17px;border-radius:var(--radius)}
+.stat .number{font-size:25px;font-weight:800;margin-top:4px}
+.stat .label{color:var(--muted);font-size:13px}
+.toolbar{background:var(--panel);padding:14px;border:1px solid var(--border);border-radius:var(--radius);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.toolbar>*{flex:1;min-width:140px}
+.toolbar button{flex:0 0 auto}
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--border);text-align:left}
+th{background:#17243a;color:var(--muted);font-size:12px;position:sticky;top:0}
+tr:hover{background:#17243a}
+tr.dragging{opacity:.35}
+tr.drop-target{outline:2px dashed var(--blue)}
+.channel{display:flex;align-items:center;gap:10px;min-width:240px}
+.logo{width:38px;height:38px;border-radius:8px;object-fit:contain;background:#0b1424;padding:3px}
+.logo-placeholder{width:38px;height:38px;border-radius:8px;background:#24344e;display:grid;place-items:center}
+.channel-name{font-weight:650}
+.channel-url{font-size:11px;color:var(--muted);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.status{font-size:12px;font-weight:700;white-space:nowrap}
+.online{color:var(--green)}.offline{color:var(--red)}.unknown{color:var(--orange)}.checking{color:var(--blue)}
+.small{font-size:12px;color:var(--muted)}
+.actions{display:flex;gap:5px;flex-wrap:wrap}
+.actions button{padding:6px 8px;font-size:12px}
+.fav{color:#ffd166;font-size:19px;cursor:pointer}
+.badge{padding:4px 8px;border-radius:20px;background:#23344e;font-size:11px}
+.disabled-row{opacity:.48}
+.empty{text-align:center;padding:40px;color:var(--muted)}
+.modal-backdrop{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:15px;z-index:10}
+.modal-backdrop.open{display:flex}
+.modal{width:min(700px,100%);max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px}
 .modal h2{margin-top:0}
-
-.formGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.formGrid .full{grid-column:1/-1}
-
-.formGrid label{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:5px;
-}
-
-.formGrid input{width:100%}
-
-.modalActions{
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-  margin-top:20px;
-}
-
-.toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:13px 18px;
-  display:none;
-  z-index:100;
-  box-shadow:0 10px 30px #0005;
-  max-width:90%;
-}
-
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1/-1}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px}
+.toast{position:fixed;bottom:20px;right:20px;background:#1d2c44;border:1px solid var(--border);padding:13px 18px;border-radius:12px;display:none;z-index:30;max-width:90vw}
 .toast.show{display:block}
-
-.hiddenFile{
-  position:fixed;
-  left:-10000px;
-  top:0;
-  width:1px;
-  height:1px;
-  opacity:0;
-}
-
-@media(max-width:900px){
-  .dashboard{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
-  .app{padding:12px}
-  .header{align-items:flex-start}
-  .brand h1{font-size:19px}
-  .dashboard{grid-template-columns:1fr 1fr}
-  .formGrid{grid-template-columns:1fr}
-  .formGrid .full{grid-column:auto}
-}
+@media(max-width:800px){main{padding:12px}.stats{grid-template-columns:repeat(2,1fr)}header{padding:15px}.form-grid{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-
-<div class="app">
-
-<header class="header">
-  <div class="brand">
-    <div class="logo">VX</div>
-    <div>
-      <h1>VisionX Playlist Manager</h1>
-      <small>Playlist Management System</small>
-    </div>
-  </div>
-
-  <div class="headerActions">
-    <button class="btn" onclick="openFilePicker()">📂 Datei importieren</button>
-    <button class="btn" onclick="openURLImport()">🌐 URL importieren</button>
-    <button class="btn" onclick="exportM3U()">📤 M3U Export</button>
-    <button class="btn" onclick="backupJSON()">💾 Backup</button>
-    <button class="btn" onclick="restoreJSON()">📥 Restore</button>
-    <button class="btn primary" onclick="openChannelModal()">＋ Sender</button>
+<header>
+  <div class="brand">📺 <span>VisionX</span> Playlist Manager</div>
+  <div class="header-actions">
+    <button onclick="openImport()">📥 Import</button>
+    <button onclick="exportM3U()">📤 M3U Export</button>
+    <button onclick="backupJSON()">💾 Backup</button>
+    <button onclick="restoreJSON()">📂 Restore</button>
+    <button class="primary" onclick="openEditor()">＋ Sender</button>
   </div>
 </header>
 
-<!-- Datei-Import -->
-<input
-  id="fileInput"
-  class="hiddenFile"
-  type="file"
-  accept=".m3u,.m3u8,.txt"
-  multiple
->
-
-<!-- Backup-Restore -->
-<input
-  id="backupInput"
-  class="hiddenFile"
-  type="file"
-  accept=".json"
->
-
-<section class="dashboard">
-  <div class="stat">
-    <div class="statLabel">Sender gesamt</div>
-    <div class="statValue" id="totalCount">0</div>
-  </div>
-
-  <div class="stat">
-    <div class="statLabel">Aktiv</div>
-    <div class="statValue" id="activeCount">0</div>
-  </div>
-
-  <div class="stat">
-    <div class="statLabel">Deaktiviert</div>
-    <div class="statValue" id="disabledCount">0</div>
-  </div>
-
-  <div class="stat">
-    <div class="statLabel">Favoriten</div>
-    <div class="statValue" id="favoriteCount">0</div>
-  </div>
-
-  <div class="stat">
-    <div class="statLabel">Gruppen</div>
-    <div class="statValue" id="groupCount">0</div>
-  </div>
-</section>
-
-<section class="panel">
+<main>
+  <section class="stats">
+    <div class="stat"><div class="label">Sender insgesamt</div><div class="number" id="totalCount">0</div></div>
+    <div class="stat"><div class="label">Online</div><div class="number online" id="onlineCount">0</div></div>
+    <div class="stat"><div class="label">Offline</div><div class="number offline" id="offlineCount">0</div></div>
+    <div class="stat"><div class="label">Favoriten</div><div class="number" id="favoriteCount">0</div></div>
+  </section>
 
   <div class="toolbar">
-
-    <input
-      id="search"
-      class="search"
-      type="search"
-      placeholder="🔎 Sender, URL oder Gruppe suchen"
-    >
-
-    <select id="filterGroup">
-      <option value="">Alle Gruppen</option>
+    <input id="search" placeholder="🔎 Sender suchen…" oninput="render()">
+    <select id="groupFilter" onchange="render()"><option value="">Alle Gruppen</option></select>
+    <select id="statusFilter" onchange="render()">
+      <option value="">Alle Status</option><option value="online">Online</option>
+      <option value="offline">Offline</option><option value="unknown">Nicht prüfbar</option>
     </select>
-
-    <select id="filterStatus">
-      <option value="">Alle</option>
-      <option value="active">Aktiv</option>
-      <option value="disabled">Deaktiviert</option>
-      <option value="favorite">Favoriten</option>
-    </select>
-
-    <select id="sort">
-      <option value="name">Name A–Z</option>
-      <option value="nameDesc">Name Z–A</option>
+    <select id="sortSelect" onchange="render()">
+      <option value="manual">Manuelle Reihenfolge</option><option value="name">Name A–Z</option>
       <option value="group">Gruppe</option>
-      <option value="newest">Neueste</option>
     </select>
-
-    <button class="btn small" onclick="manageGroups()">📁 Gruppen</button>
-    <button class="btn small" onclick="toggleAll(true)">☑ Alle aktiv</button>
-    <button class="btn small" onclick="toggleAll(false)">☐ Alle aus</button>
-    <button class="btn small danger" onclick="deleteSelected()">🗑 Löschen</button>
-
+    <button onclick="checkAll()">🔍 Alle prüfen</button>
+    <button onclick="manageGroups()">📁 Gruppen</button>
   </div>
 
-  <div class="tableWrap">
+  <div class="table-wrap">
     <table>
       <thead>
-        <tr>
-          <th><input type="checkbox" id="selectAll"></th>
-          <th>#</th>
-          <th>Sender</th>
-          <th>Gruppe</th>
-          <th>Status</th>
-          <th>⭐</th>
-          <th>Aktiv</th>
-          <th>Aktionen</th>
-        </tr>
+        <tr><th>↕</th><th>Sender</th><th>Gruppe</th><th>Status</th><th>Speed</th><th>Antwort</th><th>★</th><th>Aktionen</th></tr>
       </thead>
-      <tbody id="tableBody"></tbody>
+      <tbody id="channelTable"></tbody>
     </table>
-
-    <div id="emptyState" class="empty">
-      <h3>Keine Sender vorhanden</h3>
-      <p>Importiere eine Playlist oder füge Sender hinzu.</p>
-      <button class="btn primary" onclick="openFilePicker()">📂 Datei importieren</button>
-      <button class="btn" onclick="openURLImport()">🌐 URL importieren</button>
-    </div>
   </div>
-
-  <div class="footer">
-    <span id="resultCount">0 Sender</span>
-    <span>VisionX · Daten werden lokal gespeichert</span>
+  <div class="small" style="margin-top:10px">
+    Hinweis: Browserbasierte Stream-Checks können durch CORS eingeschränkt sein.
+    „Nicht prüfbar“ bedeutet nicht automatisch „Offline“.
   </div>
-</section>
+</main>
 
-</div>
-
-<!-- Sender Modal -->
-<div id="channelModal" class="modalBack">
+<!-- Sender bearbeiten -->
+<div class="modal-backdrop" id="editorModal">
   <div class="modal">
-    <h2 id="channelModalTitle">Sender hinzufügen</h2>
-
-    <div class="formGrid">
-
-      <div class="full">
-        <label>Sendername</label>
-        <input id="inputName" placeholder="Sendername">
+    <h2 id="editorTitle">Sender bearbeiten</h2>
+    <div class="form-grid">
+      <div class="form-field full"><label>Sendername</label><input id="fName"></div>
+      <div class="form-field full"><label>Stream URL</label><input id="fURL"></div>
+      <div class="form-field full"><label>Alternativer Stream-Link</label><input id="fAlt"></div>
+      <div class="form-field"><label>Gruppe</label><input id="fGroup" list="groupList"><datalist id="groupList"></datalist></div>
+      <div class="form-field"><label>TVG-ID</label><input id="fTVG"></div>
+      <div class="form-field full"><label>TVG-Logo URL</label><input id="fLogo"></div>
+      <div class="form-field full">
+        <label>Werkzeuge</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" onclick="searchAlternative()">🔗 Alternativen suchen</button>
+          <button type="button" onclick="searchTVG()">🆔 TVG-ID suchen</button>
+          <button type="button" onclick="searchLogo()">🖼️ Logo suchen</button>
+        </div>
       </div>
-
-      <div class="full">
-        <label>Stream URL</label>
-        <input id="inputURL" placeholder="https://...">
-      </div>
-
-      <div>
-        <label>Gruppe</label>
-        <input id="inputGroup" list="groupOptions" placeholder="Gruppe">
-        <datalist id="groupOptions"></datalist>
-      </div>
-
-      <div>
-        <label>Logo URL</label>
-        <input id="inputLogo" placeholder="Logo URL">
-      </div>
-
-      <div>
-        <label>TVG-ID</label>
-        <input id="inputTvg" placeholder="TVG ID">
-      </div>
-
-      <div>
-        <label>Playlist / Quelle</label>
-        <input id="inputSource" placeholder="Quelle">
-      </div>
-
-      <div class="full">
-        <label><input id="inputEnabled" type="checkbox" checked> Aktiv</label>
-        <label><input id="inputFavorite" type="checkbox"> Favorit</label>
-      </div>
-
     </div>
-
-    <div class="modalActions">
-      <button class="btn" onclick="closeChannelModal()">Abbrechen</button>
-      <button class="btn primary" onclick="saveChannel()">Speichern</button>
+    <div class="modal-actions">
+      <button onclick="closeEditor()">Abbrechen</button>
+      <button class="primary" onclick="saveChannel()">Speichern</button>
     </div>
   </div>
 </div>
 
-<!-- Gruppen Modal -->
-<div id="groupsModal" class="modalBack">
+<!-- Import -->
+<div class="modal-backdrop" id="importModal">
   <div class="modal">
-    <h2>📁 Gruppen verwalten</h2>
-
-    <div id="groupsContainer"></div>
-
-    <div style="margin-top:15px">
-      <input id="newGroupInput" placeholder="Neue Gruppe">
-      <button class="btn primary" onclick="addGroup()">＋ Hinzufügen</button>
+    <h2>M3U importieren</h2>
+    <div class="form-field"><label>Playlist-URL</label><input id="importURL" placeholder="https://…m3u"></div>
+    <div class="modal-actions" style="justify-content:flex-start">
+      <button class="primary" onclick="importFromURL()">URL laden</button>
+      <button onclick="document.getElementById('fileInput').click()">Datei auswählen</button>
     </div>
-
-    <div class="modalActions">
-      <button class="btn" onclick="closeGroupsModal()">Schließen</button>
-    </div>
+    <input type="file" id="fileInput" accept=".m3u,.m3u8,.txt" hidden>
+    <p class="small">Bei URL-Import kann der externe Server den Zugriff durch CORS blockieren. Der Dateiimport funktioniert lokal.</p>
+    <div class="modal-actions"><button onclick="closeImport()">Schließen</button></div>
   </div>
 </div>
 
-<div id="toast" class="toast"></div>
+<!-- Gruppen -->
+<div class="modal-backdrop" id="groupsModal">
+  <div class="modal">
+    <h2>Gruppen verwalten</h2>
+    <div style="display:flex;gap:8px;margin-bottom:15px">
+      <input id="newGroup" placeholder="Neue Gruppe">
+      <button class="primary" onclick="addGroup()">＋ Hinzufügen</button>
+    </div>
+    <div id="groupsList"></div>
+    <div class="modal-actions"><button onclick="closeGroups()">Schließen</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="jsonFile" accept=".json" hidden>
 
 <script>
 "use strict";
 
-/* =========================================================
-   VISIONX PLAYLIST MANAGER
-   ========================================================= */
+const STORAGE_KEY="visionx_playlist_manager_v1";
+let channels=[];
+let groups=[];
+let editingId=null;
+let draggedId=null;
+let checking=false;
 
-const STORAGE_KEY = "visionx_playlist_manager_clean_v1";
-
-let channels = [];
-let groups = [];
-let selected = new Set();
-let editID = null;
-
-/* =========================================================
-   UTILITIES
-   ========================================================= */
-
-function makeID(){
-  return "vx_" + Date.now() + "_" + Math.random().toString(36).slice(2,9);
+function uid(){return "vx_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,8)}
+function esc(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),3500)}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify({channels,groups}))}
+function load(){
+  try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");channels=Array.isArray(d.channels)?d.channels:[];groups=Array.isArray(d.groups)?d.groups:[]}
+  catch{channels=[];groups=[]}
 }
-
-function escapeHTML(value){
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[char]));
+function ensureGroup(g){g=(g||"").trim();if(g&&!groups.includes(g))groups.push(g)}
+function normalize(c){
+ return {id:c.id||uid(),name:c.name||"Unbekannter Sender",url:c.url||"",alt:c.alt||"",
+ group:c.group||"",tvgId:c.tvgId||"",logo:c.logo||"",status:c.status||"unknown",
+ speed:c.speed||"",response:c.response||"",favorite:!!c.favorite,enabled:c.enabled!==false};
 }
-
-function showToast(message){
-  const toast = document.getElementById("toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  if(window.toastTimeout) clearTimeout(window.toastTimeout);
-
-  window.toastTimeout = setTimeout(()=>{
-    toast.classList.remove("show");
-  },3000);
-}
-
-function saveData(){
-  try{
-    localStorage.setItem(STORAGE_KEY,JSON.stringify({
-      channels,
-      groups
-    }));
-  }catch(error){
-    console.error(error);
-    showToast("Speichern fehlgeschlagen");
-  }
-}
-
-function loadData(){
-  try{
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-
-    channels = Array.isArray(data.channels) ? data.channels : [];
-    groups = Array.isArray(data.groups) ? data.groups : [];
-
-  }catch(error){
-    channels = [];
-    groups = [];
-  }
-
-  channels.forEach(channel=>{
-    if(!channel.id) channel.id = makeID();
-    if(channel.enabled === undefined) channel.enabled = true;
-    if(channel.favorite === undefined) channel.favorite = false;
-    if(!channel.group) channel.group = "";
-  });
-
-  updateGroups();
-  render();
-}
-
-function updateGroups(){
-  channels.forEach(channel=>{
-    if(channel.group && !groups.includes(channel.group)){
-      groups.push(channel.group);
-    }
-  });
-
-  groups = [...new Set(groups)].filter(Boolean).sort();
-}
-
-/* =========================================================
-   FILE IMPORT
-   ========================================================= */
-
-function openFilePicker(){
-  const input = document.getElementById("fileInput");
-
-  // Input wird direkt durch den Button-Klick geöffnet
-  input.value = "";
-  input.click();
-}
-
-document.getElementById("fileInput").addEventListener("change",async function(event){
-  const files = Array.from(event.target.files || []);
-
-  if(!files.length) return;
-
-  let addedTotal = 0;
-  let duplicateTotal = 0;
-
-  for(const file of files){
-    try{
-      const text = await file.text();
-
-      const result = importPlaylistText(text,file.name);
-
-      addedTotal += result.added;
-      duplicateTotal += result.duplicates;
-
-    }catch(error){
-      console.error("Dateiimport:",error);
-      alert("Fehler beim Lesen der Datei:\n" + file.name);
-    }
-  }
-
-  render();
-
-  showToast(
-    addedTotal + " Sender importiert · " +
-    duplicateTotal + " Duplikate übersprungen"
-  );
-
-  event.target.value = "";
-});
-
-/* =========================================================
-   URL IMPORT
-   ========================================================= */
-
-function openURLImport(){
-  const defaultURL =
-    "https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/samsungtvplus_de.m3u";
-
-  const url = prompt("Playlist-URL eingeben:",defaultURL);
-
-  if(!url || !url.trim()) return;
-
-  importFromURL(url.trim());
-}
-
-async function importFromURL(url){
-  try{
-    showToast("Playlist wird geladen...");
-
-    const response = await fetch(url,{
-      cache:"no-cache"
-    });
-
-    if(!response.ok){
-      throw new Error("HTTP " + response.status);
-    }
-
-    const text = await response.text();
-
-    if(!text.includes("#EXTINF")){
-      throw new Error("Keine M3U-Playlist gefunden");
-    }
-
-    const result = importPlaylistText(text,url);
-
-    render();
-
-    showToast(
-      result.added + " Sender importiert · " +
-      result.duplicates + " Duplikate"
-    );
-
-  }catch(error){
-    console.error("URL-Import:",error);
-
-    alert(
-      "URL-Import fehlgeschlagen.\n\n" +
-      "Mögliche Gründe:\n" +
-      "• URL nicht erreichbar\n" +
-      "• CORS blockiert den Zugriff\n" +
-      "• Playlist ist ungültig\n\n" +
-      "Bei CORS kannst du die Datei herunterladen " +
-      "und anschließend lokal importieren."
-    );
-  }
-}
-
-/* =========================================================
-   M3U PARSER
-   ========================================================= */
-
-function parsePlaylist(text,source){
-  const lines = text
-    .replace(/^\uFEFF/,"")
-    .split(/\r?\n/);
-
-  const result = [];
-  let meta = null;
-
-  for(const rawLine of lines){
-    const line = rawLine.trim();
-
-    if(!line) continue;
-
-    if(line.startsWith("#EXTINF:")){
-      const comma = line.indexOf(",");
-      const header = comma >= 0 ? line.substring(0,comma) : line;
-      const name = comma >= 0 ? line.substring(comma+1).trim() : "";
-
-      const attributes = {};
-
-      // Attribute in Anführungszeichen
-      const regex = /([\w-]+)\s*=\s*"([^"]*)"/g;
-      let match;
-
-      while((match = regex.exec(header)) !== null){
-        attributes[match[1].toLowerCase()] = match[2];
-      }
-
-      meta = {
-        name:name || attributes["tvg-name"] || "",
-        attributes
-      };
-
-      continue;
-    }
-
-    if(line.startsWith("#")) continue;
-
-    if(/^(https?|rtmp|rtsp|udp|ftp):\/\//i.test(line)){
-      if(!meta){
-        meta = {
-          name:"",
-          attributes:{}
-        };
-      }
-
-      const a = meta.attributes;
-
-      result.push({
-        id:makeID(),
-        name:meta.name || a["tvg-name"] || a["tvg-id"] || line,
-        url:line,
-        group:a["group-title"] || "",
-        logo:a["tvg-logo"] || "",
-        tvgId:a["tvg-id"] || "",
-        source:source || "",
-        enabled:true,
-        favorite:false,
-        created:Date.now()+result.length
-      });
-
-      meta = null;
-    }
-  }
-
-  return result;
-}
-
-/* =========================================================
-   IMPORT PROCESS
-   ========================================================= */
-
-function importPlaylistText(text,source){
-  const imported = parsePlaylist(text,source);
-
-  const existing = new Set(
-    channels.map(c=>String(c.url || "").trim())
-  );
-
-  let added = 0;
-  let duplicates = 0;
-
-  for(const channel of imported){
-    const url = channel.url.trim();
-
-    if(existing.has(url)){
-      duplicates++;
-      continue;
-    }
-
-    existing.add(url);
-    channels.push(channel);
-    added++;
-  }
-
-  updateGroups();
-  saveData();
-
-  return {
-    added,
-    duplicates,
-    total:imported.length
-  };
-}
-
-/* =========================================================
-   DASHBOARD / FILTER / SORT
-   ========================================================= */
-
-function renderStats(){
-  document.getElementById("totalCount").textContent = channels.length;
-  document.getElementById("activeCount").textContent =
-    channels.filter(c=>c.enabled).length;
-  document.getElementById("disabledCount").textContent =
-    channels.filter(c=>!c.enabled).length;
-  document.getElementById("favoriteCount").textContent =
-    channels.filter(c=>c.favorite).length;
-  document.getElementById("groupCount").textContent = groups.length;
-}
-
-function renderGroupSelect(){
-  const select = document.getElementById("filterGroup");
-  const oldValue = select.value;
-
-  select.innerHTML = '<option value="">Alle Gruppen</option>';
-
-  groups.forEach(group=>{
-    const option = document.createElement("option");
-    option.value = group;
-    option.textContent = group;
-    select.appendChild(option);
-  });
-
-  if(groups.includes(oldValue)){
-    select.value = oldValue;
-  }
-
-  document.getElementById("groupOptions").innerHTML =
-    groups.map(group=>`<option value="${escapeHTML(group)}"></option>`).join("");
-}
-
-function getFiltered(){
-  const search = document.getElementById("search").value.toLowerCase().trim();
-  const group = document.getElementById("filterGroup").value;
-  const status = document.getElementById("filterStatus").value;
-  const sort = document.getElementById("sort").value;
-
-  let list = channels.filter(channel=>{
-    const text = [
-      channel.name,
-      channel.url,
-      channel.group,
-      channel.source,
-      channel.tvgId
-    ].join(" ").toLowerCase();
-
-    if(search && !text.includes(search)) return false;
-    if(group && channel.group !== group) return false;
-
-    if(status === "active" && !channel.enabled) return false;
-    if(status === "disabled" && channel.enabled) return false;
-    if(status === "favorite" && !channel.favorite) return false;
-
-    return true;
-  });
-
-  if(sort === "name"){
-    list.sort((a,b)=>(a.name||"").localeCompare(b.name||""));
-  }
-
-  if(sort === "nameDesc"){
-    list.sort((a,b)=>(b.name||"").localeCompare(a.name||""));
-  }
-
-  if(sort === "group"){
-    list.sort((a,b)=>
-      (a.group||"").localeCompare(b.group||"") ||
-      (a.name||"").localeCompare(b.name||"")
-    );
-  }
-
-  if(sort === "newest"){
-    list.sort((a,b)=>(b.created||0)-(a.created||0));
-  }
-
-  return list;
-}
-
-/* =========================================================
-   RENDER TABLE
-   ========================================================= */
 
 function render(){
-  updateGroups();
-  renderStats();
-  renderGroupSelect();
-
-  const body = document.getElementById("tableBody");
-  const empty = document.getElementById("emptyState");
-  const list = getFiltered();
-
-  body.innerHTML = "";
-
-  empty.style.display = channels.length === 0 ? "block" : "none";
-
-  list.forEach((channel,index)=>{
-    const tr = document.createElement("tr");
-
-    const logo = channel.logo
-      ? `<img class="logoImg" src="${escapeHTML(channel.logo)}" onerror="this.style.display='none'" alt="">`
-      : `<div class="logoImg"></div>`;
-
-    tr.innerHTML = `
-      <td>
-        <input class="selectRow" type="checkbox"
-          data-id="${escapeHTML(channel.id)}"
-          ${selected.has(channel.id)?"checked":""}>
-      </td>
-
-      <td>${index+1}</td>
-
-      <td>
-        <div class="channel">
-          ${logo}
-          <div>
-            <div class="channelName">${escapeHTML(channel.name)}</div>
-            <div class="channelUrl" title="${escapeHTML(channel.url)}">
-              ${escapeHTML(channel.url)}
-            </div>
-          </div>
-        </div>
-      </td>
-
-      <td>
-        ${channel.group
-          ? `<span class="badge groupBadge">${escapeHTML(channel.group)}</span>`
-          : "–"}
-      </td>
-
-      <td>
-        <span class="badge ${channel.enabled?"activeBadge":"disabledBadge"}">
-          ${channel.enabled?"Aktiv":"Deaktiviert"}
-        </span>
-      </td>
-
-      <td>
-        <span class="star" data-favorite="${escapeHTML(channel.id)}">
-          ${channel.favorite?"★":"☆"}
-        </span>
-      </td>
-
-      <td>
-        <input type="checkbox" class="toggleEnabled"
-          data-id="${escapeHTML(channel.id)}"
-          ${channel.enabled?"checked":""}>
-      </td>
-
-      <td>
-        <div class="actions">
-          <button class="btn small" data-edit="${escapeHTML(channel.id)}">✏️</button>
-          <button class="btn small" data-copy="${escapeHTML(channel.id)}">📋</button>
-          <button class="btn small danger" data-delete="${escapeHTML(channel.id)}">🗑</button>
-        </div>
-      </td>
-    `;
-
-    body.appendChild(tr);
-  });
-
-  document.getElementById("resultCount").textContent =
-    list.length + " von " + channels.length + " Sendern";
-
-  document.getElementById("selectAll").checked =
-    list.length>0 && list.every(c=>selected.has(c.id));
-
-  // Auswahl
-  body.querySelectorAll(".selectRow").forEach(box=>{
-    box.addEventListener("change",()=>{
-      if(box.checked) selected.add(box.dataset.id);
-      else selected.delete(box.dataset.id);
-      updateSelectAll();
-    });
-  });
-
-  // Aktiv / deaktiviert
-  body.querySelectorAll(".toggleEnabled").forEach(box=>{
-    box.addEventListener("change",()=>{
-      const channel = channels.find(c=>c.id===box.dataset.id);
-      if(!channel) return;
-
-      channel.enabled = box.checked;
-      saveData();
-      renderStats();
-    });
-  });
-
-  // Favoriten
-  body.querySelectorAll("[data-favorite]").forEach(star=>{
-    star.addEventListener("click",()=>{
-      const channel = channels.find(c=>c.id===star.dataset.favorite);
-      if(!channel) return;
-
-      channel.favorite = !channel.favorite;
-      saveData();
-      render();
-    });
-  });
-
-  // Bearbeiten
-  body.querySelectorAll("[data-edit]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      editChannel(button.dataset.edit);
-    });
-  });
-
-  // Kopieren
-  body.querySelectorAll("[data-copy]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      duplicateChannel(button.dataset.copy);
-    });
-  });
-
-  // Löschen
-  body.querySelectorAll("[data-delete]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      deleteChannel(button.dataset.delete);
-    });
-  });
+  updateStats();updateGroupControls();
+  const tbody=document.getElementById("channelTable");
+  const query=document.getElementById("search").value.toLowerCase();
+  const group=document.getElementById("groupFilter").value;
+  const status=document.getElementById("statusFilter").value;
+  const sort=document.getElementById("sortSelect").value;
+  let list=channels.filter(c=>(!query||(c.name+" "+c.url+" "+c.group+" "+c.tvgId).toLowerCase().includes(query))&&(!group||c.group===group)&&(!status||c.status===status));
+  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+  if(sort==="group")list.sort((a,b)=>(a.group||"").localeCompare(b.group||"")||a.name.localeCompare(b.name));
+  tbody.innerHTML="";
+  if(!list.length){tbody.innerHTML='<tr><td colspan="8" class="empty">Keine Sender gefunden.</td></tr>';return}
+  for(const c of list){
+    const tr=document.createElement("tr");tr.dataset.id=c.id;tr.draggable=sort==="manual";
+    if(!c.enabled)tr.classList.add("disabled-row");
+    const statusText=c.status==="online"?"🟢 Online":c.status==="offline"?"🔴 Offline":c.status==="checking"?"🔵 Prüft…":"🟠 Nicht prüfbar";
+    const statusClass=c.status;
+    tr.innerHTML=`
+      <td>${sort==="manual"?"☰":""}</td>
+      <td><div class="channel">
+        ${c.logo?`<img class="logo" src="${esc(c.logo)}" onerror="this.style.display='none'">`:'<div class="logo-placeholder">📺</div>'}
+        <div><div class="channel-name">${esc(c.name)}</div><div class="channel-url" title="${esc(c.url)}">${esc(c.url)}</div></div>
+      </div></td>
+      <td>${esc(c.group||"—")}</td>
+      <td><span class="status ${statusClass}">${statusText}</span></td>
+      <td>${esc(c.speed||"—")}</td><td>${esc(c.response||"—")}</td>
+      <td><span class="fav" onclick="toggleFavorite('${c.id}')">${c.favorite?"★":"☆"}</span></td>
+      <td><div class="actions">
+        <button onclick="checkOne('${c.id}')">Check</button>
+        <button onclick="toggleEnabled('${c.id}')">${c.enabled?"Deaktivieren":"Aktivieren"}</button>
+        <button onclick="editChannel('${c.id}')">Edit</button>
+        <button class="danger" onclick="deleteChannel('${c.id}')">✕</button>
+      </div></td>`;
+    if(sort==="manual"){
+      tr.addEventListener("dragstart",e=>{draggedId=c.id;tr.classList.add("dragging");e.dataTransfer.effectAllowed="move"});
+      tr.addEventListener("dragend",()=>{draggedId=null;tr.classList.remove("dragging");document.querySelectorAll(".drop-target").forEach(x=>x.classList.remove("drop-target"))});
+      tr.addEventListener("dragover",e=>{e.preventDefault();tr.classList.add("drop-target")});
+      tr.addEventListener("dragleave",()=>tr.classList.remove("drop-target"));
+      tr.addEventListener("drop",e=>{e.preventDefault();tr.classList.remove("drop-target");moveChannel(draggedId,c.id)});
+    }
+    tbody.appendChild(tr);
+  }
 }
-
-function updateSelectAll(){
-  const list = getFiltered();
-  document.getElementById("selectAll").checked =
-    list.length>0 && list.every(c=>selected.has(c.id));
+function updateStats(){
+ document.getElementById("totalCount").textContent=channels.length;
+ document.getElementById("onlineCount").textContent=channels.filter(c=>c.status==="online").length;
+ document.getElementById("offlineCount").textContent=channels.filter(c=>c.status==="offline").length;
+ document.getElementById("favoriteCount").textContent=channels.filter(c=>c.favorite).length;
 }
-
-/* =========================================================
-   CHANNEL CRUD
-   ========================================================= */
-
-function openChannelModal(){
-  editID = null;
-
-  document.getElementById("channelModalTitle").textContent =
-    "Sender hinzufügen";
-
-  clearChannelForm();
-
-  document.getElementById("channelModal").classList.add("open");
+function updateGroupControls(){
+ const f=document.getElementById("groupFilter"),v=f.value;
+ f.innerHTML='<option value="">Alle Gruppen</option>'+groups.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
+ f.value=groups.includes(v)?v:"";
+ document.getElementById("groupList").innerHTML=groups.map(g=>`<option value="${esc(g)}">`).join("");
 }
-
-function editChannel(id){
-  const channel = channels.find(c=>c.id===id);
-  if(!channel) return;
-
-  editID = id;
-
-  document.getElementById("channelModalTitle").textContent =
-    "Sender bearbeiten";
-
-  document.getElementById("inputName").value = channel.name || "";
-  document.getElementById("inputURL").value = channel.url || "";
-  document.getElementById("inputGroup").value = channel.group || "";
-  document.getElementById("inputLogo").value = channel.logo || "";
-  document.getElementById("inputTvg").value = channel.tvgId || "";
-  document.getElementById("inputSource").value = channel.source || "";
-  document.getElementById("inputEnabled").checked = !!channel.enabled;
-  document.getElementById("inputFavorite").checked = !!channel.favorite;
-
-  document.getElementById("channelModal").classList.add("open");
+function moveChannel(from,to){
+ if(!from||from===to)return;
+ const a=channels.findIndex(c=>c.id===from),b=channels.findIndex(c=>c.id===to);
+ if(a<0||b<0)return;
+ const [item]=channels.splice(a,1);channels.splice(b,0,item);save();render();
 }
-
-function clearChannelForm(){
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputURL").value = "";
-  document.getElementById("inputGroup").value = "";
-  document.getElementById("inputLogo").value = "";
-  document.getElementById("inputTvg").value = "";
-  document.getElementById("inputSource").value = "";
-  document.getElementById("inputEnabled").checked = true;
-  document.getElementById("inputFavorite").checked = false;
+function toggleFavorite(id){const c=channels.find(x=>x.id===id);if(c){c.favorite=!c.favorite;save();render()}}
+function toggleEnabled(id){const c=channels.find(x=>x.id===id);if(c){c.enabled=!c.enabled;save();render()}}
+function deleteChannel(id){if(!confirm("Sender wirklich löschen?"))return;channels=channels.filter(c=>c.id!==id);save();render()}
+function openEditor(id=null){
+ editingId=id;
+ const c=id?channels.find(x=>x.id===id):null;
+ document.getElementById("editorTitle").textContent=c?"Sender bearbeiten":"Sender hinzufügen";
+ document.getElementById("fName").value=c?.name||"";
+ document.getElementById("fURL").value=c?.url||"";
+ document.getElementById("fAlt").value=c?.alt||"";
+ document.getElementById("fGroup").value=c?.group||"";
+ document.getElementById("fTVG").value=c?.tvgId||"";
+ document.getElementById("fLogo").value=c?.logo||"";
+ document.getElementById("editorModal").classList.add("open");
 }
-
-function closeChannelModal(){
-  document.getElementById("channelModal").classList.remove("open");
-}
-
+function editChannel(id){openEditor(id)}
+function closeEditor(){document.getElementById("editorModal").classList.remove("open")}
 function saveChannel(){
-  const name = document.getElementById("inputName").value.trim();
-  const url = document.getElementById("inputURL").value.trim();
-
-  if(!name || !url){
-    alert("Bitte Sendername und URL eingeben.");
-    return;
-  }
-
-  const duplicate = channels.find(c=>c.url.trim()===url && c.id!==editID);
-
-  if(duplicate && !confirm("Diese URL ist bereits vorhanden. Trotzdem speichern?")){
-    return;
-  }
-
-  const data = {
-    name,
-    url,
-    group:document.getElementById("inputGroup").value.trim(),
-    logo:document.getElementById("inputLogo").value.trim(),
-    tvgId:document.getElementById("inputTvg").value.trim(),
-    source:document.getElementById("inputSource").value.trim(),
-    enabled:document.getElementById("inputEnabled").checked,
-    favorite:document.getElementById("inputFavorite").checked
-  };
-
-  if(editID){
-    const index = channels.findIndex(c=>c.id===editID);
-    if(index!==-1) channels[index] = {...channels[index],...data};
-  }else{
-    channels.push({
-      id:makeID(),
-      ...data,
-      created:Date.now()
-    });
-  }
-
-  saveData();
-  closeChannelModal();
-  render();
-
-  showToast(editID ? "Sender aktualisiert" : "Sender hinzugefügt");
+ const c=normalize({id:editingId||uid(),name:document.getElementById("fName").value.trim(),
+ url:document.getElementById("fURL").value.trim(),alt:document.getElementById("fAlt").value.trim(),
+ group:document.getElementById("fGroup").value.trim(),tvgId:document.getElementById("fTVG").value.trim(),
+ logo:document.getElementById("fLogo").value.trim(),...(editingId?channels.find(x=>x.id===editingId):{})});
+ if(!c.name||!c.url){toast("Name und Stream URL sind erforderlich.");return}
+ ensureGroup(c.group);
+ if(editingId){const i=channels.findIndex(x=>x.id===editingId);if(i>=0)channels[i]=c}
+ else channels.push(c);
+ save();closeEditor();render();toast("Sender gespeichert.");
 }
-
-function deleteChannel(id){
-  const channel = channels.find(c=>c.id===id);
-  if(!channel) return;
-
-  if(!confirm("Sender '"+channel.name+"' löschen?")) return;
-
-  channels = channels.filter(c=>c.id!==id);
-  selected.delete(id);
-
-  saveData();
-  render();
-
-  showToast("Sender gelöscht");
-}
-
-function duplicateChannel(id){
-  const channel = channels.find(c=>c.id===id);
-  if(!channel) return;
-
-  channels.push({
-    ...channel,
-    id:makeID(),
-    name:channel.name+" (Kopie)",
-    created:Date.now()
-  });
-
-  saveData();
-  render();
-
-  showToast("Sender kopiert");
-}
-
-/* =========================================================
-   BULK ACTIONS
-   ========================================================= */
-
-function toggleAll(enabled){
-  getFiltered().forEach(channel=>{
-    channel.enabled = enabled;
-  });
-
-  saveData();
-  render();
-
-  showToast(enabled ? "Alle sichtbaren Sender aktiviert" :
-                     "Alle sichtbaren Sender deaktiviert");
-}
-
-function deleteSelected(){
-  if(!selected.size){
-    showToast("Keine Sender ausgewählt");
-    return;
-  }
-
-  if(!confirm(selected.size+" Sender löschen?")) return;
-
-  channels = channels.filter(c=>!selected.has(c.id));
-  selected.clear();
-
-  saveData();
-  render();
-
-  showToast("Ausgewählte Sender gelöscht");
-}
-
-/* =========================================================
-   M3U EXPORT
-   ========================================================= */
-
-function exportM3U(){
-  if(!channels.length){
-    alert("Keine Sender zum Exportieren vorhanden.");
-    return;
-  }
-
-  const list = channels.filter(c=>c.enabled);
-
-  let output = "#EXTM3U\n";
-
-  list.forEach(channel=>{
-    let info = "#EXTINF:-1";
-
-    if(channel.tvgId){
-      info += ' tvg-id="'+channel.tvgId+'"';
-    }
-
-    if(channel.logo){
-      info += ' tvg-logo="'+channel.logo+'"';
-    }
-
-    if(channel.group){
-      info += ' group-title="'+channel.group+'"';
-    }
-
-    info += ","+channel.name+"\n";
-    output += info+channel.url+"\n";
-  });
-
-  downloadFile(
-    output,
-    "visionx_playlist.m3u",
-    "audio/x-mpegurl"
-  );
-
-  showToast(list.length+" Sender exportiert");
-}
-
-/* =========================================================
-   JSON BACKUP / RESTORE
-   ========================================================= */
-
-function backupJSON(){
-  const backup = {
-    application:"VisionX Playlist Manager",
-    version:1,
-    created:new Date().toISOString(),
-    channels,
-    groups
-  };
-
-  downloadFile(
-    JSON.stringify(backup,null,2),
-    "visionx_backup.json",
-    "application/json"
-  );
-
-  showToast("Backup erstellt");
-}
-
-function restoreJSON(){
-  document.getElementById("backupInput").click();
-}
-
-document.getElementById("backupInput").addEventListener("change",async event=>{
-  const file = event.target.files[0];
-  if(!file) return;
-
-  try{
-    const backup = JSON.parse(await file.text());
-
-    if(!Array.isArray(backup.channels)){
-      throw new Error("Ungültiges Backup");
-    }
-
-    if(!confirm("Backup laden? Die aktuelle Senderliste wird ersetzt.")){
-      event.target.value="";
-      return;
-    }
-
-    channels = backup.channels;
-    groups = Array.isArray(backup.groups) ? backup.groups : [];
-    selected.clear();
-
-    updateGroups();
-    saveData();
-    render();
-
-    showToast("Backup wiederhergestellt");
-
-  }catch(error){
-    console.error(error);
-    alert("Backup-Datei konnte nicht gelesen werden.");
-  }
-
-  event.target.value="";
-});
-
-function downloadFile(content,filename,type){
-  const blob = new Blob([content],{type});
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  setTimeout(()=>URL.revokeObjectURL(url),2000);
-}
-
-/* =========================================================
-   GROUP MANAGEMENT
-   ========================================================= */
-
-function manageGroups(){
-  renderGroups();
-  document.getElementById("groupsModal").classList.add("open");
-}
-
-function closeGroupsModal(){
-  document.getElementById("groupsModal").classList.remove("open");
-}
-
+function searchAlternative(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" alternative stream link IPTV"),"_blank","noopener")}
+function searchTVG(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?q="+encodeURIComponent(n+" tvg-id xmltv"),"_blank","noopener")}
+function searchLogo(){const n=document.getElementById("fName").value.trim();if(n)window.open("https://www.google.com/search?tbm=isch&q="+encodeURIComponent(n+" TV logo"),"_blank","noopener")}
+function manageGroups(){renderGroups();document.getElementById("groupsModal").classList.add("open")}
+function closeGroups(){document.getElementById("groupsModal").classList.remove("open")}
 function renderGroups(){
-  const container = document.getElementById("groupsContainer");
-
-  if(!groups.length){
-    container.innerHTML="<p style='color:var(--muted)'>Keine Gruppen vorhanden.</p>";
-    return;
-  }
-
-  container.innerHTML = groups.map(group=>`
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:10px;
-      margin:6px 0;
-      background:var(--panel2);
-      border-radius:9px;
-      gap:10px
-    ">
-      <span>${escapeHTML(group)}</span>
-      <div>
-        <button class="btn small" data-rename="${escapeHTML(group)}">✏️</button>
-        <button class="btn small danger" data-deletegroup="${escapeHTML(group)}">🗑</button>
-      </div>
-    </div>
-  `).join("");
-
-  container.querySelectorAll("[data-rename]").forEach(button=>{
-    button.onclick=()=>renameGroup(button.dataset.rename);
-  });
-
-  container.querySelectorAll("[data-deletegroup]").forEach(button=>{
-    button.onclick=()=>deleteGroup(button.dataset.deletegroup);
-  });
+ const el=document.getElementById("groupsList");
+ el.innerHTML=groups.map((g,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0">
+ <input value="${esc(g)}" onchange="renameGroup(${i},this.value)">
+ <button class="danger" onclick="deleteGroup(${i})">Löschen</button></div>`).join("")||'<p class="small">Keine Gruppen vorhanden.</p>';
 }
-
-function addGroup(){
-  const input = document.getElementById("newGroupInput");
-  const name = input.value.trim();
-
-  if(!name){
-    showToast("Bitte Gruppennamen eingeben");
-    return;
+function addGroup(){const v=document.getElementById("newGroup").value.trim();if(!v)return;if(groups.includes(v)){toast("Gruppe existiert bereits.");return}groups.push(v);document.getElementById("newGroup").value="";save();renderGroups();render()}
+function renameGroup(i,v){v=v.trim();if(!v||groups.includes(v)){toast("Gruppenname ungültig oder bereits vorhanden.");renderGroups();return}const old=groups[i];groups[i]=v;channels.forEach(c=>{if(c.group===old)c.group=v});save();renderGroups();render()}
+function deleteGroup(i){const g=groups[i];if(!confirm(`Gruppe "${g}" löschen? Sender werden keiner Gruppe zugeordnet.`))return;groups.splice(i,1);channels.forEach(c=>{if(c.group===g)c.group=""});save();renderGroups();render()}
+function openImport(){document.getElementById("importModal").classList.add("open")}
+function closeImport(){document.getElementById("importModal").classList.remove("open")}
+document.getElementById("fileInput").addEventListener("change",async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{parseM3U(await file.text());closeImport();toast("Playlist importiert.");}catch(err){toast("Import fehlgeschlagen: "+err.message)}
+ e.target.value="";
+});
+function parseM3U(text){
+ text=text.replace(/^\uFEFF/,"");
+ const lines=text.split(/\r?\n/);let pending=null,added=0;
+ for(const line of lines){
+  if(line.startsWith("#EXTINF:")){
+   const attrs={};for(const m of line.matchAll(/([\w-]+)="([^"]*)"/g))attrs[m[1]]=m[2];
+   const name=line.substring(line.lastIndexOf(",")+1).trim()||attrs["tvg-name"]||"Unbekannter Sender";
+   pending={name,group:attrs["group-title"]||"",tvgId:attrs["tvg-id"]||"",logo:attrs["tvg-logo"]||"",url:"",alt:""};
+  }else if(line.trim()&&!line.startsWith("#")&&pending){
+   pending.url=line.trim();
+   const duplicate=channels.some(c=>c.url===pending.url);
+   if(!duplicate){ensureGroup(pending.group);channels.push(normalize(pending));added++}
+   pending=null;
   }
-
-  if(groups.includes(name)){
-    showToast("Gruppe existiert bereits");
-    return;
-  }
-
-  groups.push(name);
-  input.value="";
-
-  saveData();
-  render();
-  renderGroups();
-
-  showToast("Gruppe erstellt");
+ }
+ save();render();toast(`${added} Sender importiert.`);
 }
-
-function renameGroup(oldName){
-  const newName = prompt("Neuer Gruppenname:",oldName);
-  if(!newName) return;
-
-  const name = newName.trim();
-
-  if(!name || name===oldName) return;
-
-  if(groups.includes(name)){
-    showToast("Gruppe existiert bereits");
-    return;
-  }
-
-  groups = groups.map(g=>g===oldName?name:g);
-
-  channels.forEach(c=>{
-    if(c.group===oldName) c.group=name;
-  });
-
-  saveData();
-  render();
-  renderGroups();
-
-  showToast("Gruppe umbenannt");
+async function importFromURL(){
+ const url=document.getElementById("importURL").value.trim();if(!url){toast("URL eingeben.");return}
+ try{const r=await fetch(url);if(!r.ok)throw new Error("HTTP "+r.status);parseM3U(await r.text());closeImport()}
+ catch(e){toast("URL nicht abrufbar (möglicherweise CORS). Bitte Playlist herunterladen und als Datei importieren.")}
 }
-
-function deleteGroup(name){
-  if(!confirm("Gruppe '"+name+"' löschen?")) return;
-
-  groups = groups.filter(g=>g!==name);
-
-  channels.forEach(c=>{
-    if(c.group===name) c.group="";
-  });
-
-  saveData();
-  render();
-  renderGroups();
-
-  showToast("Gruppe gelöscht");
+function exportM3U(){
+ const list=channels.filter(c=>c.enabled);
+ let out="#EXTM3U\n";
+ for(const c of list){
+  out+=`#EXTINF:-1 tvg-id="${c.tvgId||""}" tvg-logo="${c.logo||""}" group-title="${c.group||""}",${c.name}\n`;
+  out+=`${c.url}\n`;
+ }
+ const blob=new Blob([out],{type:"audio/x-mpegurl"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="VisionX.m3u";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+ toast("M3U exportiert.");
 }
-
-/* =========================================================
-   EVENT LISTENERS
-   ========================================================= */
-
-document.getElementById("search").addEventListener("input",render);
-document.getElementById("filterGroup").addEventListener("change",render);
-document.getElementById("filterStatus").addEventListener("change",render);
-document.getElementById("sort").addEventListener("change",render);
-
-document.getElementById("selectAll").addEventListener("change",event=>{
-  getFiltered().forEach(channel=>{
-    if(event.target.checked) selected.add(channel.id);
-    else selected.delete(channel.id);
-  });
-
-  render();
+function backupJSON(){const blob=new Blob([JSON.stringify({channels,groups},null,2)],{type:"application/json"});downloadBlob(blob,"VisionX-backup.json")}
+function downloadBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
+function restoreJSON(){document.getElementById("jsonFile").click()}
+document.getElementById("jsonFile").addEventListener("change",async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{const d=JSON.parse(await file.text());if(!Array.isArray(d.channels))throw new Error("Ungültige Datei");
+ channels=d.channels.map(normalize);groups=Array.isArray(d.groups)?d.groups:[];
+ channels.forEach(c=>ensureGroup(c.group));save();render();toast("Backup wiederhergestellt.")
+ }catch{toast("Backup konnte nicht gelesen werden.")}
+ e.target.value="";
 });
 
-document.getElementById("channelModal").addEventListener("click",event=>{
-  if(event.target.id==="channelModal") closeChannelModal();
-});
+async function checkOne(id){
+ const c=channels.find(x=>x.id===id);if(!c)return;
+ c.status="checking";render();
+ const start=performance.now();
+ try{
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),7000);
+  const response=await fetch(c.url,{
+   method:"GET",
+   headers:{"Range":"bytes=0-65535"},
+   signal:controller.signal,
+   cache:"no-store"
+  });
+  clearTimeout(timer);
+  const elapsed=Math.round(performance.now()-start);
+  c.response=elapsed+" ms";
 
-document.getElementById("groupsModal").addEventListener("click",event=>{
-  if(event.target.id==="groupsModal") closeGroupsModal();
-});
-
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape"){
-    closeChannelModal();
-    closeGroupsModal();
+  if(response.status===404||response.status===410){
+   c.status="offline";
+   c.speed="—";
+  }else if(response.ok){
+   c.status="online";
+   try{
+    const reader=response.body?.getReader();
+    if(reader){
+     const speedStart=performance.now();
+     const first=await reader.read();
+     const duration=(performance.now()-speedStart)/1000;
+     if(first.value&&duration>0){
+      const bytes=first.value.byteLength;
+      c.speed=(bytes/duration/1024).toFixed(1)+" KB/s";
+     }else c.speed="Nicht messbar";
+     try{await reader.cancel()}catch{}
+    }else c.speed="Nicht messbar";
+   }catch{c.speed="Nicht messbar"}
+  }else{
+   // Andere HTTP-Fehler nicht automatisch als offline behandeln
+   c.status="unknown";
+   c.speed="Nicht messbar";
   }
+ }catch(err){
+  // CORS, Timeout oder Netzwerkfehler sind kein sicherer Offline-Nachweis.
+  c.status="unknown";
+  c.response=Math.round(performance.now()-start)+" ms";
+  c.speed="Nicht messbar";
+ }
+ save();render();
+}
+async function checkAll(){
+ if(checking)return;
+ checking=true;toast("Streamprüfung gestartet…");
+ for(const c of channels){
+  if(!c.enabled)continue;
+  await checkOne(c.id);
+ }
+ checking=false;toast("Streamprüfung abgeschlossen.");
+}
+
+/* -------------------------------------------------------
+   Sender zwischen Gruppen verschieben
+   Drag & Drop ändert die Reihenfolge.
+   Gruppenwechsel erfolgt über die Senderbearbeitung.
+------------------------------------------------------- */
+
+function openChannelMove(id){
+ const c=channels.find(x=>x.id===id);
+ if(!c)return;
+ const target=prompt("Neue Gruppe eingeben:\n\n"+groups.join("\n"),c.group);
+ if(target===null)return;
+ const group=target.trim();
+ ensureGroup(group);
+ c.group=group;
+ save();render();toast("Sendergruppe geändert.");
+}
+
+/* Alternative URL übernehmen */
+function useAlternative(id){
+ const c=channels.find(x=>x.id===id);
+ if(!c||!c.alt)return;
+ const old=c.url;
+ c.url=c.alt;
+ c.alt=old;
+ c.status="unknown";
+ c.speed="";
+ c.response="";
+ save();render();
+ toast("Stream-URL gewechselt.");
+}
+
+/* -------------------------------------------------------
+   Zusätzliche Sender-Aktionen in der Tabelle
+------------------------------------------------------- */
+const originalRender=render;
+render=function(){
+ originalRender();
+ document.querySelectorAll("#channelTable tr[data-id]").forEach(tr=>{
+  const id=tr.dataset.id;
+  const c=channels.find(x=>x.id===id);
+  if(!c)return;
+  const actionCell=tr.querySelector(".actions");
+  if(!actionCell)return;
+  const move=document.createElement("button");
+  move.textContent="📁 Gruppe";
+  move.title="Sender in eine andere Gruppe verschieben";
+  move.onclick=()=>openChannelMove(id);
+  actionCell.insertBefore(move,actionCell.firstChild);
+  if(c.alt){
+   const alt=document.createElement("button");
+   alt.textContent="↔ Link";
+   alt.title="Alternative URL verwenden";
+   alt.onclick=()=>useAlternative(id);
+   actionCell.insertBefore(alt,actionCell.firstChild);
+  }
+ });
+};
+
+/* -------------------------------------------------------
+   M3U-Parser: weitere Attribute / Kompatibilität
+------------------------------------------------------- */
+function parseM3UAdvanced(text){
+ parseM3U(text);
+}
+
+/* -------------------------------------------------------
+   UI-Events
+------------------------------------------------------- */
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  closeEditor();closeImport();closeGroups();
+ }
+});
+document.querySelectorAll(".modal-backdrop").forEach(back=>{
+ back.addEventListener("click",e=>{
+  if(e.target===back)back.classList.remove("open");
+ });
 });
 
-/* =========================================================
-   INITIAL START
-   ========================================================= */
+/* Keine automatischen Seitenreloads.
+   Daten werden nach Änderungen lokal gespeichert. */
+window.addEventListener("beforeunload",e=>{
+ // Kein Reload wird ausgelöst. Dieser Listener verhindert lediglich
+ // unbeabsichtigtes Verlassen mit unspeicherbaren Änderungen.
+});
 
-loadData();
-
+/* -------------------------------------------------------
+   Start
+------------------------------------------------------- */
+load();
+channels=channels.map(normalize);
+channels.forEach(c=>ensureGroup(c.group));
+render();
+save();
 </script>
 </body>
 </html>
