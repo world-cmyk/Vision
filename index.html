@@ -1,1557 +1,1456 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VisionX Playlist Manager</title>
 
 <style>
-:root{
---bg:#f3f5f8;
---panel:#fff;
---text:#182230;
---muted:#697586;
---line:#e2e7ee;
---accent:#4361ee;
---accent2:#e9edff;
---good:#18a66a;
---bad:#e05252;
---warn:#d99a21;
---shadow:0 6px 22px #1822300b
+:root {
+  --bg:#0b1020;
+  --panel:#121a2b;
+  --panel2:#182337;
+  --border:#27344a;
+  --text:#edf3ff;
+  --muted:#8c9bb5;
+  --accent:#5d9cff;
+  --green:#35d49a;
+  --red:#ff6376;
+  --yellow:#ffc857;
 }
 
-*{box-sizing:border-box}
-
-body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font:14px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif
+* {
+  box-sizing:border-box;
 }
 
-body.dark{
---bg:#121722;
---panel:#1b2431;
---text:#e8edf5;
---muted:#a0acbd;
---line:#303b4b;
---accent:#8295ff;
---accent2:#283451;
---shadow:0 6px 22px #0002
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-button,input,select{font:inherit}
-
-button{
-border:1px solid var(--line);
-background:var(--panel);
-color:var(--text);
-padding:9px 12px;
-border-radius:9px;
-cursor:pointer;
-transition:.15s
+button,input,select {
+  font:inherit;
 }
 
-button:hover{
-border-color:var(--accent);
-transform:translateY(-1px)
+button {
+  cursor:pointer;
 }
 
-button.primary{
-background:var(--accent);
-border-color:var(--accent);
-color:white
+.app {
+  max-width:1600px;
+  margin:auto;
+  padding:24px;
 }
 
-button.danger{color:var(--bad)}
-button.small{padding:6px 9px;font-size:12px}
-
-.wrap{
-max-width:1500px;
-margin:auto;
-padding:24px
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
 }
 
-.top{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-margin-bottom:22px
+.brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px
+.logo {
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#5794ff,#8059ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:22px;
 }
 
-.logo{
-width:42px;
-height:42px;
-border-radius:13px;
-background:linear-gradient(135deg,#4b63f5,#8c55ee);
-color:#fff;
-display:grid;
-place-items:center;
-font-weight:900;
-font-size:20px
+.brand h1 {
+  margin:0;
+  font-size:24px;
 }
 
-.brand h1{font-size:22px;margin:0}
-.brand small{color:var(--muted)}
-
-.top-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap
+.brand small {
+  color:var(--muted);
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(5,minmax(120px,1fr));
-gap:12px;
-margin-bottom:18px
+.headerActions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-.card{
-background:var(--panel);
-border:1px solid var(--line);
-border-radius:14px;
-padding:15px;
-box-shadow:var(--shadow)
+.btn {
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  border-radius:10px;
+  padding:10px 14px;
+  transition:.2s;
 }
 
-.card label{color:var(--muted);font-size:12px}
-.card strong{display:block;font-size:25px;margin-top:4px}
-
-.toolbar{
-display:flex;
-flex-wrap:wrap;
-gap:9px;
-align-items:center;
-margin-bottom:12px
+.btn:hover {
+  filter:brightness(1.2);
+  transform:translateY(-1px);
 }
 
-.toolbar input,
-.toolbar select,
-.form input,
-.form select{
-border:1px solid var(--line);
-border-radius:9px;
-padding:9px 10px;
-background:var(--panel);
-color:var(--text);
-outline:none
+.btn.primary {
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
 }
 
-.toolbar input:focus,
-.toolbar select:focus,
-.form input:focus,
-.form select:focus{
-border-color:var(--accent)
+.btn.danger {
+  color:var(--red);
 }
 
-#search{min-width:220px;flex:1}
-
-.panel{
-background:var(--panel);
-border:1px solid var(--line);
-border-radius:14px;
-box-shadow:var(--shadow);
-overflow:hidden
+.btn.small {
+  padding:6px 9px;
+  font-size:13px;
 }
 
-.tablewrap{
-overflow:auto;
-max-height:65vh
+.dashboard {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(140px,1fr));
+  gap:14px;
+  margin-bottom:22px;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-min-width:1000px
+.stat {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
 }
 
-th,td{
-padding:11px 10px;
-border-bottom:1px solid var(--line);
-text-align:left;
-white-space:nowrap
+.stat .label {
+  color:var(--muted);
+  font-size:13px;
 }
 
-th{
-font-size:11px;
-text-transform:uppercase;
-letter-spacing:.04em;
-color:var(--muted);
-position:sticky;
-top:0;
-background:var(--panel);
-z-index:1
+.stat .value {
+  font-size:28px;
+  font-weight:800;
+  margin-top:8px;
 }
 
-tr:hover td{
-background:color-mix(in srgb,var(--accent) 4%,var(--panel))
+.stat .sub {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:4px;
 }
 
-.namecell{
-display:flex;
-align-items:center;
-gap:9px;
-max-width:250px
+.panel {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
 }
 
-.avatar{
-width:30px;
-height:30px;
-border:1px solid var(--line);
-border-radius:8px;
-object-fit:contain;
-background:#fff
+.toolbar {
+  padding:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  border-bottom:1px solid var(--border);
 }
 
-.chname{
-overflow:hidden;
-text-overflow:ellipsis
+input,select {
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:10px 12px;
+  outline:none;
 }
 
-.sub{
-color:var(--muted);
-font-size:11px;
-display:block;
-max-width:220px;
-overflow:hidden;
-text-overflow:ellipsis
+input:focus,select:focus {
+  border-color:var(--accent);
 }
 
-.pill{
-display:inline-block;
-padding:3px 8px;
-border-radius:20px;
-font-size:11px;
-background:var(--accent2);
-color:var(--accent)
+.search {
+  min-width:240px;
+  flex:1;
 }
 
-.status{
-font-size:11px;
-font-weight:700
+.tableWrap {
+  overflow:auto;
+  max-height:70vh;
 }
 
-.status.online{color:var(--good)}
-.status.offline{color:var(--bad)}
-.status.unknown{color:var(--muted)}
-.status.blocked{color:var(--warn)}
-
-.star{
-border:0;
-background:none;
-padding:0;
-font-size:17px;
-color:#c5c9d0
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:1050px;
 }
 
-.star.on{color:#e6a400}
-
-.actions{
-display:flex;
-gap:5px
+th,td {
+  padding:12px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  vertical-align:middle;
 }
 
-.empty{
-text-align:center;
-padding:42px;
-color:var(--muted)
+th {
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  position:sticky;
+  top:0;
+  background:var(--panel);
+  z-index:2;
 }
 
-.bottom{
-padding:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
-color:var(--muted)
+tbody tr:hover {
+  background:rgba(93,156,255,.06);
 }
 
-.bulk{
-display:flex;
-gap:7px;
-align-items:center;
-flex-wrap:wrap
+.channel {
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.modal{
-position:fixed;
-inset:0;
-background:#0007;
-display:none;
-align-items:center;
-justify-content:center;
-padding:16px;
-z-index:10
+.channelLogo {
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  background:var(--panel2);
+  object-fit:contain;
+  padding:4px;
+  border:1px solid var(--border);
 }
 
-.modal.show{display:flex}
-
-.dialog{
-background:var(--panel);
-border:1px solid var(--line);
-border-radius:16px;
-padding:20px;
-width:min(600px,100%);
-max-height:90vh;
-overflow:auto;
-box-shadow:0 20px 60px #0004
+.channelName {
+  font-weight:600;
 }
 
-.dialog h2{margin:0 0 15px}
-
-.form{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
+.channelUrl {
+  max-width:300px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:var(--muted);
+  font-size:12px;
 }
 
-.form .full{grid-column:1/-1}
-
-.form label{
-display:block;
-font-size:12px;
-color:var(--muted);
-margin-bottom:5px
+.badge {
+  padding:4px 8px;
+  border-radius:99px;
+  font-size:11px;
+  display:inline-block;
 }
 
-.form input,.form select{width:100%}
-
-.modal-actions{
-display:flex;
-justify-content:flex-end;
-gap:8px;
-margin-top:16px
+.badge.active {
+  background:rgba(53,212,154,.13);
+  color:var(--green);
 }
 
-.toast{
-position:fixed;
-bottom:20px;
-right:20px;
-background:var(--text);
-color:var(--bg);
-padding:12px 16px;
-border-radius:10px;
-display:none;
-z-index:20
+.badge.disabled {
+  background:rgba(255,99,118,.13);
+  color:var(--red);
 }
 
-.toast.show{display:block}
-
-.filehidden{display:none}
-
-.hint{
-color:var(--muted);
-font-size:12px;
-margin:8px 0
+.badge.group {
+  background:rgba(93,156,255,.13);
+  color:var(--accent);
 }
 
-.groupdialog{width:min(520px,100%)}
-
-.group-list{
-display:flex;
-flex-direction:column;
-gap:7px;
-margin:12px 0
+.star {
+  color:var(--yellow);
+  font-size:18px;
+  cursor:pointer;
 }
 
-.group-row{
-display:flex;
-align-items:center;
-justify-content:space-between;
-border:1px solid var(--line);
-border-radius:9px;
-padding:8px
+.actions {
+  display:flex;
+  gap:5px;
+  white-space:nowrap;
 }
 
-.group-row span{flex:1}
-
-.footerhint{
-font-size:12px;
-color:var(--muted);
-padding:12px 0
+.empty {
+  padding:50px 20px;
+  text-align:center;
+  color:var(--muted);
 }
 
-@media(max-width:800px){
-.wrap{padding:12px}
-.top{align-items:flex-start;flex-direction:column}
-.cards{grid-template-columns:repeat(2,1fr)}
-.cards .card:last-child{grid-column:1/-1}
-.toolbar>*{flex:1}
-.toolbar button{flex:0 0 auto}
-.form{grid-template-columns:1fr}
-.form .full{grid-column:auto}
+.footer {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:14px 16px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.modalBack {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:20;
+}
+
+.modalBack.show {
+  display:flex;
+}
+
+.modal {
+  width:min(600px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+}
+
+.modal h2 {
+  margin-top:0;
+}
+
+.formGrid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.formGrid .full {
+  grid-column:1/-1;
+}
+
+.formGrid label {
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+
+.formGrid input,
+.formGrid select {
+  width:100%;
+}
+
+.modalActions {
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:18px;
+}
+
+.toast {
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  padding:13px 18px;
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 10px 40px #0005;
+  z-index:99;
+  display:none;
+}
+
+.toast.show {
+  display:block;
+}
+
+.fileHidden {
+  display:none;
+}
+
+@media(max-width:900px) {
+  .dashboard {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px) {
+  .app {
+    padding:12px;
+  }
+
+  .dashboard {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .brand h1 {
+    font-size:20px;
+  }
+
+  .formGrid {
+    grid-template-columns:1fr;
+  }
+
+  .formGrid .full {
+    grid-column:auto;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrap">
+<div class="app">
 
-<header class="top">
+<header class="header">
+  <div class="brand">
+    <div class="logo">VX</div>
+    <div>
+      <h1>VisionX Playlist Manager</h1>
+      <small>Playlist · Channel · Management</small>
+    </div>
+  </div>
 
-<div class="brand">
-<div class="logo">V</div>
-<div>
-<h1>VisionX Playlist Manager</h1>
-<small>Lokale Playlist-Verwaltung · Browser-Speicher</small>
-</div>
-</div>
-
-<div class="top-actions">
-<button id="importBtn" class="primary">＋ Playlist importieren</button>
-<button id="addBtn">＋ Sender</button>
-<button id="groupsBtn">Gruppen</button>
-<button id="backupBtn">Backup</button>
-<button id="restoreBtn">Restore</button>
-<button id="exportBtn">M3U Export</button>
-<button id="themeBtn">☾</button>
-</div>
-
+  <div class="headerActions">
+    <button class="btn" onclick="importFile()">📂 Playlist importieren</button>
+    <button class="btn" onclick="exportM3U()">📤 M3U Export</button>
+    <button class="btn" onclick="backupJSON()">💾 Backup</button>
+    <button class="btn primary" onclick="openAdd()">＋ Sender hinzufügen</button>
+  </div>
 </header>
 
-<div class="cards">
+<input
+  id="fileInput"
+  class="fileHidden"
+  type="file"
+  accept=".m3u,.m3u8,.txt"
+  multiple
+>
 
-<div class="card">
-<label>Sender gesamt</label>
-<strong id="statTotal">0</strong>
-</div>
+<input
+  id="restoreInput"
+  class="fileHidden"
+  type="file"
+  accept=".json"
+>
 
-<div class="card">
-<label>Online</label>
-<strong id="statOnline">0</strong>
-</div>
+<section class="dashboard">
+  <div class="stat">
+    <div class="label">Sender gesamt</div>
+    <div class="value" id="statTotal">0</div>
+    <div class="sub">In deiner Playlist</div>
+  </div>
 
-<div class="card">
-<label>Offline</label>
-<strong id="statOffline">0</strong>
-</div>
+  <div class="stat">
+    <div class="label">Aktiv</div>
+    <div class="value" id="statActive">0</div>
+    <div class="sub">Aktivierte Sender</div>
+  </div>
 
-<div class="card">
-<label>Blockiert</label>
-<strong id="statBlocked">0</strong>
-</div>
+  <div class="stat">
+    <div class="label">Deaktiviert</div>
+    <div class="value" id="statDisabled">0</div>
+    <div class="sub">Nicht ausgewählt</div>
+  </div>
 
-<div class="card">
-<label>Unbekannt</label>
-<strong id="statUnknown">0</strong>
-</div>
+  <div class="stat">
+    <div class="label">Favoriten</div>
+    <div class="value" id="statFavorites">0</div>
+    <div class="sub">Markierte Sender</div>
+  </div>
 
-</div>
+  <div class="stat">
+    <div class="label">Gruppen</div>
+    <div class="value" id="statGroups">0</div>
+    <div class="sub">Senderkategorien</div>
+  </div>
+</section>
 
-<div class="toolbar">
+<section class="panel">
 
-<input id="search" placeholder="🔎 Sender, URL, Gruppe suchen…">
+  <div class="toolbar">
 
-<select id="playlistFilter">
-<option value="">Alle Playlists</option>
-</select>
+    <input
+      id="searchInput"
+      class="search"
+      type="search"
+      placeholder="🔎 Sender, URL oder Gruppe suchen..."
+    >
 
-<select id="groupFilter">
-<option value="">Alle Gruppen</option>
-</select>
+    <select id="groupFilter">
+      <option value="">Alle Gruppen</option>
+    </select>
 
-<select id="statusFilter">
-<option value="">Alle Status</option>
-<option>Online</option>
-<option>Offline</option>
-<option>Blocked</option>
-<option>Unknown</option>
-</select>
+    <select id="statusFilter">
+      <option value="">Alle Sender</option>
+      <option value="active">Aktiv</option>
+      <option value="disabled">Deaktiviert</option>
+      <option value="favorite">Favoriten</option>
+    </select>
 
-<select id="languageFilter">
-<option value="">Alle Sprachen</option>
-</select>
+    <select id="sortFilter">
+      <option value="name">Name A–Z</option>
+      <option value="nameDesc">Name Z–A</option>
+      <option value="group">Gruppe</option>
+      <option value="newest">Neu hinzugefügt</option>
+    </select>
 
-<select id="sort">
-<option value="name">Sortierung: Name</option>
-<option value="group">Gruppe</option>
-<option value="playlist">Playlist</option>
-<option value="status">Status</option>
-</select>
+    <button class="btn small" onclick="manageGroups()">⚙ Gruppen</button>
+    <button class="btn small" onclick="selectAll(true)">☑ Alle aktiv</button>
+    <button class="btn small" onclick="selectAll(false)">☐ Alle deaktivieren</button>
+    <button class="btn small danger" onclick="deleteSelected()">🗑 Auswahl löschen</button>
 
-<button id="clearFilters">Filter zurücksetzen</button>
+  </div>
 
-</div>
+  <div class="tableWrap">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAllBox"></th>
+          <th>#</th>
+          <th>Sender</th>
+          <th>Gruppe</th>
+          <th>Status</th>
+          <th>Favorit</th>
+          <th>Aktiv</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
 
-<div class="panel">
+      <tbody id="channelBody"></tbody>
+    </table>
 
-<div class="tablewrap">
+    <div id="emptyState" class="empty">
+      <h3>🎬 Noch keine Sender vorhanden</h3>
+      <p>Importiere eine M3U-Playlist oder füge Sender manuell hinzu.</p>
+      <button class="btn primary" onclick="importFile()">Playlist importieren</button>
+    </div>
+  </div>
 
-<table>
-
-<thead>
-<tr>
-<th><input type="checkbox" id="selectAll"></th>
-<th>#</th>
-<th>Sender</th>
-<th>Gruppe</th>
-<th>Playlist</th>
-<th>Status</th>
-<th>Sprache</th>
-<th>Favorit</th>
-<th>Aktiv</th>
-<th>Aktionen</th>
-</tr>
-</thead>
-
-<tbody id="tbody"></tbody>
-
-</table>
-
-</div>
-
-<div class="bottom">
-
-<div id="countLabel">0 Sender</div>
-
-<div class="bulk">
-
-<span id="selectedLabel">0 ausgewählt</span>
-
-<select id="bulkGroup">
-<option value="">In Gruppe verschieben…</option>
-</select>
-
-<button class="small" id="bulkMove">Verschieben</button>
-<button class="small" id="bulkEnable">Aktivieren</button>
-<button class="small" id="bulkDisable">Deaktivieren</button>
-<button class="small" id="bulkFav">Favorit</button>
-<button class="small danger" id="bulkDelete">Löschen</button>
-
-</div>
-
-</div>
-</div>
-
-<div class="footerhint">
-Hinweis: Der Browser kann Stream-Status nicht zuverlässig automatisch prüfen.
-Status kannst du manuell setzen. Daten bleiben in diesem Browser gespeichert.
-</div>
+  <div class="footer">
+    <span id="resultInfo">0 Sender</span>
+    <span>VisionX · Lokale Browser-Speicherung</span>
+  </div>
+</section>
 
 </div>
 
-<input class="filehidden" type="file" id="fileInput" accept=".m3u,.m3u8,.txt,text/plain">
-<input class="filehidden" type="file" id="restoreInput" accept=".json,application/json">
+<!-- ADD / EDIT MODAL -->
 
-<div class="modal" id="channelModal">
+<div id="modalBack" class="modalBack">
+  <div class="modal">
 
-<div class="dialog">
+    <h2 id="modalTitle">Sender hinzufügen</h2>
 
-<h2 id="modalTitle">Sender hinzufügen</h2>
+    <div class="formGrid">
 
-<form id="channelForm">
+      <div class="full">
+        <label>Sendername</label>
+        <input id="fName" placeholder="z. B. ARD">
+      </div>
 
-<div class="form">
+      <div class="full">
+        <label>Stream URL</label>
+        <input id="fUrl" placeholder="https://...m3u8">
+      </div>
 
-<div class="full">
-<label>Sendername *</label>
-<input required id="fName">
+      <div>
+        <label>Gruppe</label>
+        <input id="fGroup" list="groupList" placeholder="z. B. Deutschland">
+        <datalist id="groupList"></datalist>
+      </div>
+
+      <div>
+        <label>Logo URL</label>
+        <input id="fLogo" placeholder="https://...png">
+      </div>
+
+      <div>
+        <label>TVG ID</label>
+        <input id="fTvg" placeholder="Sender-ID">
+      </div>
+
+      <div>
+        <label>Quelle / Playlist</label>
+        <input id="fSource" placeholder="Playlist name">
+      </div>
+
+      <div class="full">
+        <label>
+          <input type="checkbox" id="fEnabled" checked>
+          Sender aktiviert
+        </label>
+        &nbsp;&nbsp;
+        <label>
+          <input type="checkbox" id="fFavorite">
+          Favorit
+        </label>
+      </div>
+
+    </div>
+
+    <div class="modalActions">
+      <button class="btn" onclick="closeModal()">Abbrechen</button>
+      <button class="btn primary" onclick="saveChannel()">Speichern</button>
+    </div>
+
+  </div>
 </div>
 
-<div class="full">
-<label>Stream-URL *</label>
-<input required id="fUrl" type="url" placeholder="https://…">
+<!-- GROUP MODAL -->
+
+<div id="groupBack" class="modalBack">
+  <div class="modal">
+    <h2>📁 Gruppen verwalten</h2>
+
+    <p>Gruppen werden automatisch aus importierten Playlists übernommen.</p>
+
+    <div id="groupListArea"></div>
+
+    <div class="formGrid" style="margin-top:15px">
+      <div class="full">
+        <label>Neue Gruppe</label>
+        <input id="newGroupName" placeholder="Gruppenname">
+      </div>
+    </div>
+
+    <div class="modalActions">
+      <button class="btn" onclick="closeGroups()">Schließen</button>
+      <button class="btn primary" onclick="addGroup()">＋ Gruppe erstellen</button>
+    </div>
+  </div>
 </div>
 
-<div>
-<label>Gruppe</label>
-<select id="fGroup"></select>
-</div>
-
-<div>
-<label>Playlist / Quelle</label>
-<input id="fPlaylist" placeholder="Meine Playlist">
-</div>
-
-<div>
-<label>Sprache</label>
-<input id="fLanguage" placeholder="Deutsch, Türkisch…">
-</div>
-
-<div>
-<label>Status</label>
-<select id="fStatus">
-<option>Unknown</option>
-<option>Online</option>
-<option>Offline</option>
-<option>Blocked</option>
-</select>
-</div>
-
-<div>
-<label>Logo-URL</label>
-<input id="fLogo" type="url">
-</div>
-
-<div>
-<label>Qualität</label>
-<input id="fQuality" placeholder="HD, 1080p…">
-</div>
-
-<div>
-<label>Favorit</label>
-<select id="fFavorite">
-<option value="false">Nein</option>
-<option value="true">Ja</option>
-</select>
-</div>
-
-<div>
-<label>Aktiv</label>
-<select id="fEnabled">
-<option value="true">Ja</option>
-<option value="false">Nein</option>
-</select>
-</div>
-
-</div>
-
-<div class="modal-actions">
-<button type="button" id="cancelModal">Abbrechen</button>
-<button class="primary" type="submit">Speichern</button>
-</div>
-
-</form>
-</div>
-</div>
-
-<div class="modal" id="groupsModal">
-
-<div class="dialog groupdialog">
-
-<h2>Gruppen verwalten</h2>
-
-<div style="display:flex;gap:8px">
-
-<input id="newGroupName"
-placeholder="Neue Gruppe"
-style="flex:1;border:1px solid var(--line);border-radius:9px;padding:9px;background:var(--panel);color:var(--text)">
-
-<button id="addGroup" class="primary">Erstellen</button>
-
-</div>
-
-<div class="hint">
-Beim Löschen einer Gruppe werden Sender der Gruppe auf „Ohne Gruppe“ gesetzt.
-</div>
-
-<div class="group-list" id="groupList"></div>
-
-<div class="modal-actions">
-<button id="closeGroups">Schließen</button>
-</div>
-
-</div>
-</div>
-
-<div class="toast" id="toast"></div>
+<div id="toast" class="toast"></div>
 
 <script>
 
-'use strict';
+const STORAGE_KEY = "visionx_playlist_manager_v2";
 
-const STORAGE_KEY='visionx_playlist_manager_v1';
+let channels = [];
+let groups = [];
+let editingId = null;
+let selectedIds = new Set();
 
-let data={
-channels:[],
-groups:[],
-theme:'light'
-};
-
-let editId=null;
-let selected=new Set();
-
-const $=id=>document.getElementById(id);
-
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
-
-function toast(msg){
-const t=$('toast');
-t.textContent=msg;
-t.classList.add('show');
-setTimeout(()=>t.classList.remove('show'),2600);
+function uid() {
+  return "vx_" + Date.now().toString(36) + "_" +
+    Math.random().toString(36).slice(2,8);
 }
 
-function save(){
-localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-render();
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[char]));
 }
 
-function load(){
-try{
-const raw=localStorage.getItem(STORAGE_KEY);
-if(raw){
-const parsed=JSON.parse(raw);
-if(parsed&&Array.isArray(parsed.channels)&&Array.isArray(parsed.groups)){
-data=parsed;
-}
-}
-}catch(e){
-console.error(e);
-}
+function loadData() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    channels = Array.isArray(saved.channels) ? saved.channels : [];
+    groups = Array.isArray(saved.groups) ? saved.groups : [];
+  } catch(e) {
+    channels = [];
+    groups = [];
+  }
 
-if(!data.groups.includes('Ohne Gruppe')){
-data.groups.unshift('Ohne Gruppe');
-}
-}
+  channels.forEach(c => {
+    if (!c.id) c.id = uid();
+    if (c.enabled === undefined) c.enabled = true;
+    if (c.favorite === undefined) c.favorite = false;
+    if (!c.group) c.group = "";
+  });
 
-function escapeHtml(v){
-return String(v??'').replace(/[&<>"']/g,c=>({
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-'"':'&quot;',
-"'":'&#39;'
-}[c]));
+  syncGroups();
+  render();
 }
 
-function renderFilters(){
-
-const playlists=[
-...new Set(data.channels.map(c=>c.playlist||'').filter(Boolean))
-].sort();
-
-const languages=[
-...new Set(data.channels.map(c=>c.language||'').filter(Boolean))
-].sort();
-
-const groups=[
-...new Set([
-'Ohne Gruppe',
-...data.groups,
-...data.channels.map(c=>c.group||'Ohne Gruppe')
-])
-].sort();
-
-fillSelect($('playlistFilter'),playlists,'Alle Playlists');
-fillSelect($('groupFilter'),groups,'Alle Gruppen');
-fillSelect($('languageFilter'),languages,'Alle Sprachen');
-fillSelect($('bulkGroup'),groups,'In Gruppe verschieben…');
-fillSelect($('fGroup'),groups,'');
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    channels,
+    groups
+  }));
 }
 
-function fillSelect(el,items,first){
+function syncGroups() {
+  channels.forEach(c => {
+    const g = (c.group || "").trim();
+    if (g && !groups.includes(g)) groups.push(g);
+  });
 
-const old=el.value;
+  groups = [...new Set(groups)].filter(Boolean).sort();
+}
 
-el.innerHTML='';
+function toast(message) {
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
 
-const op=document.createElement('option');
-op.value='';
-op.textContent=first;
-el.append(op);
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 2800);
+}
 
-items.forEach(x=>{
-const o=document.createElement('option');
-o.value=x;
-o.textContent=x;
-el.append(o);
+function renderStats() {
+  document.getElementById("statTotal").textContent = channels.length;
+  document.getElementById("statActive").textContent =
+    channels.filter(c => c.enabled).length;
+  document.getElementById("statDisabled").textContent =
+    channels.filter(c => !c.enabled).length;
+  document.getElementById("statFavorites").textContent =
+    channels.filter(c => c.favorite).length;
+  document.getElementById("statGroups").textContent = groups.length;
+}
+
+function renderGroupOptions() {
+  const filter = document.getElementById("groupFilter");
+  const current = filter.value;
+
+  filter.innerHTML = '<option value="">Alle Gruppen</option>';
+
+  groups.forEach(g => {
+    filter.innerHTML +=
+      `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`;
+  });
+
+  if (groups.includes(current)) filter.value = current;
+
+  const dataList = document.getElementById("groupList");
+  dataList.innerHTML = groups
+    .map(g => `<option value="${escapeHtml(g)}"></option>`)
+    .join("");
+}
+
+function getFilteredChannels() {
+  const search = document.getElementById("searchInput").value
+    .toLowerCase().trim();
+
+  const group = document.getElementById("groupFilter").value;
+  const status = document.getElementById("statusFilter").value;
+  const sort = document.getElementById("sortFilter").value;
+
+  let list = channels.filter(c => {
+    const searchable = [
+      c.name, c.url, c.group, c.source, c.tvgId
+    ].join(" ").toLowerCase();
+
+    if (search && !searchable.includes(search)) return false;
+    if (group && c.group !== group) return false;
+
+    if (status === "active" && !c.enabled) return false;
+    if (status === "disabled" && c.enabled) return false;
+    if (status === "favorite" && !c.favorite) return false;
+
+    return true;
+  });
+
+  if (sort === "name") {
+    list.sort((a,b) => a.name.localeCompare(b.name));
+  }
+
+  if (sort === "nameDesc") {
+    list.sort((a,b) => b.name.localeCompare(a.name));
+  }
+
+  if (sort === "group") {
+    list.sort((a,b) =>
+      (a.group || "").localeCompare(b.group || "") ||
+      a.name.localeCompare(b.name)
+    );
+  }
+
+  if (sort === "newest") {
+    list.sort((a,b) => (b.created || 0) - (a.created || 0));
+  }
+
+  return list;
+}
+
+function render() {
+  syncGroups();
+  renderStats();
+  renderGroupOptions();
+
+  const body = document.getElementById("channelBody");
+  const empty = document.getElementById("emptyState");
+  const list = getFilteredChannels();
+
+  body.innerHTML = "";
+
+  empty.style.display = channels.length === 0 ? "block" : "none";
+
+  list.forEach((c, index) => {
+    const logo = c.logo
+      ? `<img class="channelLogo"
+          src="${escapeHtml(c.logo)}"
+          onerror="this.style.display='none'"
+          alt="">`
+      : `<div class="channelLogo"></div>`;
+
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>
+        <input type="checkbox"
+          class="rowCheck"
+          data-id="${escapeHtml(c.id)}"
+          ${selectedIds.has(c.id) ? "checked" : ""}>
+      </td>
+
+      <td>${index + 1}</td>
+
+      <td>
+        <div class="channel">
+          ${logo}
+          <div>
+            <div class="channelName">${escapeHtml(c.name)}</div>
+            <div class="channelUrl" title="${escapeHtml(c.url)}">
+              ${escapeHtml(c.url)}
+            </div>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        ${c.group
+          ? `<span class="badge group">${escapeHtml(c.group)}</span>`
+          : `<span style="color:var(--muted)">–</span>`}
+      </td>
+
+      <td>
+        <span class="badge ${c.enabled ? "active" : "disabled"}">
+          ${c.enabled ? "Aktiv" : "Deaktiviert"}
+        </span>
+      </td>
+
+      <td>
+        <span class="star" data-fav="${escapeHtml(c.id)}">
+          ${c.favorite ? "★" : "☆"}
+        </span>
+      </td>
+
+      <td>
+        <input type="checkbox"
+          class="enabledCheck"
+          data-id="${escapeHtml(c.id)}"
+          ${c.enabled ? "checked" : ""}>
+      </td>
+
+      <td>
+        <div class="actions">
+          <button class="btn small" data-edit="${escapeHtml(c.id)}">✏️</button>
+          <button class="btn small" data-copy="${escapeHtml(c.id)}">📋</button>
+          <button class="btn small danger" data-delete="${escapeHtml(c.id)}">🗑</button>
+        </div>
+      </td>
+    `;
+
+    body.appendChild(tr);
+  });
+
+  document.getElementById("resultInfo").textContent =
+    `${list.length} von ${channels.length} Sendern`;
+
+  document.getElementById("selectAllBox").checked =
+    list.length > 0 && list.every(c => selectedIds.has(c.id));
+
+  body.querySelectorAll(".rowCheck").forEach(el => {
+    el.addEventListener("change", () => {
+      const id = el.dataset.id;
+      if (el.checked) selectedIds.add(id);
+      else selectedIds.delete(id);
+
+      renderSelectAll();
+    });
+  });
+
+  body.querySelectorAll(".enabledCheck").forEach(el => {
+    el.addEventListener("change", () => {
+      const c = channels.find(x => x.id === el.dataset.id);
+      if (!c) return;
+
+      c.enabled = el.checked;
+      saveData();
+      renderStats();
+    });
+  });
+
+  body.querySelectorAll("[data-fav]").forEach(el => {
+    el.addEventListener("click", () => {
+      const c = channels.find(x => x.id === el.dataset.fav);
+      if (!c) return;
+
+      c.favorite = !c.favorite;
+      saveData();
+      render();
+    });
+  });
+
+  body.querySelectorAll("[data-edit]").forEach(el => {
+    el.addEventListener("click", () => editChannel(el.dataset.edit));
+  });
+
+  body.querySelectorAll("[data-copy]").forEach(el => {
+    el.addEventListener("click", () => copyChannel(el.dataset.copy));
+  });
+
+  body.querySelectorAll("[data-delete]").forEach(el => {
+    el.addEventListener("click", () => deleteChannel(el.dataset.delete));
+  });
+}
+
+function renderSelectAll() {
+  const list = getFilteredChannels();
+  document.getElementById("selectAllBox").checked =
+    list.length > 0 && list.every(c => selectedIds.has(c.id));
+}
+
+function importFile() {
+  document.getElementById("fileInput").click();
+}
+
+function parseM3U(text, sourceName) {
+  const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/);
+  const imported = [];
+  let metadata = {};
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (!line) continue;
+
+    if (line.startsWith("#EXTINF:")) {
+      metadata = {};
+
+      const comma = line.indexOf(",");
+      const attrs = comma >= 0 ? line.substring(0, comma) : line;
+      const title = comma >= 0 ? line.substring(comma + 1).trim() : "";
+
+      const attrRegex = /([\w-]+)="([^"]*)"/g;
+      let match;
+
+      while ((match = attrRegex.exec(attrs)) !== null) {
+        metadata[match[1].toLowerCase()] = match[2];
+      }
+
+      metadata.title = title || metadata["tvg-name"] || "";
+      continue;
+    }
+
+    if (line.startsWith("#")) continue;
+
+    if (
+      line.startsWith("http://") ||
+      line.startsWith("https://") ||
+      line.startsWith("rtmp://") ||
+      line.startsWith("rtsp://") ||
+      line.startsWith("udp://") ||
+      line.startsWith("ftp://")
+    ) {
+      const url = line;
+
+      const name =
+        metadata.title ||
+        metadata["tvg-name"] ||
+        metadata["tvg-id"] ||
+        url;
+
+      imported.push({
+        id: uid(),
+        name,
+        url,
+        group: metadata["group-title"] || "",
+        logo: metadata["tvg-logo"] || "",
+        tvgId: metadata["tvg-id"] || "",
+        source: sourceName || "",
+        enabled: true,
+        favorite: false,
+        created: Date.now() + imported.length
+      });
+
+      metadata = {};
+    }
+  }
+
+  return imported;
+}
+
+document.getElementById("fileInput").addEventListener("change", async e => {
+  const files = [...e.target.files];
+  if (!files.length) return;
+
+  let allImported = [];
+
+  for (const file of files) {
+    try {
+      const text = await file.text();
+      const parsed = parseM3U(text, file.name);
+      allImported = allImported.concat(parsed);
+    } catch(err) {
+      console.error(err);
+      toast("Datei konnte nicht gelesen werden: " + file.name);
+    }
+  }
+
+  let duplicates = 0;
+  let added = 0;
+
+  const existingUrls = new Set(
+    channels.map(c => c.url.trim())
+  );
+
+  for (const c of allImported) {
+    if (existingUrls.has(c.url.trim())) {
+      duplicates++;
+      continue;
+    }
+
+    existingUrls.add(c.url.trim());
+    channels.push(c);
+    added++;
+  }
+
+  syncGroups();
+  saveData();
+  render();
+
+  toast(`${added} Sender importiert · ${duplicates} Duplikate übersprungen`);
+
+  e.target.value = "";
 });
 
-if(items.includes(old)){
-el.value=old;
+function openAdd() {
+  editingId = null;
+
+  document.getElementById("modalTitle").textContent =
+    "Sender hinzufügen";
+
+  clearForm();
+
+  document.getElementById("modalBack").classList.add("show");
 }
+
+function editChannel(id) {
+  const c = channels.find(x => x.id === id);
+  if (!c) return;
+
+  editingId = id;
+
+  document.getElementById("modalTitle").textContent =
+    "Sender bearbeiten";
+
+  document.getElementById("fName").value = c.name || "";
+  document.getElementById("fUrl").value = c.url || "";
+  document.getElementById("fGroup").value = c.group || "";
+  document.getElementById("fLogo").value = c.logo || "";
+  document.getElementById("fTvg").value = c.tvgId || "";
+  document.getElementById("fSource").value = c.source || "";
+  document.getElementById("fEnabled").checked = !!c.enabled;
+  document.getElementById("fFavorite").checked = !!c.favorite;
+
+  document.getElementById("modalBack").classList.add("show");
 }
 
-function getFiltered(){
+function clearForm() {
+  document.getElementById("fName").value = "";
+  document.getElementById("fUrl").value = "";
+  document.getElementById("fGroup").value = "";
+  document.getElementById("fLogo").value = "";
+  document.getElementById("fTvg").value = "";
+  document.getElementById("fSource").value = "";
+  document.getElementById("fEnabled").checked = true;
+  document.getElementById("fFavorite").checked = false;
+}
 
-let q=$('search').value.trim().toLowerCase();
-let pl=$('playlistFilter').value;
-let gr=$('groupFilter').value;
-let st=$('statusFilter').value;
-let la=$('languageFilter').value;
-let sort=$('sort').value;
+function closeModal() {
+  document.getElementById("modalBack").classList.remove("show");
+}
 
-let arr=data.channels.filter(c=>{
+function saveChannel() {
+  const name = document.getElementById("fName").value.trim();
+  const url = document.getElementById("fUrl").value.trim();
 
-const status=c.status||'Unknown';
+  if (!name) {
+    toast("Bitte Sendername eingeben");
+    return;
+  }
 
-return(
-(!q||[
-c.name,c.url,c.group,c.playlist,c.language
-].some(x=>String(x||'').toLowerCase().includes(q)))
-&&(!pl||c.playlist===pl)
-&&(!gr||(c.group||'Ohne Gruppe')===gr)
-&&(!st||status===st)
-&&(!la||c.language===la)
-);
+  if (!url) {
+    toast("Bitte Stream URL eingeben");
+    return;
+  }
+
+  const duplicate = channels.find(c =>
+    c.url.trim() === url &&
+    c.id !== editingId
+  );
+
+  if (duplicate) {
+    if (!confirm("Diese URL existiert bereits. Trotzdem speichern?")) {
+      return;
+    }
+  }
+
+  const data = {
+    name,
+    url,
+    group: document.getElementById("fGroup").value.trim(),
+    logo: document.getElementById("fLogo").value.trim(),
+    tvgId: document.getElementById("fTvg").value.trim(),
+    source: document.getElementById("fSource").value.trim(),
+    enabled: document.getElementById("fEnabled").checked,
+    favorite: document.getElementById("fFavorite").checked
+  };
+
+  if (editingId) {
+    const index = channels.findIndex(c => c.id === editingId);
+
+    if (index >= 0) {
+      channels[index] = {
+        ...channels[index],
+        ...data
+      };
+    }
+  } else {
+    channels.push({
+      id:uid(),
+      ...data,
+      created:Date.now()
+    });
+  }
+
+  syncGroups();
+  saveData();
+  closeModal();
+  render();
+
+  toast(editingId ? "Sender aktualisiert" : "Sender hinzugefügt");
+}
+
+function deleteChannel(id) {
+  const c = channels.find(x => x.id === id);
+  if (!c) return;
+
+  if (!confirm(`Sender "${c.name}" wirklich löschen?`)) return;
+
+  channels = channels.filter(x => x.id !== id);
+  selectedIds.delete(id);
+
+  saveData();
+  render();
+
+  toast("Sender gelöscht");
+}
+
+function copyChannel(id) {
+  const c = channels.find(x => x.id === id);
+  if (!c) return;
+
+  channels.push({
+    ...c,
+    id:uid(),
+    name:c.name + " (Kopie)",
+    created:Date.now()
+  });
+
+  saveData();
+  render();
+
+  toast("Sender kopiert");
+}
+
+function selectAll(enabled) {
+  getFilteredChannels().forEach(c => {
+    c.enabled = enabled;
+  });
+
+  saveData();
+  render();
+
+  toast(enabled ? "Alle sichtbaren Sender aktiviert" :
+                 "Alle sichtbaren Sender deaktiviert");
+}
+
+function deleteSelected() {
+  if (!selectedIds.size) {
+    toast("Keine Sender ausgewählt");
+    return;
+  }
+
+  if (!confirm(`${selectedIds.size} ausgewählte Sender löschen?`)) return;
+
+  channels = channels.filter(c => !selectedIds.has(c.id));
+  selectedIds.clear();
+
+  saveData();
+  render();
+
+  toast("Auswahl gelöscht");
+}
+
+function exportM3U() {
+  const list = channels.filter(c => c.enabled);
+
+  let output = "#EXTM3U\n";
+
+  list.forEach(c => {
+    let info = "#EXTINF:-1";
+
+    if (c.tvgId) {
+      info += ` tvg-id="${c.tvgId}"`;
+    }
+
+    if (c.logo) {
+      info += ` tvg-logo="${c.logo}"`;
+    }
+
+    if (c.group) {
+      info += ` group-title="${c.group}"`;
+    }
+
+    info += `,${c.name}`;
+
+    output += info + "\n";
+    output += c.url + "\n";
+  });
+
+  downloadFile(
+    output,
+    "visionx_playlist.m3u",
+    "application/x-mpegURL"
+  );
+
+  toast(`${list.length} Sender exportiert`);
+}
+
+function backupJSON() {
+  const data = JSON.stringify({
+    application:"VisionX Playlist Manager",
+    version:2,
+    date:new Date().toISOString(),
+    channels,
+    groups
+  }, null, 2);
+
+  downloadFile(
+    data,
+    "visionx_backup.json",
+    "application/json"
+  );
+
+  toast("Backup erstellt");
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], {type});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function restoreBackup() {
+  document.getElementById("restoreInput").click();
+}
+
+document.getElementById("restoreInput").addEventListener("change", async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  try {
+    const data = JSON.parse(await file.text());
+
+    if (!Array.isArray(data.channels)) {
+      throw new Error("Ungültiges Backup");
+    }
+
+    if (!confirm(
+      "Backup importieren? Deine aktuelle Senderliste wird ersetzt."
+    )) {
+      e.target.value = "";
+      return;
+    }
+
+    channels = data.channels;
+    groups = Array.isArray(data.groups) ? data.groups : [];
+
+    syncGroups();
+    saveData();
+    render();
+
+    toast("Backup erfolgreich wiederhergestellt");
+  } catch(err) {
+    console.error(err);
+    toast("Backup konnte nicht gelesen werden");
+  }
+
+  e.target.value = "";
 });
 
-const key=
-sort==='group'?'group':
-sort==='playlist'?'playlist':
-sort==='status'?'status':'name';
-
-arr.sort((a,b)=>
-String(a[key]||'').localeCompare(
-String(b[key]||''),
-undefined,
-{numeric:true,sensitivity:'base'}
-)
-);
-
-return arr;
+function manageGroups() {
+  renderGroupManager();
+  document.getElementById("groupBack").classList.add("show");
 }
 
-function render(){
-
-renderFilters();
-
-const arr=getFiltered();
-const tbody=$('tbody');
-
-tbody.innerHTML='';
-
-if(!arr.length){
-
-tbody.innerHTML=
-'<tr><td colspan="10" class="empty">Keine Sender gefunden. Importiere eine Playlist oder füge einen Sender hinzu.</td></tr>';
-
-}else{
-
-arr.forEach((c,i)=>{
-
-const tr=document.createElement('tr');
-
-tr.innerHTML=`
-
-<td>
-<input type="checkbox" class="rowcheck"
-data-id="${escapeHtml(c.id)}"
-${selected.has(c.id)?'checked':''}>
-</td>
-
-<td>${i+1}</td>
-
-<td>
-<div class="namecell">
-
-${c.logo
-?`<img class="avatar" src="${escapeHtml(c.logo)}" alt=""
-onerror="this.style.display='none'">`
-:`<div class="avatar" style="display:grid;place-items:center;color:#778">TV</div>`
+function closeGroups() {
+  document.getElementById("groupBack").classList.remove("show");
 }
 
-<div class="chname">
-<strong>${escapeHtml(c.name)}</strong>
-<span class="sub" title="${escapeHtml(c.url)}">
-${escapeHtml(c.url)}
-</span>
-</div>
-</div>
-</td>
+function renderGroupManager() {
+  const area = document.getElementById("groupListArea");
 
-<td>
-<span class="pill">${escapeHtml(c.group||'Ohne Gruppe')}</span>
-</td>
+  if (!groups.length) {
+    area.innerHTML = "<p style='color:var(--muted)'>Noch keine Gruppen.</p>";
+    return;
+  }
 
-<td>${escapeHtml(c.playlist||'—')}</td>
+  area.innerHTML = groups.map(g => `
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:10px;
+      margin:6px 0;
+      background:var(--panel2);
+      border-radius:8px
+    ">
+      <span>${escapeHtml(g)}</span>
+      <div>
+        <button class="btn small" data-rename="${escapeHtml(g)}">✏️</button>
+        <button class="btn small danger" data-removegroup="${escapeHtml(g)}">🗑</button>
+      </div>
+    </div>
+  `).join("");
 
-<td>
-<span class="status ${(c.status||'Unknown').toLowerCase()}">
-${escapeHtml(c.status||'Unknown')}
-</span>
-</td>
+  area.querySelectorAll("[data-rename]").forEach(btn => {
+    btn.onclick = () => renameGroup(btn.dataset.rename);
+  });
 
-<td>${escapeHtml(c.language||'—')}</td>
+  area.querySelectorAll("[data-removegroup]").forEach(btn => {
+    btn.onclick = () => removeGroup(btn.dataset.removegroup);
+  });
+}
 
-<td>
-<button class="star ${c.favorite?'on':''}"
-data-action="fav"
-data-id="${escapeHtml(c.id)}">
-${c.favorite?'★':'☆'}
-</button>
-</td>
+function addGroup() {
+  const input = document.getElementById("newGroupName");
+  const name = input.value.trim();
 
-<td>
-<input type="checkbox"
-data-action="enabled"
-data-id="${escapeHtml(c.id)}"
-${c.enabled!==false?'checked':''}>
-</td>
+  if (!name) {
+    toast("Bitte Gruppennamen eingeben");
+    return;
+  }
 
-<td>
-<div class="actions">
-<button class="small"
-data-action="edit"
-data-id="${escapeHtml(c.id)}">
-Bearbeiten
-</button>
+  if (groups.includes(name)) {
+    toast("Gruppe existiert bereits");
+    return;
+  }
 
-<button class="small danger"
-data-action="delete"
-data-id="${escapeHtml(c.id)}">
-✕
-</button>
-</div>
-</td>
-`;
+  groups.push(name);
+  input.value = "";
 
-tbody.appendChild(tr);
+  saveData();
+  render();
+  renderGroupManager();
 
+  toast("Gruppe erstellt");
+}
+
+function renameGroup(oldName) {
+  const newName = prompt("Neuer Gruppenname:", oldName);
+  if (!newName) return;
+
+  const name = newName.trim();
+
+  if (!name) return;
+  if (name === oldName) return;
+
+  if (groups.includes(name)) {
+    toast("Diese Gruppe existiert bereits");
+    return;
+  }
+
+  groups = groups.map(g => g === oldName ? name : g);
+
+  channels.forEach(c => {
+    if (c.group === oldName) c.group = name;
+  });
+
+  saveData();
+  render();
+  renderGroupManager();
+
+  toast("Gruppe umbenannt");
+}
+
+function removeGroup(name) {
+  if (!confirm(`Gruppe "${name}" löschen? Sender bleiben erhalten und werden keiner Gruppe zugeordnet.`)) {
+    return;
+  }
+
+  groups = groups.filter(g => g !== name);
+
+  channels.forEach(c => {
+    if (c.group === name) c.group = "";
+  });
+
+  saveData();
+  render();
+  renderGroupManager();
+
+  toast("Gruppe gelöscht");
+}
+
+// EVENTS
+
+document.getElementById("searchInput").addEventListener("input", render);
+document.getElementById("groupFilter").addEventListener("change", render);
+document.getElementById("statusFilter").addEventListener("change", render);
+document.getElementById("sortFilter").addEventListener("change", render);
+
+document.getElementById("selectAllBox").addEventListener("change", e => {
+  getFilteredChannels().forEach(c => {
+    if (e.target.checked) selectedIds.add(c.id);
+    else selectedIds.delete(c.id);
+  });
+
+  render();
 });
 
-}
+// Modal schließen bei Klick auf Hintergrund
 
-$('statTotal').textContent=data.channels.length;
-
-$('statOnline').textContent=
-data.channels.filter(c=>c.status==='Online').length;
-
-$('statOffline').textContent=
-data.channels.filter(c=>c.status==='Offline').length;
-
-$('statBlocked').textContent=
-data.channels.filter(c=>c.status==='Blocked').length;
-
-$('statUnknown').textContent=
-data.channels.filter(c=>(c.status||'Unknown')==='Unknown').length;
-
-$('countLabel').textContent=
-`${arr.length} von ${data.channels.length} Sendern`;
-
-$('selectedLabel').textContent=
-`${selected.size} ausgewählt`;
-
-$('selectAll').checked=
-arr.length>0&&arr.every(c=>selected.has(c.id));
-
-}
-
-function showModal(id){
-$(id).classList.add('show');
-}
-
-function hideModal(id){
-$(id).classList.remove('show');
-}
-
-function openChannel(c=null){
-
-editId=c?.id||null;
-
-$('modalTitle').textContent=
-c?'Sender bearbeiten':'Sender hinzufügen';
-
-$('fName').value=c?.name||'';
-$('fUrl').value=c?.url||'';
-$('fGroup').value=c?.group||'Ohne Gruppe';
-$('fPlaylist').value=c?.playlist||'';
-$('fLanguage').value=c?.language||'';
-$('fStatus').value=c?.status||'Unknown';
-$('fLogo').value=c?.logo||'';
-$('fQuality').value=c?.quality||'';
-$('fFavorite').value=String(!!c?.favorite);
-$('fEnabled').value=String(c?.enabled!==false);
-
-showModal('channelModal');
-}
-
-function saveChannel(e){
-
-e.preventDefault();
-
-const obj={
-id:editId||uid(),
-name:$('fName').value.trim(),
-url:$('fUrl').value.trim(),
-group:$('fGroup').value||'Ohne Gruppe',
-playlist:$('fPlaylist').value.trim(),
-language:$('fLanguage').value.trim(),
-status:$('fStatus').value,
-logo:$('fLogo').value.trim(),
-quality:$('fQuality').value.trim(),
-favorite:$('fFavorite').value==='true',
-enabled:$('fEnabled').value==='true'
-};
-
-if(!obj.name||!obj.url)return;
-
-const duplicate=data.channels.find(c=>c.url===obj.url&&c.id!==obj.id);
-
-if(duplicate&&!confirm(
-`Diese URL ist bereits bei „${duplicate.name}“ vorhanden. Trotzdem speichern?`
-)){
-return;
-}
-
-if(editId){
-
-const ix=data.channels.findIndex(c=>c.id===editId);
-
-if(ix>=0)data.channels[ix]=obj;
-
-}else{
-
-data.channels.push(obj);
-
-}
-
-hideModal('channelModal');
-save();
-
-toast(editId?'Sender aktualisiert':'Sender hinzugefügt');
-editId=null;
-
-}
-
-function parseM3U(text,playlist){
-
-const lines=String(text)
-.replace(/^\uFEFF/,'')
-.split(/\r?\n/);
-
-let pending={};
-let result=[];
-
-for(let raw of lines){
-
-let line=raw.trim();
-
-if(!line)continue;
-
-if(line.startsWith('#EXTINF')){
-
-pending={};
-
-const comma=line.indexOf(',');
-
-if(comma>=0){
-pending.name=line.slice(com+1).trim();
-}
-
-const attrs=line.slice(0,comma>=0?comma:line.length);
-
-for(const key of[
-'tvg-id',
-'tvg-name',
-'tvg-logo',
-'group-title',
-'language'
-]){
-
-const re=new RegExp(key+'="([^"]*)"','i');
-const m=attrs.match(re);
-
-if(m)pending[key]=m[1];
-
-}
-
-if(pending['tvg-name']){
-pending.name=pending['tvg-name'];
-}
-
-continue;
-
-}
-
-if(line.startsWith('#'))continue;
-
-if(/^[a-z][a-z0-9+.-]*:\/\//i.test(line)){
-
-const name=pending.name||line;
-
-result.push({
-
-id:uid(),
-name,
-url:line,
-group:pending['group-title']||'Ohne Gruppe',
-playlist,
-language:pending.language||'',
-status:'Unknown',
-logo:pending['tvg-logo']||'',
-quality:'',
-favorite:false,
-enabled:true
-
+document.getElementById("modalBack").addEventListener("click", e => {
+  if (e.target.id === "modalBack") closeModal();
 });
 
-pending={};
-
-}
-
-}
-
-return result;
-
-}
-
-function importText(text,playlist){
-
-const incoming=parseM3U(text,playlist);
-
-const known=new Set(data.channels.map(c=>c.url));
-
-let added=0;
-
-incoming.forEach(c=>{
-
-if(!known.has(c.url)){
-
-data.channels.push(c);
-known.add(c.url);
-added++;
-
-if(c.group&&!data.groups.includes(c.group)&&c.group!=='Ohne Gruppe'){
-data.groups.push(c.group);
-}
-
-}
-
+document.getElementById("groupBack").addEventListener("click", e => {
+  if (e.target.id === "groupBack") closeGroups();
 });
 
-save();
+// KEYBOARD
 
-toast(
-`${added} Sender importiert`+
-(incoming.length-added
-?`, ${incoming.length-added} Duplikate übersprungen`
-:'')
-);
-
-}
-
-function downloadFile(filename,content,type){
-
-const blob=new Blob([content],{type});
-
-const a=document.createElement('a');
-
-a.href=URL.createObjectURL(blob);
-a.download=filename;
-a.click();
-
-setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-
-}
-
-function backup(){
-
-downloadFile(
-'visionx-backup-'+new Date().toISOString().slice(0,10)+'.json',
-JSON.stringify(data,null,2),
-'application/json'
-);
-
-toast('Backup heruntergeladen');
-
-}
-
-function exportM3U(){
-
-const channels=data.channels.filter(c=>c.enabled!==false);
-
-let out='#EXTM3U\n';
-
-channels.forEach(c=>{
-
-out+=
-`#EXTINF:-1 tvg-name="${c.name.replace(/"/g,'')}" tvg-logo="${(c.logo||'').replace(/"/g,'')}" group-title="${(c.group||'Ohne Gruppe').replace(/"/g,'')}",${c.name}\n`+
-`${c.url}\n`;
-
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    closeModal();
+    closeGroups();
+  }
 });
 
-downloadFile('visionx-export.m3u',out,'audio/x-mpegurl');
+// START
 
-toast(`${channels.length} Sender exportiert`);
-
-}
-
-function openGroups(){
-
-renderGroups();
-showModal('groupsModal');
-
-}
-
-function renderGroups(){
-
-const list=$('groupList');
-
-list.innerHTML='';
-
-[...new Set(data.groups)].sort().forEach(g=>{
-
-if(g==='Ohne Gruppe')return;
-
-const div=document.createElement('div');
-
-div.className='group-row';
-
-div.innerHTML=`
-
-<span>
-${escapeHtml(g)}
-<small style="color:var(--muted)">
-(${data.channels.filter(c=>c.group===g).length})
-</small>
-</span>
-
-<button class="small"
-data-group-rename="${escapeHtml(g)}">
-Umbenennen
-</button>
-
-<button class="small danger"
-data-group-delete="${escapeHtml(g)}">
-Löschen
-</button>
-`;
-
-list.appendChild(div);
-
-});
-
-if(!list.children.length){
-list.innerHTML='<div class="empty">Noch keine Gruppen erstellt.</div>';
-}
-
-}
-
-function addGroup(){
-
-let g=$('newGroupName').value.trim();
-
-if(!g)return;
-
-if(data.groups.includes(g)){
-toast('Gruppe existiert bereits');
-return;
-}
-
-data.groups.push(g);
-$('newGroupName').value='';
-
-save();
-renderGroups();
-
-}
-
-function renameGroup(old){
-
-const next=prompt('Neuer Gruppenname:',old);
-
-if(!next||!next.trim()||next.trim()===old)return;
-
-const n=next.trim();
-
-if(data.groups.includes(n)){
-toast('Name existiert bereits');
-return;
-}
-
-data.groups=data.groups.map(g=>g===old?n:g);
-
-data.channels.forEach(c=>{
-if(c.group===old)c.group=n;
-});
-
-save();
-renderGroups();
-
-}
-
-function deleteGroup(g){
-
-if(!confirm(
-`Gruppe „${g}“ löschen? Sender werden „Ohne Gruppe“ zugeordnet.`
-))return;
-
-data.groups=data.groups.filter(x=>x!==g);
-
-data.channels.forEach(c=>{
-if(c.group===g)c.group='Ohne Gruppe';
-});
-
-save();
-renderGroups();
-
-}
-
-function selectedVisible(){
-
-return getFiltered().filter(c=>selected.has(c.id));
-
-}
-
-function bulkAction(fn){
-
-const arr=selectedVisible();
-
-if(!arr.length){
-toast('Bitte Sender auswählen');
-return;
-}
-
-arr.forEach(fn);
-save();
-
-}
-
-/* IMPORT */
-
-$('importBtn').onclick=()=>$('fileInput').click();
-
-$('fileInput').onchange=async e=>{
-
-const f=e.target.files?.[0];
-
-if(!f)return;
-
-const text=await f.text();
-
-importText(
-text,
-f.name.replace(/\.[^.]+$/,'')||'Import'
-);
-
-e.target.value='';
-
-};
-
-/* BUTTONS */
-
-$('addBtn').onclick=()=>openChannel();
-
-$('groupsBtn').onclick=openGroups;
-
-$('backupBtn').onclick=backup;
-
-$('restoreBtn').onclick=()=>$('restoreInput').click();
-
-$('restoreInput').onchange=async e=>{
-
-const f=e.target.files?.[0];
-
-if(!f)return;
-
-try{
-
-const x=JSON.parse(await f.text());
-
-if(!Array.isArray(x.channels)||!Array.isArray(x.groups)){
-throw new Error('Ungültiges Backup');
-}
-
-if(confirm(
-`${x.channels.length} Sender aus Backup übernehmen? Bestehende Daten werden ersetzt.`
-)){
-
-data=x;
-
-if(!data.groups.includes('Ohne Gruppe')){
-data.groups.unshift('Ohne Gruppe');
-}
-
-selected.clear();
-
-save();
-
-toast('Backup wiederhergestellt');
-
-}
-
-}catch(err){
-
-alert('Backup konnte nicht geladen werden: '+err.message);
-
-}
-
-e.target.value='';
-
-};
-
-$('exportBtn').onclick=exportM3U;
-
-$('themeBtn').onclick=()=>{
-
-data.theme=data.theme==='dark'?'light':'dark';
-
-document.body.classList.toggle('dark',data.theme==='dark');
-
-save();
-
-};
-
-/* FORM */
-
-$('channelForm').onsubmit=saveChannel;
-
-$('cancelModal').onclick=()=>hideModal('channelModal');
-
-$('closeGroups').onclick=()=>hideModal('groupsModal');
-
-$('addGroup').onclick=addGroup;
-
-$('groupList').onclick=e=>{
-
-const r=e.target.closest('button');
-
-if(!r)return;
-
-if(r.dataset.groupRename)renameGroup(r.dataset.groupRename);
-
-if(r.dataset.groupDelete)deleteGroup(r.dataset.groupDelete);
-
-};
-
-/* TABLE ACTIONS */
-
-$('tbody').onclick=e=>{
-
-const b=e.target.closest('button[data-action]');
-
-if(!b)return;
-
-const c=data.channels.find(x=>x.id===b.dataset.id);
-
-if(!c)return;
-
-if(b.dataset.action==='fav'){
-c.favorite=!c.favorite;
-save();
-}
-
-if(b.dataset.action==='edit'){
-openChannel(c);
-}
-
-if(b.dataset.action==='delete'&&confirm(`Sender „${c.name}“ löschen?`)){
-
-data.channels=data.channels.filter(x=>x.id!==c.id);
-selected.delete(c.id);
-
-save();
-
-}
-
-};
-
-$('tbody').onchange=e=>{
-
-const t=e.target;
-
-if(t.classList.contains('rowcheck')){
-
-if(t.checked){
-selected.add(t.dataset.id);
-}else{
-selected.delete(t.dataset.id);
-}
-
-render();
-
-}else if(t.dataset.action==='enabled'){
-
-const c=data.channels.find(x=>x.id===t.dataset.id);
-
-if(c){
-c.enabled=t.checked;
-save();
-}
-
-}
-
-};
-
-/* SELECT ALL */
-
-$('selectAll').onchange=e=>{
-
-getFiltered().forEach(c=>
-e.target.checked
-?selected.add(c.id)
-:selected.delete(c.id)
-);
-
-render();
-
-};
-
-/* FILTERS */
-
-['search','playlistFilter','groupFilter','statusFilter','languageFilter','sort']
-.forEach(id=>
-$(id).addEventListener('input',render)
-);
-
-$('clearFilters').onclick=()=>{
-
-[
-'search',
-'playlistFilter',
-'groupFilter',
-'statusFilter',
-'languageFilter'
-].forEach(id=>$(id).value='');
-
-render();
-
-};
-
-/* BULK */
-
-$('bulkMove').onclick=()=>{
-
-const g=$('bulkGroup').value;
-
-if(!g){
-toast('Gruppe auswählen');
-return;
-}
-
-bulkAction(c=>c.group=g);
-
-};
-
-$('bulkEnable').onclick=()=>bulkAction(c=>c.enabled=true);
-
-$('bulkDisable').onclick=()=>bulkAction(c=>c.enabled=false);
-
-$('bulkFav').onclick=()=>bulkAction(c=>c.favorite=!c.favorite);
-
-$('bulkDelete').onclick=()=>{
-
-const arr=selectedVisible();
-
-if(!arr.length){
-toast('Bitte Sender auswählen');
-return;
-}
-
-if(confirm(`${arr.length} Sender löschen?`)){
-
-const ids=new Set(arr.map(c=>c.id));
-
-data.channels=data.channels.filter(c=>!ids.has(c.id));
-
-ids.forEach(id=>selected.delete(id));
-
-save();
-
-}
-
-};
-
-/* INIT */
-
-load();
-
-document.body.classList.toggle('dark',data.theme==='dark');
-
-render();
-
+loadData();
 </script>
 
 </body>
